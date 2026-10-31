@@ -109,7 +109,7 @@ export const LandingHome = ({
     <div className="home-landing-page relative">
       {/* Toast banner for notification feedback */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-slate-900/95 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-slate-700 flex items-center gap-3 backdrop-blur-md animate-bounce">
+        <div className="fixed bottom-24 right-6 z-50 bg-slate-900/95 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-slate-700 flex items-center gap-3 backdrop-blur-md animate-bounce">
           <span className="text-xl">✨</span>
           <span className="text-sm font-semibold">{toastMessage}</span>
           <button

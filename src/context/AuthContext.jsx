@@ -165,6 +165,11 @@ export const AuthProvider = ({ children }) => {
   // Logout
   const logout = () => {
     setCurrentUser(null);
+    try {
+      localStorage.removeItem(AUTH_STORAGE_KEY);
+    } catch (e) {
+      console.error("Failed to remove auth key", e);
+    }
   };
 
   // Quick switch user

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useRealtimeTracking } from "../../context/RealtimeTrackingContext";
+import { useChatCall } from "../../context/ChatCallContext";
 import {
   Brain,
   Sparkles,
@@ -7,7 +9,11 @@ import {
   Phone,
   Plus,
   MessageSquare,
-  ChevronRight
+  ChevronRight,
+  Radio,
+  Clock,
+  Activity,
+  Video
 } from "lucide-react";
 export const FamilyDashboard = ({
   profile,
@@ -19,6 +25,7 @@ export const FamilyDashboard = ({
   onAddObservation,
   onContactDoctor
 }) => {
+  const { setIsPatientChatModalOpen, startVideoCall } = useChatCall();
   const [newNoteText, setNewNoteText] = useState("");
   const [noteCategory, setNoteCategory] = useState("General observation");
   const [showNoteSuccess, setShowNoteSuccess] = useState(false);
@@ -74,14 +81,59 @@ export const FamilyDashboard = ({
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5 flex-wrap">
           <button
-    onClick={onContactDoctor}
-    className="flex-1 sm:flex-none px-5 py-3 rounded-2xl bg-[#0D7377] hover:bg-[#0A5C5F] text-white font-extrabold text-sm sm:text-base shadow-sm transition flex items-center justify-center gap-2"
-  >
-            <Phone className="w-4 h-4" />
-            Contact Doctor
+            onClick={() => {
+              startVideoCall({
+                targetRole: "doctor",
+                targetName: profile?.doctorName || "Dr. Debabrata Roy, MD",
+                patientCode: profile?.patientCode || "PT-7241",
+              });
+            }}
+            className="flex-1 sm:flex-none px-4 py-2.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-extrabold text-xs sm:text-sm shadow-md shadow-emerald-600/20 transition flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+          >
+            <Video className="w-4 h-4" />
+            <span>Doctor Video Call</span>
           </button>
+
+          <button
+            onClick={() => setIsPatientChatModalOpen(true)}
+            className="flex-1 sm:flex-none px-4 py-2.5 rounded-2xl bg-teal-50 hover:bg-teal-100 border border-teal-200 text-[#0D7377] font-extrabold text-xs sm:text-sm transition flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <MessageSquare className="w-4 h-4" />
+            <span>Chat with Doctor</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Live Patient Engagement Indicator for Family */}
+      <div className="bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 rounded-3xl p-5 border-2 border-emerald-200/80 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="flex items-center gap-3.5">
+          <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shadow-md shadow-emerald-600/20 shrink-0">
+            <Radio className="w-6 h-6 animate-pulse text-[#9DF3C4]" />
+          </div>
+          <div>
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-xs font-black uppercase tracking-wider text-emerald-900">
+                Live Companion Telemetry
+              </span>
+              <span className="text-[10px] font-black bg-emerald-200 text-emerald-900 px-2 py-0.5 rounded-full">
+                Active
+              </span>
+            </div>
+            <p className="text-xs sm:text-sm font-bold text-slate-800 mt-0.5">
+              {profile.name} is currently engaged in cognitive & physical exercises today.
+            </p>
+            <p className="text-xs text-slate-500 font-medium">
+              Real-time events and baseline calibration are securely synchronizing with {profile.doctorName}.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 shrink-0 self-start sm:self-auto">
+          <span className="text-xs font-bold text-emerald-800 bg-white border border-emerald-300 px-3 py-1.5 rounded-xl">
+            ✨ Healthy Engagement
+          </span>
         </div>
       </div>
 
@@ -394,12 +446,12 @@ export const FamilyDashboard = ({
         {
     /* Reminders & Routine Tracker (Frame 22) */
   }
-        <div className="bg-white rounded-3xl p-6 sm:p-7 shadow-xs border border-[#0D7377]/15">
+        <div className="bg-[#001A4C] text-white rounded-3xl p-6 sm:p-7 shadow-lg border border-[#001A4C]">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-extrabold text-[#132A2F]">
+            <h3 className="text-lg font-extrabold text-white">
               Daily Routine & Reminders (Frame 22)
             </h3>
-            <span className="text-xs font-bold text-slate-500">
+            <span className="text-xs font-bold text-blue-200">
               Live Home Sync
             </span>
           </div>
@@ -407,26 +459,26 @@ export const FamilyDashboard = ({
           <div className="space-y-3">
             {reminders.map((rem) => <div
     key={rem.id}
-    className="p-3.5 rounded-2xl border border-slate-200 flex items-center justify-between gap-3 bg-white"
+    className="p-3.5 rounded-2xl border border-white/15 flex items-center justify-between gap-3 bg-white/10"
   >
                 <div>
                   <div className="flex items-center gap-2">
-                    <h4 className="font-extrabold text-sm text-[#132A2F]">
+                    <h4 className="font-extrabold text-sm text-white">
                       {rem.title}
                     </h4>
-                    <span className="text-xs font-bold text-[#0D7377]">
+                    <span className="text-xs font-bold text-blue-300">
                       {rem.time}
                     </span>
                   </div>
-                  {rem.note && <p className="text-xs text-slate-500 font-medium mt-0.5">
+                  {rem.note && <p className="text-xs text-blue-200/80 font-medium mt-0.5">
                       {rem.note}
                     </p>}
                 </div>
 
                 <span
-    className={`px-3 py-1 rounded-full text-xs font-extrabold ${rem.completed ? "bg-emerald-100 text-emerald-800" : "bg-amber-100 text-amber-800"}`}
+    className={`px-3 py-1 rounded-full text-xs font-extrabold ${rem.completed ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30" : "bg-amber-500/20 text-amber-300 border border-amber-500/30"}`}
   >
-                  {rem.completed ? "\u2713 Completed" : "Pending"}
+                  {rem.completed ? "✓ Completed" : "Pending"}
                 </span>
               </div>)}
           </div>
@@ -437,7 +489,7 @@ export const FamilyDashboard = ({
       {
     /* Alert Breakdown Modal for Family */
   }
-      {showAlertDetailModal && <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
+      {showAlertDetailModal && <div className="fixed inset-0 z-[20000] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
           <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-amber-300 relative">
             <div className="flex items-center gap-3 text-amber-800 mb-4">
               <AlertTriangle className="w-7 h-7 text-amber-600" />

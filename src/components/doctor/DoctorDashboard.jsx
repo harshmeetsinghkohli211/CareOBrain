@@ -6,9 +6,13 @@ import {
   createDefaultReportForPatient
 } from "../../data/patientReportsData";
 import { useAuth } from "../../context/AuthContext";
+import { useRealtimeTracking } from "../../context/RealtimeTrackingContext";
 import { AddPatientModal } from "./AddPatientModal";
 import { PatientReportModal } from "./PatientReportModal";
 import { NewReportModal } from "./NewReportModal";
+import { LiveTelemetryDashboard } from "./LiveTelemetryDashboard";
+import { DoctorChatTab } from "./DoctorChatTab";
+import { useChatCall } from "../../context/ChatCallContext";
 import {
   Stethoscope,
   Brain,
@@ -35,7 +39,10 @@ import {
   Filter,
   Eye,
   Download,
-  Share2
+  Share2,
+  Radio,
+  MessageSquare,
+  Video
 } from "lucide-react";
 
 export const DoctorDashboard = ({
@@ -50,6 +57,8 @@ export const DoctorDashboard = ({
   onAddClinicalNote
 }) => {
   const { currentUser, allUsers } = useAuth();
+  const { isLiveActive } = useRealtimeTracking();
+  const { startVideoCall, unreadCountForDoctor, setIsPatientChatModalOpen, setActivePatientCode } = useChatCall();
 
   // Multi-patient roster state
   const [patientRoster, setPatientRoster] = useState(() => {
@@ -494,33 +503,33 @@ export const DoctorDashboard = ({
         );
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6 pb-24">
+    <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-4 sm:space-y-6 pb-24">
       {/* ========================================================= */}
       {/* 1. TOP DOCTOR BAR WITH PATIENT SELECTOR & ADD PATIENT ID */}
       {/* ========================================================= */}
-      <div className="bg-white rounded-3xl p-6 sm:p-7 shadow-xs border border-[#0D7377]/15">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      <div className="bg-white rounded-3xl p-4 sm:p-6 lg:p-7 shadow-xs border border-[#0D7377]/15">
+        <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4 sm:gap-6">
           {/* Active Patient Identity */}
-          <div className="flex items-center gap-4">
-            <div className="w-16 h-16 rounded-2xl bg-[#0D7377] text-white flex items-center justify-center shrink-0 shadow-md shadow-[#0D7377]/20">
-              <Stethoscope className="w-8 h-8 text-[#9DF3C4]" />
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3.5 sm:gap-4">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#0D7377] text-white flex items-center justify-center shrink-0 shadow-md shadow-[#0D7377]/20">
+              <Stethoscope className="w-7 h-7 sm:w-8 sm:h-8 text-[#9DF3C4]" />
             </div>
-            <div>
-              <div className="flex items-center gap-2.5 flex-wrap">
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
                   Active Patient:
                 </span>
-                <h1 className="text-2xl sm:text-3xl font-extrabold text-[#132A2F] font-display">
+                <h1 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#132A2F] font-display">
                   {activePatient.name}
                 </h1>
                 <span className="font-mono text-xs font-black bg-teal-50 text-[#0D7377] border border-teal-200 px-2.5 py-0.5 rounded-lg">
                   {activePatient.patientCode}
                 </span>
-                <span className="text-xs font-bold bg-teal-100 text-teal-800 px-3 py-0.5 rounded-full">
+                <span className="text-xs font-bold bg-teal-100 text-teal-800 px-2.5 py-0.5 rounded-full">
                   Age {activePatient.age}
                 </span>
                 <span
-                  className={`text-xs font-bold px-3 py-0.5 rounded-full border flex items-center gap-1 ${
+                  className={`text-xs font-bold px-2.5 py-0.5 rounded-full border flex items-center gap-1 ${
                     activePatient.status === "Requires Attention"
                       ? "bg-amber-100 text-amber-900 border-amber-300"
                       : activePatient.status === "Improving"
@@ -532,17 +541,45 @@ export const DoctorDashboard = ({
                   {activePatient.status}
                 </span>
               </div>
-              <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1">
+              <p className="text-xs sm:text-sm text-slate-500 font-medium">
                 Caregiver: <strong>{activePatient.caregiverName}</strong> · Condition: {activePatient.condition} · {patientReports.length} Reports Archived
               </p>
             </div>
           </div>
 
           {/* Quick Doctor Actions & Navigation Tabs */}
-          <div className="flex items-center gap-2 flex-wrap">
+          <div className="flex items-center gap-2 flex-wrap w-full xl:w-auto">
+            <button
+              onClick={() => {
+                startVideoCall({
+                  patientCode: activePatient.patientCode,
+                  targetRole: "patient",
+                  targetName: activePatient.name,
+                });
+              }}
+              className="flex-1 sm:flex-none py-2.5 px-3.5 sm:px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-extrabold text-xs sm:text-sm shadow-md shadow-emerald-600/20 flex items-center justify-center gap-2 transition cursor-pointer active:scale-95"
+            >
+              <Video className="w-4 h-4" />
+              <span>Video Consultation</span>
+            </button>
+
+            <button
+              onClick={() => {
+                if (activePatient?.patientCode) {
+                  setActivePatientCode(activePatient.patientCode);
+                }
+                setIsPatientChatModalOpen(true);
+              }}
+              className="flex-1 sm:flex-none py-2.5 px-3.5 sm:px-4 rounded-xl bg-teal-50 hover:bg-teal-100 border border-teal-200 text-[#0D7377] font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer active:scale-95 shadow-xs"
+              title="Open Live Chat Popup Modal"
+            >
+              <MessageSquare className="w-4 h-4" />
+              <span>Patient Chat (Popup)</span>
+            </button>
+
             <button
               onClick={() => setShowAddPatientModal(true)}
-              className="py-2.5 px-4 rounded-xl bg-gradient-to-r from-teal-600 to-[#0D7377] hover:from-teal-700 hover:to-[#0A5C5F] text-white font-extrabold text-xs sm:text-sm shadow-md shadow-[#0D7377]/20 flex items-center gap-2 transition cursor-pointer"
+              className="flex-1 sm:flex-none py-2.5 px-3.5 sm:px-4 rounded-xl bg-gradient-to-r from-teal-600 to-[#0D7377] hover:from-teal-700 hover:to-[#0A5C5F] text-white font-extrabold text-xs sm:text-sm shadow-md shadow-[#0D7377]/20 flex items-center justify-center gap-2 transition cursor-pointer"
             >
               <UserPlus className="w-4 h-4 text-[#9DF3C4]" />
               <span>+ Add Patient with ID</span>
@@ -629,6 +666,18 @@ export const DoctorDashboard = ({
           {[
             { id: "dashboard", label: "Dashboard", icon: BarChart3 },
             {
+              id: "chat",
+              label: "Live Chat & Teleconsult",
+              icon: MessageSquare,
+              badge: unreadCountForDoctor > 0 ? String(unreadCountForDoctor) : "LIVE"
+            },
+            {
+              id: "telemetry",
+              label: "Live Telemetry & Tracking",
+              icon: Radio,
+              badge: isLiveActive ? "LIVE" : "SYNC"
+            },
+            {
               id: "reports",
               label: `Patient Reports (${patientReports.length})`,
               icon: FileText,
@@ -677,66 +726,116 @@ export const DoctorDashboard = ({
       </div>
 
       {/* ========================================================= */}
-      {/* AI CLINICAL DEMONSTRATOR BAR */}
+      {/* AI CLINICAL DEMONSTRATOR BAR (Only for Dashboard & Analytics) */}
       {/* ========================================================= */}
-      <div className="bg-gradient-to-r from-[#132A2F] to-[#0D7377] rounded-3xl p-4 sm:p-5 text-white shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-[#9DF3C4]">
-            <Sparkles className="w-5 h-5" />
+      {(activeTab === "dashboard" || activeTab === "analytics") && (
+        <div className="bg-gradient-to-r from-[#132A2F] to-[#0D7377] rounded-3xl p-4 sm:p-5 text-white shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-[#9DF3C4]">
+              <Sparkles className="w-5 h-5" />
+            </div>
+            <div>
+              <span className="text-[10px] font-black uppercase tracking-widest text-[#9DF3C4] block">
+                AI ENGINE LONGITUDINAL SIMULATOR · ACTIVE PATIENT: {activePatient.name} ({activePatient.patientCode})
+              </span>
+              <p className="text-xs sm:text-sm font-extrabold text-white">
+                {simulationScenario === "decline"
+                  ? "Scenario 1: Persistent Decline Detected (4 Consecutive Sessions Below Baseline)"
+                  : simulationScenario === "improvement"
+                  ? "Scenario 2: Adaptive Cognitive Improvement (AI Proposes Difficulty Upgrade)"
+                  : "Scenario 3: Temporary Sleep Dip / Filtered False Alert (Responsible Alerting)"}
+              </p>
+            </div>
           </div>
-          <div>
-            <span className="text-[10px] font-black uppercase tracking-widest text-[#9DF3C4] block">
-              AI ENGINE LONGITUDINAL SIMULATOR · ACTIVE PATIENT: {activePatient.name} ({activePatient.patientCode})
-            </span>
-            <p className="text-xs sm:text-sm font-extrabold text-white">
-              {simulationScenario === "decline"
-                ? "Scenario 1: Persistent Decline Detected (4 Consecutive Sessions Below Baseline)"
-                : simulationScenario === "improvement"
-                ? "Scenario 2: Adaptive Cognitive Improvement (AI Proposes Difficulty Upgrade)"
-                : "Scenario 3: Temporary Sleep Dip / Filtered False Alert (Responsible Alerting)"}
-            </p>
-          </div>
-        </div>
 
-        <div className="flex items-center gap-2 flex-wrap">
-          <button
-            onClick={() => setSimulationScenario("decline")}
-            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer ${
-              simulationScenario === "decline"
-                ? "bg-amber-400 text-slate-950 shadow-xs"
-                : "bg-white/10 hover:bg-white/20 text-white"
-            }`}
-          >
-            Persistent Decline
-          </button>
-          <button
-            onClick={() => setSimulationScenario("improvement")}
-            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer ${
-              simulationScenario === "improvement"
-                ? "bg-emerald-400 text-slate-950 shadow-xs"
-                : "bg-white/10 hover:bg-white/20 text-white"
-            }`}
-          >
-            Improvement
-          </button>
-          <button
-            onClick={() => setSimulationScenario("dip")}
-            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer ${
-              simulationScenario === "dip"
-                ? "bg-blue-400 text-slate-950 shadow-xs"
-                : "bg-white/10 hover:bg-white/20 text-white"
-            }`}
-          >
-            Isolated Dip
-          </button>
+          <div className="flex items-center gap-2 flex-wrap">
+            <button
+              onClick={() => setSimulationScenario("decline")}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer ${
+                simulationScenario === "decline"
+                  ? "bg-amber-400 text-slate-950 shadow-xs"
+                  : "bg-white/10 hover:bg-white/20 text-white"
+              }`}
+            >
+              Persistent Decline
+            </button>
+            <button
+              onClick={() => setSimulationScenario("improvement")}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer ${
+                simulationScenario === "improvement"
+                  ? "bg-emerald-400 text-slate-950 shadow-xs"
+                  : "bg-white/10 hover:bg-white/20 text-white"
+              }`}
+            >
+              Improvement
+            </button>
+            <button
+              onClick={() => setSimulationScenario("dip")}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer ${
+                simulationScenario === "dip"
+                  ? "bg-blue-400 text-slate-950 shadow-xs"
+                  : "bg-white/10 hover:bg-white/20 text-white"
+              }`}
+            >
+              Isolated Dip
+            </button>
+          </div>
         </div>
-      </div>
+      )}
+
+      {/* ========================================================= */}
+      {/* TAB: LIVE DOCTOR-PATIENT WEBSOCKET CHAT & TELECONSULTATION */}
+      {/* ========================================================= */}
+      {activeTab === "chat" && (
+        <DoctorChatTab
+          patientRoster={patientRoster}
+          selectedPatientCode={selectedPatientCode}
+          onSelectPatient={(code) => setSelectedPatientCode(code)}
+        />
+      )}
+
+      {/* ========================================================= */}
+      {/* TAB: REAL-TIME TELEMETRY & GAME TRACKING ENGINE */}
+      {/* ========================================================= */}
+      {activeTab === "telemetry" && (
+        <LiveTelemetryDashboard activePatient={activePatient} />
+      )}
 
       {/* ========================================================= */}
       {/* TAB 1: MAIN DOCTOR CLINICAL DASHBOARD */}
       {/* ========================================================= */}
       {activeTab === "dashboard" && (
         <div className="space-y-6 animate-in fade-in duration-200">
+          {/* Real-time Telemetry Quick Access Banner */}
+          <div className="bg-gradient-to-r from-[#0D7377] via-teal-800 to-[#132A2F] rounded-3xl p-5 text-white shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-3.5">
+              <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-[#9DF3C4] shrink-0">
+                <Radio className="w-6 h-6 animate-pulse" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-black uppercase tracking-wider text-[#9DF3C4]">
+                    AI Real-Time Game Telemetry Engine
+                  </span>
+                  <span className="bg-emerald-400 text-slate-950 font-black text-[10px] px-2 py-0.5 rounded-full">
+                    ONLINE
+                  </span>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-200 font-medium mt-0.5">
+                  Streaming live cognitive events, latency curves, pose tracking, and difficulty adaptations for {activePatient.name}.
+                </p>
+              </div>
+            </div>
+
+            <button
+              onClick={() => setActiveTab("telemetry")}
+              className="px-4 py-2.5 bg-[#9DF3C4] hover:bg-[#8AE8B3] text-slate-950 font-extrabold text-xs sm:text-sm rounded-2xl transition shadow-xs flex items-center gap-2 shrink-0 self-start sm:self-auto cursor-pointer"
+            >
+              <span>Open Live Telemetry</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+
           {/* Top Metric Cards */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="bg-white rounded-3xl p-5 sm:p-6 shadow-xs border border-[#0D7377]/15">
@@ -1726,7 +1825,7 @@ export const DoctorDashboard = ({
           onClick={(e) => {
             if (e.target === e.currentTarget) setShowAddTaskModal(false);
           }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs"
+          className="fixed inset-0 z-[20000] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs"
         >
           <div className="relative bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-[#0D7377]/20 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-4">

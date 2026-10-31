@@ -19,7 +19,7 @@ export const AuthHeroBanner = ({ onOpenAuthModal }) => {
   const { currentUser, logout, switchUser, allUsers } = useAuth();
 
   return (
-    <div className="w-full bg-gradient-to-r from-slate-900 via-blue-950 to-indigo-950 border-b border-blue-800/40 text-white py-3.5 px-4 sm:px-6 shadow-md">
+    <div className="w-full bg-gradient-to-r from-[#001A4C] via-[#002266] to-[#002D80] border-b border-blue-900/40 text-white py-3.5 px-4 sm:px-6 shadow-md">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
         
         {/* Left Status Info */}

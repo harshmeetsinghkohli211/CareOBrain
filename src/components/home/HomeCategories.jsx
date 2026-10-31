@@ -11,62 +11,74 @@ export const HomeCategories = ({
     {
       id: 1,
       name: "memory",
-      img: "/images/cat_real_memory.jpg",
+      img: `${import.meta.env.BASE_URL}images/cat_real_memory.jpg`,
       title: t?.cat?.["1t"] || "Memory Enhancement",
       desc: t?.cat?.["1d"] || "Memory card pairs, image recall, family face recognition — AI detects difficulty patterns to strengthen retention.",
       g1: t?.cat?.["1g1"] || "Memory Cards",
+      g1Game: "1. Memory Match",
       g2: t?.cat?.["1g2"] || "Photo Recall",
-      gameTitle: "Memory Cards Recall"
+      g2Game: "3. Picture Recall",
+      gameTitle: "1. Memory Match"
     },
     {
       id: 2,
       name: "attention",
-      img: "/images/cat_real_attention.jpg",
+      img: `${import.meta.env.BASE_URL}images/cat_real_attention.jpg`,
       title: t?.cat?.["2t"] || "Attention & Focus",
       desc: t?.cat?.["2d"] || "Color matching and focused attention exercises — tracking response time and motor precision.",
       g1: t?.cat?.["2g1"] || "Color Match",
-      g2: t?.cat?.["2g2"] || "Focus Games",
-      gameTitle: "Attention Color Matching"
+      g1Game: "8. Color & Shape Match",
+      g2: t?.cat?.["2g2"] || "Sound Match",
+      g2Game: "5. Sound Match",
+      gameTitle: "8. Color & Shape Match"
     },
     {
       id: 3,
       name: "routine",
-      img: "/images/cat_real_routine.jpg",
+      img: `${import.meta.env.BASE_URL}images/cat_real_routine.jpg`,
       title: t?.cat?.["3t"] || "Daily Routines",
       desc: t?.cat?.["3d"] || "Medication schedules, morning routines, grocery lists — sequencing real-life daily tasks.",
       g1: t?.cat?.["3g1"] || "Routine Steps",
+      g1Game: "9. Daily Routine Recall",
       g2: t?.cat?.["3g2"] || "Medicine Reminder",
-      gameTitle: "Daily Routine Sequencing"
+      g2Game: "9. Daily Routine Recall",
+      gameTitle: "9. Daily Routine Recall"
     },
     {
       id: 4,
       name: "pattern",
-      img: "/images/cat_real_pattern.jpg",
+      img: `${import.meta.env.BASE_URL}images/cat_real_pattern.jpg`,
       title: t?.cat?.["4t"] || "Pattern Recognition",
       desc: t?.cat?.["4d"] || "Shape matching, visual sequence completion — fostering logical thinking and visual-spatial reasoning.",
       g1: t?.cat?.["4g1"] || "Shape Puzzle",
-      g2: t?.cat?.["4g2"] || "Sequence Game",
-      gameTitle: "Pattern Puzzle Match"
+      g1Game: "6. Simple Puzzle",
+      g2: t?.cat?.["4g2"] || "Pattern Recall",
+      g2Game: "4. Pattern Recall",
+      gameTitle: "4. Pattern Recall"
     },
     {
       id: 5,
       name: "object",
-      img: "/images/cat_real_object.jpg",
+      img: `${import.meta.env.BASE_URL}images/cat_real_object.jpg`,
       title: t?.cat?.["5t"] || "Object Identification",
       desc: t?.cat?.["5d"] || "Familiar household items, fruits, traditional tools — building object-naming confidence with culturally familiar visuals.",
       g1: t?.cat?.["5g1"] || "Find Object",
+      g1Game: "7. Find the Object",
       g2: t?.cat?.["5g2"] || "Name Item",
-      gameTitle: "Object Identification"
+      g2Game: "3. Picture Recall",
+      gameTitle: "7. Find the Object"
     },
     {
       id: 6,
       name: "emotional",
-      img: "/images/cat_real_emotion.jpg",
+      img: `${import.meta.env.BASE_URL}images/cat_real_emotion.jpg`,
       title: t?.cat?.["6t"] || "Emotional Engagement",
       desc: t?.cat?.["6d"] || "Folk songs, nostalgic storytelling, family memories — uplifting emotional well-being and social connection.",
-      g1: t?.cat?.["6g1"] || "Music Memory",
-      g2: t?.cat?.["6g2"] || "Family Memories",
-      gameTitle: "Emotional Music Reminiscence"
+      g1: t?.cat?.["6g1"] || "Music & Photos",
+      g1Game: "16. Memory Art Gallery",
+      g2: t?.cat?.["6g2"] || "Story Recall",
+      g2Game: "11. Story Recall",
+      gameTitle: "16. Memory Art Gallery"
     }
   ];
 
@@ -83,7 +95,7 @@ export const HomeCategories = ({
           </p>
         </div>
 
-        <div className="cat-grid">
+        <div className="cat-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {catData.map((cat) => {
             const isCompleted = !!completedTasks[cat.id];
             const isSkipped = !!skippedTasks[cat.id];
@@ -111,8 +123,22 @@ export const HomeCategories = ({
                 <h3>{cat.title}</h3>
                 <p>{cat.desc}</p>
                 <div className="cat-games">
-                  <span className="cat-game">{cat.g1}</span>
-                  <span className="cat-game">{cat.g2}</span>
+                  <button
+                    type="button"
+                    onClick={() => onCategoryLaunch && onCategoryLaunch(cat.id, cat.g1Game)}
+                    className="cat-game cursor-pointer hover:bg-teal-100 hover:text-teal-900 transition flex items-center gap-1 border-0"
+                    title={`Play ${cat.g1}`}
+                  >
+                    <span>▶</span> {cat.g1}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => onCategoryLaunch && onCategoryLaunch(cat.id, cat.g2Game)}
+                    className="cat-game cursor-pointer hover:bg-teal-100 hover:text-teal-900 transition flex items-center gap-1 border-0"
+                    title={`Play ${cat.g2}`}
+                  >
+                    <span>▶</span> {cat.g2}
+                  </button>
                 </div>
 
                 {/* Card Action Buttons (Enlarged Start Therapy & Skip Task) */}

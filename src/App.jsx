@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { AuthProvider, useAuth } from "./context/AuthContext";
+import { RealtimeTrackingProvider } from "./context/RealtimeTrackingContext";
+import { ChatCallProvider, useChatCall } from "./context/ChatCallContext";
 import { AuthModal } from "./components/auth/AuthModal";
 import { AuthHeroBanner } from "./components/auth/AuthHeroBanner";
 import {
@@ -15,6 +17,11 @@ import {
 import { Header } from "./components/common/Header";
 import { VoiceModal } from "./components/common/VoiceModal";
 import { CallCaregiverModal } from "./components/common/CallCaregiverModal";
+import { PatientDoctorChatModal } from "./components/patient/PatientDoctorChatModal";
+import { VideoCallModal } from "./components/common/VideoCallModal";
+import { IncomingCallModal } from "./components/common/IncomingCallModal";
+import { SettingsModal } from "./components/common/SettingsModal";
+import { FloatingVoiceButton } from "./components/common/FloatingVoiceButton";
 import { PatientHome } from "./components/patient/PatientHome";
 import { PatientTasks } from "./components/patient/PatientTasks";
 import { AllGamesEngine } from "./components/games/AllGamesEngine";
@@ -34,7 +41,8 @@ import { translations } from "./data/translations";
 import { Lock, User, Stethoscope, ArrowRight } from "lucide-react";
 
 function MainAppContent() {
-  const { currentUser } = useAuth();
+  const { currentUser, logout } = useAuth();
+  const { isPatientChatModalOpen, setIsPatientChatModalOpen } = useChatCall();
   const [currentRole, setCurrentRole] = useState("home");
   const [profile, setProfile] = useState(initialPatientProfile);
   const [tasks, setTasks] = useState(initialTasks);
@@ -49,6 +57,25 @@ function MainAppContent() {
   const [patientTab, setPatientTab] = useState("home");
   const [isVoiceOpen, setIsVoiceOpen] = useState(false);
   const [isCaregiverCallOpen, setIsCaregiverCallOpen] = useState(false);
+
+  // Settings & Modes State (Expert Mode by default)
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [appMode, setAppMode] = useState("expert");
+  const [voiceGuidanceEnabled, setVoiceGuidanceEnabled] = useState(true);
+  const [logoutToast, setLogoutToast] = useState(null);
+
+  const handleLogout = () => {
+    if (logout) logout();
+    setProfile(initialPatientProfile);
+    setCurrentRole("home");
+    setActiveTask(null);
+    setActivePhysicalActivity(null);
+    setPatientTab("home");
+    setLogoutToast("Signed out successfully. You are now exploring in Guest Mode.");
+    setTimeout(() => {
+      setLogoutToast(null);
+    }, 3500);
+  };
 
   // Landing page tour state
   const [showLandingTour, setShowLandingTour] = useState(false);
@@ -416,6 +443,9 @@ function MainAppContent() {
         onOpenVoice={() => setIsVoiceOpen(true)}
         onOpenCaregiverCall={() => setIsCaregiverCallOpen(true)}
         onOpenAuthModal={() => openAuthModal({ mode: "login" })}
+        onOpenSettings={() => setIsSettingsOpen(true)}
+        onLogout={handleLogout}
+        appMode={appMode}
         reminders={reminders}
         tasks={allTasksForNotification}
         onToggleReminder={handleToggleReminder}
@@ -580,6 +610,7 @@ function MainAppContent() {
                   onToggleReminder={handleToggleReminder}
                   onOpenDoctorPortal={() => setCurrentRole("doctor")}
                   onOpenAuthModal={(opts) => openAuthModal(opts || { mode: "login", initialRole: "doctor" })}
+                  appMode={appMode}
                   onNavigateTab={(tab) => {
                     if (tab === "help") setIsCaregiverCallOpen(true);
                     else if (
@@ -665,6 +696,15 @@ function MainAppContent() {
         )}
       </main>
 
+      {/* Voice Assistant Floating Action Button in Lower Right */}
+      <FloatingVoiceButton
+        isOpen={isVoiceOpen}
+        onClick={() => setIsVoiceOpen((prev) => !prev)}
+        profile={profile}
+        currentRole={currentRole}
+        isPlayingGame={!!activeTask}
+      />
+
       {/* Voice Assistant Modal */}
       <VoiceModal
         isOpen={isVoiceOpen}
@@ -680,6 +720,35 @@ function MainAppContent() {
         profile={profile}
       />
 
+      {/* Real-Time WebSocket Patient Doctor Chat Modal */}
+      <PatientDoctorChatModal
+        isOpen={isPatientChatModalOpen}
+        onClose={() => setIsPatientChatModalOpen(false)}
+        profile={profile}
+        onLaunchGame={(title) => handleLaunchGameByTitle(title)}
+      />
+
+      {/* In-App Live Video Consultation Modal */}
+      <VideoCallModal />
+
+      {/* Ringing Incoming Video Call Alert */}
+      <IncomingCallModal />
+
+      {/* Platform Settings Modal (Modes, Profile & Voice Assistant) */}
+      <SettingsModal
+        isOpen={isSettingsOpen}
+        onClose={() => setIsSettingsOpen(false)}
+        currentUser={currentUser}
+        profile={profile}
+        onProfileUpdate={handleUpdateProfile}
+        appMode={appMode}
+        onModeChange={(mode) => setAppMode(mode)}
+        voiceGuidanceEnabled={voiceGuidanceEnabled}
+        onToggleVoiceGuidance={() => setVoiceGuidanceEnabled((v) => !v)}
+        onOpenAuthModal={(opts) => openAuthModal(opts)}
+        onLogout={handleLogout}
+      />
+
       {/* Auth Modal (Sign In / Register) */}
       <AuthModal
         isOpen={authModalConfig.isOpen}
@@ -689,6 +758,16 @@ function MainAppContent() {
         defaultMode={authModalConfig.mode}
         initialRole={authModalConfig.initialRole}
       />
+
+      {/* Sign Out Floating Notification Toast */}
+      {logoutToast && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[10100] bg-[#001F54] text-white px-5 py-3 rounded-2xl shadow-2xl border border-teal-400/40 flex items-center gap-3 animate-in fade-in slide-in-from-bottom-3 duration-300">
+          <div className="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-[#9DF3C4] font-black text-xs">
+            ✓
+          </div>
+          <span className="text-xs sm:text-sm font-bold">{logoutToast}</span>
+        </div>
+      )}
     </div>
   );
 }
@@ -696,7 +775,11 @@ function MainAppContent() {
 export default function App() {
   return (
     <AuthProvider>
-      <MainAppContent />
+      <RealtimeTrackingProvider>
+        <ChatCallProvider>
+          <MainAppContent />
+        </ChatCallProvider>
+      </RealtimeTrackingProvider>
     </AuthProvider>
   );
 }

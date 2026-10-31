@@ -25,7 +25,7 @@ export const HomeNER = ({ t }) => {
           <div className="ner-v2-card">
             <div className="ner-v2-card-header">
               <div className="ner-v2-icon">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#001A4C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="10" />
                   <line x1="2" y1="12" x2="22" y2="12" />
                   <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
@@ -42,7 +42,7 @@ export const HomeNER = ({ t }) => {
           <div className="ner-v2-card">
             <div className="ner-v2-card-header">
               <div className="ner-v2-icon">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#001A4C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z" />
                   <path d="M19 10v2a7 7 0 01-14 0v-2" />
                   <line x1="12" y1="19" x2="12" y2="23" />
@@ -60,7 +60,7 @@ export const HomeNER = ({ t }) => {
           <div className="ner-v2-card">
             <div className="ner-v2-card-header">
               <div className="ner-v2-icon">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#001A4C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
                   <circle cx="8.5" cy="8.5" r="1.5" />
                   <polyline points="21 15 16 10 5 21" />
@@ -77,7 +77,7 @@ export const HomeNER = ({ t }) => {
           <div className="ner-v2-card">
             <div className="ner-v2-card-header">
               <div className="ner-v2-icon">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#001A4C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12.55a10.94 10.94 0 015.17-2.39" />
                   <path d="M10.71 5.05A16 16 0 0122.58 9" />
                   <path d="M1.42 9a15.91 15.91 0 014.7-2.88" />

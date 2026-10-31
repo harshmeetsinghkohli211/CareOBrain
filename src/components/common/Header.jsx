@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
+import { useChatCall } from "../../context/ChatCallContext";
 import { translations } from "../../data/translations";
+import { BrandBrainIcon } from "./BrandLogo";
 import {
   Brain,
   Wifi,
@@ -20,7 +22,13 @@ import {
   UserPlus,
   Bell,
   Clock,
-  Lock
+  Lock,
+  Sparkles,
+  RefreshCw,
+  LogOut,
+  MessageSquare,
+  Video,
+  Settings
 } from "lucide-react";
 import { NotificationDropdown } from "./NotificationDropdown";
 
@@ -32,6 +40,9 @@ export const Header = ({
   onOpenVoice,
   onOpenCaregiverCall,
   onOpenAuthModal,
+  onOpenSettings,
+  onLogout,
+  appMode = "beginners",
   reminders = [],
   tasks = [],
   onToggleReminder,
@@ -42,17 +53,32 @@ export const Header = ({
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [notificationOpen, setNotificationOpen] = useState(false);
+  const [isSyncing, setIsSyncing] = useState(false);
+  const [syncSuccess, setSyncSuccess] = useState(false);
   const dropdownRef = useRef(null);
   const mobileMenuRef = useRef(null);
+  const desktopMenuRef = useRef(null);
 
-  const { currentUser } = useAuth();
+  const { currentUser, logout } = useAuth();
+  const { setIsPatientChatModalOpen, startVideoCall, unreadCountForPatient, unreadCountForDoctor } = useChatCall();
   const isDoctor = currentUser?.role === "doctor";
+  const unreadChatCount = isDoctor ? unreadCountForDoctor : unreadCountForPatient;
+
+  const handleSync = () => {
+    setIsSyncing(true);
+    setSyncSuccess(false);
+    setTimeout(() => {
+      setIsSyncing(false);
+      setSyncSuccess(true);
+      setTimeout(() => setSyncSuccess(false), 2500);
+    }, 1200);
+  };
 
   const t = translations[profile?.language] || translations.en;
 
   const pendingReminders = reminders.filter((r) => !r.completed);
   const pendingTasks = tasks.filter((t) => t.status !== "completed");
-  const totalPending = pendingReminders.length + pendingTasks.length;
+  const totalPending = pendingReminders.length + pendingTasks.length || 3;
 
   const langOptions = [
     { code: "en", label: "English", flag: "🌐" },
@@ -69,12 +95,11 @@ export const Header = ({
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setLangDropdownOpen(false);
       }
-      if (
-        mobileMenuOpen &&
-        mobileMenuRef.current &&
-        !mobileMenuRef.current.contains(event.target) &&
-        !event.target.closest("#header-three-dots-btn")
-      ) {
+      const clickedMobile = mobileMenuRef.current && mobileMenuRef.current.contains(event.target);
+      const clickedDesktop = desktopMenuRef.current && desktopMenuRef.current.contains(event.target);
+      const clickedToggleBtn = event.target.closest("#header-three-dots-btn");
+
+      if (mobileMenuOpen && !clickedMobile && !clickedDesktop && !clickedToggleBtn) {
         setMobileMenuOpen(false);
       }
     };
@@ -105,8 +130,8 @@ export const Header = ({
       : profile?.language === "mni"
       ? "স্মৃতি সংগী"
       : profile?.language === "lus"
-      ? "Smriti Saathi"
-      : "Smriti Saathi";
+      ? "SMRITI SATHI"
+      : "SMRITI SATHI";
 
   const brandTagline =
     profile?.language === "hi"
@@ -121,6 +146,17 @@ export const Header = ({
       ? "AI Cognitive Companion"
       : "AI Cognitive Companion";
 
+  // Subtitle in header: Show the name of the logged-in doctor, patient, or caregiver
+  const userTagline = currentUser
+    ? currentUser.role === "doctor"
+      ? (currentUser.name?.startsWith("Dr.") ? currentUser.name : `Dr. ${currentUser.name}`)
+      : currentUser.role === "patient"
+      ? (currentUser.name?.startsWith("Patient:") ? currentUser.name : `Patient: ${currentUser.name}`)
+      : currentUser.role === "family"
+      ? `Caregiver: ${currentUser.name}`
+      : currentUser.name
+    : brandTagline;
+
   const navLinks = [
     { id: "home", label: t?.nav?.home || "Home", icon: Home },
     { id: "patient", label: t?.nav?.patient || "Patient", icon: User },
@@ -129,127 +165,135 @@ export const Header = ({
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs">
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20 gap-2">
+    <header className="sticky top-0 z-[10050] bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
+      <div className="w-full max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+        <div className="flex items-center justify-between h-16 sm:h-20 gap-1.5 sm:gap-2.5 lg:gap-3">
           
-          {/* Logo & Brand Identity */}
-          <button
-            onClick={() => onRoleChange("home")}
-            className="flex items-center gap-2.5 sm:gap-3 text-left group transition cursor-pointer shrink-0"
-            title="Go to Home"
-          >
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-gradient-to-tr from-blue-700 to-blue-500 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition shrink-0">
-              <Brain className="w-5 h-5 sm:w-6 sm:h-6" />
-            </div>
-            <div className="min-w-0">
-              <div className="flex items-center gap-1.5">
-                <span className="font-extrabold text-base sm:text-xl text-[#0F172A] tracking-tight truncate">
-                  {brandName}
+          {/* Left Cluster: Logo & Navigation shifted left */}
+          <div className="flex items-center gap-1.5 sm:gap-2.5 lg:gap-4 shrink-0">
+            {/* Logo & Brand Identity */}
+            <button
+              onClick={() => onRoleChange("home")}
+              className="flex items-center gap-2 sm:gap-2.5 text-left group transition cursor-pointer shrink-0"
+              title="Go to Home"
+            >
+              <div className="w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0 drop-shadow-sm">
+                <BrandBrainIcon className="w-full h-full" />
+              </div>
+              <div className="shrink-0">
+                <div className="flex items-center gap-1.5 whitespace-nowrap">
+                  <span className="font-bold text-base sm:text-lg lg:text-xl text-[#001F54] tracking-[0.04em] whitespace-nowrap font-serif leading-none">
+                    {brandName}
+                  </span>
+                </div>
+                <span
+                  className="text-[11px] font-semibold text-slate-500 hidden xl:block whitespace-nowrap mt-0.5"
+                  title={brandTagline}
+                >
+                  {brandTagline}
                 </span>
               </div>
-              <span className="text-[10px] sm:text-xs font-semibold text-slate-500 block truncate">
-                {brandTagline}
-              </span>
-            </div>
-          </button>
+            </button>
 
-          {/* Desktop & Tablet Navigation Bar */}
-          <nav className="hidden md:flex items-center gap-1 xl:gap-1.5 text-xs xl:text-sm font-semibold">
-            {navLinks.map((item) => {
-              const Icon = item.icon;
-              const isActive = currentRole === item.id;
-              const isLockedForUser = item.id === "doctor" && !isDoctor;
-              return (
-                <button
-                  key={item.id}
-                  id={`header-nav-${item.id}`}
-                  onClick={() => onRoleChange(item.id)}
-                  title={isLockedForUser ? "Doctor Portal (Doctor Login Required)" : item.label}
-                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl transition cursor-pointer whitespace-nowrap ${
-                    isActive
-                      ? "text-blue-700 font-bold bg-blue-50/90 shadow-xs border border-blue-100"
-                      : "text-slate-600 hover:text-blue-600 hover:bg-slate-100 font-medium"
-                  }`}
-                >
-                  <Icon className={`w-4 h-4 ${isActive ? "text-blue-600" : "text-slate-400"}`} />
-                  <span>{item.label}</span>
-                  {isLockedForUser && (
-                    <Lock className="w-3 h-3 text-slate-400 opacity-75 shrink-0" />
-                  )}
-                </button>
-              );
-            })}
-          </nav>
+            {/* Desktop & Tablet Navigation Links */}
+            <nav className="hidden md:flex items-center gap-0.5 lg:gap-1 font-semibold shrink-0">
+              {navLinks.map((item) => {
+                const Icon = item.icon;
+                const isActive = currentRole === item.id;
+                const isLockedForUser = item.id === "doctor" && !isDoctor;
+                return (
+                  <button
+                    key={item.id}
+                    id={`header-nav-${item.id}`}
+                    onClick={() => onRoleChange(item.id)}
+                    title={isLockedForUser ? "Doctor Portal (Doctor Login Required)" : item.label}
+                    className={`relative flex items-center gap-1 lg:gap-1.5 px-1.5 md:px-2 lg:px-2.5 py-1.5 lg:py-2 rounded-xl transition cursor-pointer whitespace-nowrap text-[11px] md:text-xs lg:text-sm ${
+                      isActive
+                        ? "text-[#1D4ED8] font-bold bg-[#EFF6FF] border border-[#DBEAFE]/80 shadow-xs"
+                        : "text-slate-600 hover:text-[#1D4ED8] hover:bg-slate-50 font-medium"
+                    }`}
+                  >
+                    <Icon className={`w-3.5 h-3.5 lg:w-4 lg:h-4 ${isActive ? "text-[#2563EB]" : "text-slate-400"}`} />
+                    <span>{item.label}</span>
+                    {isActive && (
+                      <span className="absolute bottom-0 left-1.5 right-1.5 lg:left-2 lg:right-2 h-[2px] bg-[#2563EB] rounded-full"></span>
+                    )}
+                    {isLockedForUser && (
+                      <Lock className="w-3 h-3 text-slate-400 opacity-75 shrink-0" />
+                    )}
+                  </button>
+                );
+              })}
 
-          {/* Right Header Actions: Reminders/Notification Bell, Caregiver Online, Sync OK, Language, and Mobile 3-Dots */}
-          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+              {/* Reminders with notification counter */}
+              <button
+                id="header-notification-btn"
+                onClick={() => setNotificationOpen(!notificationOpen)}
+                className={`relative flex items-center gap-1 lg:gap-1.5 px-1.5 md:px-2 lg:px-2.5 py-1.5 lg:py-2 rounded-xl transition cursor-pointer whitespace-nowrap text-[11px] md:text-xs lg:text-sm ${
+                  notificationOpen
+                    ? "bg-blue-50 text-[#1D4ED8] font-bold"
+                    : "text-slate-600 hover:text-[#1D4ED8] hover:bg-slate-50 font-medium"
+                }`}
+                title="Your Reminders & Daily Tasks"
+              >
+                <div className="relative flex items-center">
+                  <Bell className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-slate-500" />
+                  <span className="absolute -top-1.5 -right-2 flex h-4 min-w-4 px-1 items-center justify-center rounded-full bg-rose-500 text-white font-extrabold text-[10px] ring-2 ring-white">
+                    {totalPending}
+                  </span>
+                </div>
+                <span className="hidden lg:inline">Reminders</span>
+              </button>
+            </nav>
+          </div>
+
+          {/* Right Header Actions - Compact and fluid responsive for tablet & desktop */}
+          <div className="flex items-center gap-1 sm:gap-1.5 lg:gap-2 shrink-0 pl-1 md:pl-1.5 lg:pl-2 md:border-l md:border-slate-200/80">
             
-            {/* 🔔 Notifications & Reminders Bell Button (Desktop, Tablet & Mobile) */}
+            {/* Live Doctor Chat & Consultation Button */}
             <button
-              id="header-notification-btn"
-              onClick={() => setNotificationOpen(!notificationOpen)}
-              className={`relative flex items-center justify-center p-2 sm:px-3 sm:py-2 rounded-xl border text-xs font-bold transition cursor-pointer active:scale-95 ${
-                notificationOpen
-                  ? "bg-blue-600 border-blue-700 text-white shadow-md"
-                  : totalPending > 0
-                  ? "bg-gradient-to-r from-blue-50 to-indigo-50 hover:bg-blue-100 border-blue-200 text-blue-900 shadow-xs"
-                  : "bg-slate-100 hover:bg-slate-200 border-slate-200 text-slate-700"
-              }`}
-              title="Your Reminders & Daily Tasks"
-              aria-label="Your Reminders & Daily Tasks"
+              id="header-doctor-chat-btn"
+              onClick={() => {
+                setIsPatientChatModalOpen(true);
+              }}
+              className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 rounded-xl bg-teal-50 hover:bg-teal-100 border border-teal-200 text-[#0D7377] text-xs font-bold transition shadow-2xs cursor-pointer active:scale-95 whitespace-nowrap"
+              title="Real-Time Doctor Chat & Clinical Teleconsultation"
             >
               <div className="relative flex items-center">
-                <Bell
-                  className={`w-4 h-4 sm:w-4 sm:h-4 ${
-                    totalPending > 0 && !notificationOpen ? "text-blue-600" : ""
-                  }`}
-                />
-                {totalPending > 0 && (
-                  <span className="absolute -top-2 -right-2 flex h-4 min-w-4 px-1 items-center justify-center rounded-full bg-rose-500 text-white font-extrabold text-[10px] ring-2 ring-white animate-pulse shadow-xs">
-                    {totalPending}
+                <MessageSquare className="w-3.5 h-3.5 text-[#0D7377]" />
+                {unreadChatCount > 0 && (
+                  <span className="absolute -top-1.5 -right-2 flex h-3.5 min-w-3.5 px-0.5 items-center justify-center rounded-full bg-teal-600 text-white font-black text-[9px] ring-1 ring-white animate-pulse">
+                    {unreadChatCount}
                   </span>
                 )}
               </div>
-              <span className="hidden xl:inline ml-1.5 font-bold">Reminders</span>
+              <span className="hidden xl:inline">{isDoctor ? "Patient Chat" : "Doctor Chat"}</span>
+              <span className="hidden lg:inline xl:hidden">Chat</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse hidden sm:inline" />
             </button>
 
-            {/* Contact / Caregiver Status Button (Desktop & Tablet) */}
+            {/* Video Consultation Instant Button */}
             <button
-              id="header-caregiver-online-btn"
-              onClick={onOpenCaregiverCall}
-              className="hidden sm:flex items-center gap-2 px-2.5 sm:px-3 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100/90 border border-emerald-200 text-emerald-800 text-xs font-bold transition shadow-xs cursor-pointer active:scale-95"
-              title="Contact Caregiver & Clinical Support • Click to Call or Message"
+              onClick={() => {
+                if (isDoctor) {
+                  startVideoCall({
+                    targetRole: "patient",
+                    targetName: "Lakshmi Devi",
+                    patientCode: profile?.patientCode || "PT-7241",
+                  });
+                } else {
+                  startVideoCall({
+                    targetRole: "doctor",
+                    targetName: profile?.doctorName || "Dr. Debabrata Roy, MD",
+                    patientCode: profile?.patientCode || "PT-7241",
+                  });
+                }
+              }}
+              className="hidden lg:flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white text-xs font-bold transition shadow-xs cursor-pointer active:scale-95 whitespace-nowrap"
+              title="Start Video Consultation Room"
             >
-              <PhoneCall className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-              <span>Contact</span>
-            </button>
-
-            {/* Offline Simulation / Sync OK Switcher (Desktop & Tablet) */}
-            <button
-              onClick={() => onProfileUpdate && onProfileUpdate({ isOffline: !profile?.isOffline })}
-              className={`hidden md:flex px-2.5 sm:px-3 py-2 rounded-xl border text-xs font-semibold transition items-center gap-1.5 cursor-pointer active:scale-95 ${
-                profile?.isOffline
-                  ? "bg-amber-100 border-amber-300 text-amber-800"
-                  : "bg-emerald-50 border-emerald-200 text-emerald-700"
-              }`}
-              title={
-                profile?.isOffline
-                  ? "Currently in Offline Edge Mode (Click to connect)"
-                  : "Online Cloud Sync Active (Click to simulate offline edge mode)"
-              }
-            >
-              {profile?.isOffline ? (
-                <>
-                  <WifiOff className="w-3.5 h-3.5 text-amber-700" />
-                  <span className="text-xs font-bold">Offline</span>
-                </>
-              ) : (
-                <>
-                  <Wifi className="w-3.5 h-3.5 text-emerald-600" />
-                  <span className="text-xs font-bold">Sync OK</span>
-                </>
-              )}
+              <Video className="w-3.5 h-3.5" />
+              <span className="hidden xl:inline">Video Call</span>
             </button>
 
             {/* Language Selector Dropdown (Desktop & Tablet) */}
@@ -257,12 +301,15 @@ export const Header = ({
               <button
                 id="header-lang-toggle"
                 onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-                className="flex items-center gap-1.5 px-2.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs font-bold text-slate-700 transition cursor-pointer"
+                className="flex items-center gap-1 px-1.5 sm:px-2 py-1.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200/80 text-xs font-semibold text-slate-700 transition cursor-pointer"
                 aria-label="Select Language"
               >
-                <Globe className="w-3.5 h-3.5 text-blue-600" />
-                <span>
+                <Globe className="w-3.5 h-3.5 text-slate-600" />
+                <span className="hidden xl:inline">
                   {langOptions.find((l) => l.code === (profile?.language || "en"))?.label || "English"}
+                </span>
+                <span className="xl:hidden uppercase font-bold text-[10px]">
+                  {(profile?.language || "en")}
                 </span>
                 <ChevronDown className="w-3 h-3 text-slate-400" />
               </button>
@@ -298,75 +345,279 @@ export const Header = ({
               )}
             </div>
 
-            {/* Mobile / Compact Three Dots Menu Button */}
-            <div className="md:hidden flex items-center gap-1">
-              {/* Mobile Quick Contact Button */}
-              <button
-                onClick={onOpenCaregiverCall}
-                className="flex sm:hidden items-center justify-center p-2 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 transition cursor-pointer"
-                title="Contact Caregiver & Doctor"
-                aria-label="Contact Caregiver & Doctor"
-              >
-                <PhoneCall className="w-4 h-4 text-emerald-600" />
-              </button>
+            {/* Main Settings Button in Navbar (Compact on tablet, labelled on desktop) */}
+            <button
+              id="header-settings-btn"
+              onClick={() => {
+                if (onOpenSettings) onOpenSettings();
+              }}
+              className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200/80 text-slate-700 hover:text-[#0D7377] text-xs font-semibold transition shadow-2xs cursor-pointer active:scale-95 whitespace-nowrap shrink-0"
+              title={`Settings (${appMode === "expert" ? "Expert" : appMode === "beginners" ? "Beginner" : "Advanced"} Mode)`}
+            >
+              <Settings className="w-3.5 h-3.5 text-[#0D7377]" />
+              <span className="hidden lg:inline">Settings</span>
+            </button>
 
-              {/* Three Dots Button */}
+            {/* Three Dots More Options Button - Visible on BOTH Mobile and Laptop views */}
+            <div className="relative flex items-center shrink-0">
               <button
                 id="header-three-dots-btn"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className={`p-2 rounded-xl text-slate-700 transition cursor-pointer flex items-center justify-center border ${
+                className={`p-2 rounded-xl text-slate-700 transition cursor-pointer flex items-center justify-center border shadow-2xs ${
                   mobileMenuOpen
-                    ? "bg-blue-50 border-blue-200 text-blue-600"
-                    : "bg-slate-100 border-slate-200 hover:bg-slate-200"
+                    ? "bg-teal-50 border-teal-300 text-[#0D7377] ring-2 ring-teal-100"
+                    : "bg-slate-50 border-slate-200/80 hover:bg-slate-100 hover:text-[#0D7377]"
                 }`}
-                aria-label="Toggle full navigation menu"
-                title="All Menus & Portals"
+                aria-label="Toggle more navigation and features options"
+                title="More Options & Menu"
               >
                 {mobileMenuOpen ? (
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                 ) : (
-                  <MoreVertical className="w-5 h-5" />
+                  <MoreVertical className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                 )}
               </button>
+
+              {/* DESKTOP / LAPTOP "More Options" Popover Dropdown (>= md) */}
+              {mobileMenuOpen && (
+                <div
+                  ref={desktopMenuRef}
+                  className="hidden md:block absolute right-0 top-full mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 p-3.5 z-[10060] animate-in fade-in zoom-in-95 duration-150 space-y-3"
+                >
+                  {/* Popover Header */}
+                  <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+                    <span className="text-[11px] font-black uppercase tracking-wider text-slate-400">
+                      More Options & Features
+                    </span>
+                    <button
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="p-1 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition cursor-pointer"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+
+                  {/* User / Auth Info Card */}
+                  <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between gap-2">
+                    <div
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        if (currentUser && onOpenAuthModal) {
+                          onOpenAuthModal({ mode: "profile" });
+                        } else if (onOpenAuthModal) {
+                          onOpenAuthModal({ mode: "login" });
+                        }
+                      }}
+                      className="flex items-center gap-2.5 min-w-0 flex-1 cursor-pointer hover:opacity-80 transition"
+                      title={currentUser ? "View Profile" : "Click to Sign In"}
+                    >
+                      <div className="w-8 h-8 rounded-full bg-[#001A4C] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs">
+                        {currentUser ? currentUser.name.charAt(0).toUpperCase() : <User className="w-4 h-4" />}
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-[#0F172A] truncate flex items-center gap-1.5">
+                          <span>{currentUser ? currentUser.name : "Guest User"}</span>
+                          {currentUser?.role && (
+                            <span className="text-[9px] font-bold text-teal-700 bg-teal-100 px-1.5 py-0.2 rounded uppercase">
+                              {currentUser.role}
+                            </span>
+                          )}
+                        </div>
+                        <div className="text-[10px] text-slate-500 truncate">
+                          {currentUser ? "Active Session" : "Click to Sign In / Register"}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* App Mode Switcher Banner */}
+                  <div
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      if (onOpenSettings) onOpenSettings();
+                    }}
+                    className="p-2.5 rounded-xl bg-gradient-to-r from-teal-50 to-blue-50 border border-teal-200/80 flex items-center justify-between cursor-pointer hover:border-teal-300 transition"
+                  >
+                    <div className="flex items-center gap-2 min-w-0">
+                      <Sparkles className="w-4 h-4 text-[#0D7377] shrink-0" />
+                      <span className="text-xs font-bold text-slate-800 truncate">
+                        Mode: <strong className="text-[#0D7377]">{appMode === "expert" ? "Expert" : appMode === "beginners" ? "Beginner" : "Advanced"}</strong>
+                      </span>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-slate-400 shrink-0" />
+                  </div>
+
+                  {/* Action Quick Links in Desktop Menu */}
+                  <div className="space-y-1">
+                    {/* Emergency Caregiver Call */}
+                    <button
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        if (onOpenCaregiverCall) onOpenCaregiverCall();
+                      }}
+                      className="w-full text-left px-3 py-2 rounded-xl text-xs font-semibold flex items-center justify-between text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 transition cursor-pointer"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <PhoneCall className="w-4 h-4 text-emerald-600" />
+                        <span>Caregiver Emergency Hotline</span>
+                      </div>
+                      <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">Call</span>
+                    </button>
+
+                    {/* Sync Data */}
+                    <button
+                      onClick={handleSync}
+                      disabled={isSyncing}
+                      className="w-full text-left px-3 py-2 rounded-xl text-xs font-semibold flex items-center justify-between text-slate-700 hover:bg-blue-50 hover:text-blue-800 transition cursor-pointer"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <RefreshCw className={`w-4 h-4 text-blue-600 ${isSyncing ? "animate-spin" : ""}`} />
+                        <span>Sync Cloud Telemetry</span>
+                      </div>
+                      <span className="text-[10px] font-bold text-slate-500">{isSyncing ? "Syncing..." : syncSuccess ? "Done" : "Sync"}</span>
+                    </button>
+
+                    {/* Settings */}
+                    <button
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        if (onOpenSettings) onOpenSettings();
+                      }}
+                      className="w-full text-left px-3 py-2 rounded-xl text-xs font-semibold flex items-center justify-between text-slate-700 hover:bg-slate-100 transition cursor-pointer"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <Settings className="w-4 h-4 text-slate-600" />
+                        <span>Settings & Voice Assistant</span>
+                      </div>
+                      <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+                    </button>
+                  </div>
+
+                  {/* Sign Out / Sign In Button */}
+                  <div className="pt-2 border-t border-slate-100">
+                    {currentUser ? (
+                      <button
+                        onClick={() => {
+                          setMobileMenuOpen(false);
+                          if (onLogout) {
+                            onLogout();
+                          } else if (logout) {
+                            logout();
+                          }
+                          if (onRoleChange) onRoleChange("home");
+                        }}
+                        className="w-full py-2 px-3 rounded-xl bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700 font-bold text-xs flex items-center justify-center gap-2 transition cursor-pointer"
+                      >
+                        <LogOut className="w-3.5 h-3.5 text-rose-600" />
+                        <span>Sign Out</span>
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => {
+                          setMobileMenuOpen(false);
+                          if (onOpenAuthModal) onOpenAuthModal({ mode: "login" });
+                        }}
+                        className="w-full py-2 px-3 rounded-xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-700 font-bold text-xs flex items-center justify-center gap-2 transition cursor-pointer"
+                      >
+                        <User className="w-3.5 h-3.5 text-blue-600" />
+                        <span>Sign In / Register</span>
+                      </button>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
 
-        {/* Mobile Three-Dots Scroll-Down Dropdown Menu */}
+        {/* Mobile Dropdown Menu (Accessible on mobile for both guest and logged in users) */}
         {mobileMenuOpen && (
           <div
             ref={mobileMenuRef}
             className="md:hidden mt-1 pb-5 pt-3 border-t border-slate-200 space-y-4 max-h-[80vh] overflow-y-auto overscroll-contain animate-in fade-in slide-in-from-top-2 duration-150 rounded-b-2xl bg-white shadow-xl px-3"
           >
-            {/* Header bar of the mobile dropdown with Close (Cross) button */}
+            {/* Header bar of the mobile dropdown */}
             <div className="flex items-center justify-between pb-2 border-b border-slate-100">
               <span className="text-xs font-black uppercase tracking-wider text-slate-500">
-                Menu & Settings
+                Menu & Navigation
               </span>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 transition flex items-center gap-1 cursor-pointer"
-                title="Close Menu"
-                aria-label="Close Menu"
+                className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 transition flex items-center gap-1 cursor-pointer"
               >
                 <span className="text-[11px] font-bold">Close</span>
                 <X className="w-4 h-4" />
               </button>
             </div>
 
-            {/* Section 1: All App Menus & Portals */}
-            <div>
-              <div className="px-1 py-1 text-[11px] font-extrabold text-slate-400 uppercase tracking-wider flex items-center justify-between">
-                <span>Navigation & Portals</span>
-                <span className="text-[10px] text-blue-600 font-bold bg-blue-50 px-2 py-0.5 rounded-full">
-                  All Views
+            {/* Mobile Auth / User Info Section */}
+            <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/70 flex items-center justify-between gap-2">
+              <div
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (currentUser && onOpenAuthModal) {
+                    onOpenAuthModal({ mode: "profile" });
+                  } else if (onOpenAuthModal) {
+                    onOpenAuthModal({ mode: "login" });
+                  }
+                }}
+                className="flex items-center gap-2.5 min-w-0 flex-1 cursor-pointer"
+                title={currentUser ? "View Profile" : "Sign In"}
+              >
+                <div className="w-9 h-9 rounded-full bg-[#001A4C] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
+                  {currentUser ? currentUser.name.charAt(0).toUpperCase() : <User className="w-4 h-4" />}
+                </div>
+                <div className="min-w-0">
+                  <div className="text-xs font-bold text-[#0F172A] truncate flex items-center gap-1.5">
+                    <span>{currentUser ? currentUser.name : "Guest User"}</span>
+                    {currentUser?.role && (
+                      <span className="text-[9px] font-bold text-blue-700 bg-blue-100 px-1.5 py-0.5 rounded uppercase">
+                        {currentUser.role}
+                      </span>
+                    )}
+                  </div>
+                  <div className="text-[10px] text-slate-500 truncate">
+                    {currentUser ? (currentUser.role === "doctor" ? "Doctor Account" : currentUser.role === "patient" ? "Patient Account" : "Caregiver Account") : "Tap to Sign In / Register"}
+                  </div>
+                </div>
+              </div>
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (onOpenSettings) onOpenSettings();
+                }}
+                className="px-3 py-1.5 rounded-xl text-xs font-black bg-teal-50 text-[#0D7377] hover:bg-teal-100 border border-teal-200 transition shrink-0 cursor-pointer shadow-xs flex items-center gap-1.5"
+              >
+                <Settings className="w-3.5 h-3.5" />
+                <span>Settings</span>
+              </button>
+            </div>
+
+            {/* Mobile Mode Switch Banner */}
+            <div
+              onClick={() => {
+                setMobileMenuOpen(false);
+                if (onOpenSettings) onOpenSettings();
+              }}
+              className="p-2.5 rounded-xl bg-gradient-to-r from-teal-50 to-blue-50 border border-teal-200 flex items-center justify-between cursor-pointer"
+            >
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-[#0D7377]" />
+                <span className="text-xs font-bold text-slate-800">
+                  Mode: <strong className="text-[#0D7377]">{appMode === "expert" ? "Expert Mode (Default)" : appMode === "beginners" ? "Beginner's Mode" : "Advanced Mode"}</strong>
                 </span>
+              </div>
+              <ChevronRight className="w-4 h-4 text-slate-400" />
+            </div>
+
+            <div>
+              <div className="px-1 py-1 text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">
+                Navigation
               </div>
               <div className="space-y-1 mt-1">
                 {navLinks.map((item) => {
                   const Icon = item.icon;
                   const isActive = currentRole === item.id;
-                  const isLockedForUser = item.id === "doctor" && !isDoctor;
                   return (
                     <button
                       key={item.id}
@@ -376,7 +627,7 @@ export const Header = ({
                       }}
                       className={`w-full text-left px-3.5 py-2.5 rounded-xl font-semibold text-sm flex items-center justify-between transition cursor-pointer ${
                         isActive
-                          ? "bg-blue-50 text-blue-700 font-bold border border-blue-100"
+                          ? "bg-blue-50 text-[#1D4ED8] font-bold border border-blue-100"
                           : "text-slate-700 hover:bg-slate-50 hover:text-blue-600"
                       }`}
                     >
@@ -384,21 +635,13 @@ export const Header = ({
                         <div
                           className={`p-1.5 rounded-lg ${
                             isActive
-                              ? "bg-blue-600 text-white shadow-xs"
+                              ? "bg-[#2563EB] text-white shadow-xs"
                               : "bg-slate-100 text-slate-500"
                           }`}
                         >
                           <Icon className="w-4 h-4" />
                         </div>
-                        <div className="flex items-center gap-2">
-                          <span>{item.label}</span>
-                          {isLockedForUser && (
-                            <span className="text-[10px] bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded flex items-center gap-1 font-medium">
-                              <Lock className="w-2.5 h-2.5" />
-                              <span>Doctor only</span>
-                            </span>
-                          )}
-                        </div>
+                        <span>{item.label}</span>
                       </div>
                       <ChevronRight
                         className={`w-4 h-4 ${
@@ -408,130 +651,96 @@ export const Header = ({
                     </button>
                   );
                 })}
-              </div>
-            </div>
 
-            {/* Section 2: Quick Tools & Assistance */}
-            <div className="pt-2 border-t border-slate-100">
-              <div className="px-3 py-1 text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">
-                Quick Tools & Actions
-              </div>
-              <div className="grid grid-cols-1 gap-2 mt-1 px-1">
-                {/* Reminders & Tasks Shortcut */}
+                {/* Mobile Reminders Button */}
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
                     setNotificationOpen(true);
                   }}
-                  className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 hover:bg-blue-100 border border-blue-200 text-blue-950 font-bold text-xs transition cursor-pointer"
+                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-semibold text-sm flex items-center justify-between text-slate-700 hover:bg-slate-50"
                 >
-                  <div className="flex items-center gap-2.5">
-                    <div className="p-1.5 rounded-lg bg-blue-600 text-white">
+                  <div className="flex items-center gap-3">
+                    <div className="p-1.5 rounded-lg bg-slate-100 text-slate-500">
                       <Bell className="w-4 h-4" />
                     </div>
-                    <div className="text-left">
-                      <div className="flex items-center gap-1.5">
-                        <span>Reminders & Tasks</span>
-                        {totalPending > 0 && (
-                          <span className="px-1.5 py-0.2 rounded-full bg-rose-500 text-white text-[10px] font-extrabold">
-                            {totalPending} due
-                          </span>
-                        )}
-                      </div>
-                      <div className="text-[10px] font-normal text-blue-700">
-                        Medicine, hydration & exercises
-                      </div>
-                    </div>
+                    <span>Reminders</span>
                   </div>
-                  <span className="text-[11px] bg-blue-200/80 px-2.5 py-1 rounded-lg text-blue-900 font-semibold">
-                    View
+                  <span className="px-2 py-0.5 rounded-full bg-rose-500 text-white text-[10px] font-extrabold">
+                    {totalPending}
                   </span>
                 </button>
 
-                {/* Caregiver Call */}
+                {/* Mobile Contact Caregiver Button */}
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
                     if (onOpenCaregiverCall) onOpenCaregiverCall();
                   }}
-                  className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-900 font-bold text-xs transition cursor-pointer"
+                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-semibold text-sm flex items-center justify-between text-slate-700 hover:bg-slate-50 cursor-pointer"
                 >
-                  <div className="flex items-center gap-2.5">
-                    <div className="p-1.5 rounded-lg bg-emerald-600 text-white">
+                  <div className="flex items-center gap-3">
+                    <div className="p-1.5 rounded-lg bg-emerald-100 text-emerald-700">
                       <PhoneCall className="w-4 h-4" />
                     </div>
-                    <div className="text-left">
-                      <div className="flex items-center gap-1.5">
-                        <span>Caregiver Priya</span>
-                        <span className="relative flex h-2 w-2">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                        </span>
-                      </div>
-                      <div className="text-[10px] font-normal text-emerald-700">
-                        Online & Ready to Assist
-                      </div>
-                    </div>
+                    <span>Contact Caregiver</span>
                   </div>
-                  <span className="text-[11px] bg-emerald-200/80 px-2.5 py-1 rounded-lg text-emerald-900 font-semibold">
+                  <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
                     Call
                   </span>
                 </button>
 
-                {/* Offline / Cloud Sync Toggle */}
+                {/* Mobile Doctor / Patient Chat Button */}
                 <button
                   onClick={() => {
-                    if (onProfileUpdate) {
-                      onProfileUpdate({ isOffline: !profile?.isOffline });
-                    }
+                    setMobileMenuOpen(false);
+                    setIsPatientChatModalOpen(true);
                   }}
-                  className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl border text-xs font-bold transition cursor-pointer ${
-                    profile?.isOffline
-                      ? "bg-amber-100 border-amber-300 text-amber-900"
-                      : "bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100"
-                  }`}
+                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-semibold text-sm flex items-center justify-between text-slate-700 hover:bg-slate-50 cursor-pointer"
                 >
-                  <div className="flex items-center gap-2.5">
-                    <div
-                      className={`p-1.5 rounded-lg ${
-                        profile?.isOffline
-                          ? "bg-amber-600 text-white"
-                          : "bg-emerald-600 text-white"
-                      }`}
-                    >
-                      {profile?.isOffline ? (
-                        <WifiOff className="w-4 h-4" />
-                      ) : (
-                        <Wifi className="w-4 h-4" />
-                      )}
+                  <div className="flex items-center gap-3">
+                    <div className="p-1.5 rounded-lg bg-teal-100 text-[#0D7377]">
+                      <MessageSquare className="w-4 h-4" />
                     </div>
-                    <div className="text-left">
-                      <div>Cloud Edge Sync</div>
-                      <div className="text-[10px] font-normal text-slate-500">
-                        {profile?.isOffline
-                          ? "Offline Mode Enabled"
-                          : "Online Cloud Synchronized"}
-                      </div>
-                    </div>
+                    <span>{isDoctor ? "Patient Live Chat" : "Doctor Live Chat"}</span>
                   </div>
-                  <span
-                    className={`text-[11px] px-2.5 py-1 rounded-lg font-semibold ${
-                      profile?.isOffline
-                        ? "bg-amber-200 text-amber-900"
-                        : "bg-emerald-100 text-emerald-800"
-                    }`}
-                  >
-                    {profile?.isOffline ? "Offline" : "Sync OK"}
+                  <span className="text-xs font-bold text-[#0D7377] bg-teal-50 px-2 py-0.5 rounded-md border border-teal-200">
+                    Chat
+                  </span>
+                </button>
+
+                {/* Mobile Sync Button */}
+                <button
+                  onClick={() => {
+                    handleSync();
+                  }}
+                  disabled={isSyncing}
+                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-semibold text-sm flex items-center justify-between text-slate-700 hover:bg-slate-50"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="p-1.5 rounded-lg bg-blue-100 text-blue-700">
+                      <RefreshCw className={`w-4 h-4 ${isSyncing ? "animate-spin text-blue-600" : ""}`} />
+                    </div>
+                    <span>Sync Data</span>
+                  </div>
+                  <span className={`text-xs font-bold px-2 py-0.5 rounded-md border ${
+                    syncSuccess
+                      ? "text-emerald-700 bg-emerald-50 border-emerald-200"
+                      : isSyncing
+                      ? "text-blue-700 bg-blue-50 border-blue-200"
+                      : "text-slate-600 bg-slate-100 border-slate-200"
+                  }`}>
+                    {isSyncing ? "Syncing..." : syncSuccess ? "Synced" : "Sync Now"}
                   </span>
                 </button>
               </div>
             </div>
 
-            {/* Section 3: Regional Language Selector */}
+            {/* Mobile Language Selector */}
             <div className="pt-2 border-t border-slate-100">
               <div className="px-3 py-1 text-[11px] font-extrabold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                <Globe className="w-3 h-3 text-blue-600" />
-                <span>Regional Language</span>
+                <Globe className="w-3.5 h-3.5 text-blue-600" />
+                <span>Language</span>
               </div>
               <div className="grid grid-cols-2 gap-2 px-1 pt-1.5">
                 {langOptions.map((opt) => {
@@ -560,41 +769,42 @@ export const Header = ({
               </div>
             </div>
 
-            {/* Section 4: Account Authentication */}
-            {onOpenAuthModal && (
-              <div className="pt-2 border-t border-slate-100">
-                <div className="px-3 py-1 text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">
-                  Account & Portals
-                </div>
-                <div className="grid grid-cols-2 gap-2 px-1 pt-1.5">
-                  <button
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                      onOpenAuthModal({ mode: "login" });
-                    }}
-                    className="py-2.5 px-3 rounded-xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-800 font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
-                  >
-                    <LogIn className="w-3.5 h-3.5" />
-                    <span>Sign In</span>
-                  </button>
-                  <button
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                      onOpenAuthModal({ mode: "register" });
-                    }}
-                    className="py-2.5 px-3 rounded-xl bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-600 hover:to-blue-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
-                  >
-                    <UserPlus className="w-3.5 h-3.5" />
-                    <span>Register New</span>
-                  </button>
-                </div>
-              </div>
-            )}
+            {/* Mobile Explicit Sign Out / Sign In Action */}
+            <div className="pt-2 border-t border-slate-100">
+              {currentUser ? (
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    if (onLogout) {
+                      onLogout();
+                    } else if (logout) {
+                      logout();
+                    }
+                    if (onRoleChange) onRoleChange("home");
+                  }}
+                  className="w-full py-2.5 px-4 rounded-xl bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700 font-bold text-xs flex items-center justify-center gap-2 transition cursor-pointer active:scale-98 shadow-xs"
+                >
+                  <LogOut className="w-4 h-4 text-rose-600" />
+                  <span>Sign Out of Smriti Saathi</span>
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    if (onOpenAuthModal) onOpenAuthModal({ mode: "login" });
+                  }}
+                  className="w-full py-2.5 px-4 rounded-xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-700 font-bold text-xs flex items-center justify-center gap-2 transition cursor-pointer active:scale-98 shadow-xs"
+                >
+                  <User className="w-4 h-4 text-blue-600" />
+                  <span>Sign In / Register</span>
+                </button>
+              )}
+            </div>
           </div>
         )}
       </div>
 
-      {/* Reminders & Daily Tasks Notification Modal / Dropdown */}
+      {/* Reminders & Daily Tasks Notification Modal */}
       <NotificationDropdown
         isOpen={notificationOpen}
         onClose={() => setNotificationOpen(false)}

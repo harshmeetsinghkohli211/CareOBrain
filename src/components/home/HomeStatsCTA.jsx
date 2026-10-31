@@ -12,8 +12,8 @@ export const HomeStatsCTA = ({ t, onSelectRole }) => {
               <div className="scard-num">95<span>%</span></div>
               <p>{t?.stats?.s1 || "Average improvement in elder cognitive engagement"}</p>
               <svg className="trend-svg" viewBox="0 0 120 40" fill="none">
-                <path d="M5 35C20 30 40 25 55 18C70 10 90 8 115 4" stroke="#2563EB" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-                <circle cx="115" cy="4" r="3.5" fill="#2563EB" />
+                <path d="M5 35C20 30 40 25 55 18C70 10 90 8 115 4" stroke="#001A4C" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+                <circle cx="115" cy="4" r="3.5" fill="#001A4C" />
               </svg>
             </div>
             <div className="scard">
@@ -47,7 +47,7 @@ export const HomeStatsCTA = ({ t, onSelectRole }) => {
               onClick={() => onSelectRole && onSelectRole("patient")}
             >
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M3 9h12M9 4l5 5-5 5" stroke="#2563EB" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M3 9h12M9 4l5 5-5 5" stroke="#001A4C" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               <span>{t?.cta?.start || "Get Started Free"}</span>
             </button>

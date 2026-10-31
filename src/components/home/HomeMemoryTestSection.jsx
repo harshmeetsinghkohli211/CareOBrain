@@ -16,19 +16,30 @@ import {
   ArrowRight,
   ArrowLeft,
   Hand,
-  Clock
+  Clock,
+  Camera,
+  Headphones
 } from "lucide-react";
 import confetti from "canvas-confetti";
+import { MemoryArtGallery } from "../games/MemoryArtGallery";
+import { NostalgiaRecallMusic } from "./NostalgiaRecallMusic";
 
 export const HomeMemoryTestSection = ({
   t,
   isStandalonePage = false,
+  initialTab = "voice_motor_test",
   onBack,
   onLaunchGame,
   onSelectRole
 }) => {
-  // Active test mode: 'voice_motor_test' | 'video_guide' | 'game_tests'
-  const [activeTab, setActiveTab] = useState("voice_motor_test");
+  // Active test mode: 'voice_motor_test' | 'video_guide' | 'game_tests' | 'memory_gallery' | 'nostalgia_recall_music'
+  const [activeTab, setActiveTab] = useState(initialTab || "voice_motor_test");
+
+  useEffect(() => {
+    if (initialTab) {
+      setActiveTab(initialTab);
+    }
+  }, [initialTab]);
   
   // Voice Agent Cross-Body Test state
   const [testPhase, setTestPhase] = useState("idle"); // 'idle' | 'running' | 'completed'
@@ -106,13 +117,27 @@ export const HomeMemoryTestSection = ({
     } catch (_) {}
   };
 
-  // Speak voice instruction
+  // Speak voice instruction — Hindi-aware with matra support
   const speakText = (text) => {
     if (!isVoiceEnabled || !("speechSynthesis" in window)) return;
     window.speechSynthesis.cancel();
+    const lang = (typeof t === "object" && t?.languageName === "Hindi") ? "hi" : "en";
+    const isHindi = lang === "hi";
     const utt = new SpeechSynthesisUtterance(text);
-    utt.rate = 0.88;
+    utt.lang = isHindi ? "hi-IN" : "en-US";
+    utt.rate = isHindi ? 0.82 : 0.88;
     utt.pitch = 1.05;
+    // Select best matching voice for Hindi matra pronunciation
+    const voices = window.speechSynthesis.getVoices();
+    if (voices.length > 0) {
+      const targetLang = isHindi ? "hi-IN" : "en-US";
+      const preferred =
+        voices.find((v) => v.lang === targetLang && (v.name.includes("Google") || v.name.includes("Microsoft"))) ||
+        voices.find((v) => v.lang === targetLang) ||
+        voices.find((v) => v.lang.startsWith(targetLang.substring(0, 2))) ||
+        null;
+      if (preferred) utt.voice = preferred;
+    }
     window.speechSynthesis.speak(utt);
   };
 
@@ -181,7 +206,7 @@ export const HomeMemoryTestSection = ({
   const currentRoundInfo = roundsData[currentRound] || roundsData[0];
 
   return (
-    <section className={`section bg-gradient-to-b from-slate-50 via-blue-50/40 to-white ${isStandalonePage ? "min-h-screen py-8" : "py-16"}`} id="memory-test-hub">
+    <section className={`section bg-gradient-to-b from-slate-50 via-slate-100/40 to-white ${isStandalonePage ? "min-h-screen py-8" : "py-16"}`} id="memory-test-hub">
       <div className="container mx-auto px-4 max-w-6xl">
         
         {/* Standalone Page Back Header */}
@@ -191,7 +216,7 @@ export const HomeMemoryTestSection = ({
               onClick={onBack}
               className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-sm shadow-xs transition active:scale-95 cursor-pointer"
             >
-              <ArrowLeft className="w-4 h-4 text-blue-600" />
+              <ArrowLeft className="w-4 h-4 text-[#001A4C]" />
               <span>Back to Home</span>
             </button>
 
@@ -206,8 +231,8 @@ export const HomeMemoryTestSection = ({
 
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100/80 border border-blue-300 text-blue-800 text-xs font-black uppercase tracking-wider mb-3 shadow-xs">
-            <Brain className="w-4 h-4 text-blue-600" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#001A4C]/10 border border-[#001A4C]/20 text-[#001A4C] text-xs font-black uppercase tracking-wider mb-3 shadow-xs">
+            <Brain className="w-4 h-4 text-[#001A4C]" />
             <span>AI Cognitive & Physical Memory Assessment</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
@@ -225,7 +250,7 @@ export const HomeMemoryTestSection = ({
               onClick={() => setActiveTab("voice_motor_test")}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all cursor-pointer ${
                 activeTab === "voice_motor_test"
-                  ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
+                  ? "bg-[#001A4C] text-white shadow-md shadow-[#001A4C]/20"
                   : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
               }`}
             >
@@ -234,27 +259,40 @@ export const HomeMemoryTestSection = ({
             </button>
 
             <button
-              onClick={() => setActiveTab("video_guide")}
+              id="nostalgia-recall-tab-btn"
+              onClick={() => setActiveTab("nostalgia_recall_music")}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all cursor-pointer ${
-                activeTab === "video_guide"
-                  ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
-                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                activeTab === "nostalgia_recall_music"
+                  ? "bg-gradient-to-r from-[#001A4C] via-[#0D7377] to-[#001A4C] text-white shadow-md shadow-[#001A4C]/30 ring-2 ring-[#9DF3C4]/60"
+                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
               }`}
             >
-              <Tv className="w-4 h-4" />
-              <span>Watch Video Demonstration</span>
+              <Headphones className="w-4 h-4 text-[#0D7377]" />
+              <span>Memory Lane & Brain Music</span>
             </button>
 
             <button
               onClick={() => setActiveTab("game_tests")}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all cursor-pointer ${
                 activeTab === "game_tests"
-                  ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
+                  ? "bg-[#001A4C] text-white shadow-md shadow-[#001A4C]/20"
                   : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
               }`}
             >
               <Award className="w-4 h-4" />
               <span>Top Memory Game Tests</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab("memory_gallery")}
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all cursor-pointer ${
+                activeTab === "memory_gallery"
+                  ? "bg-gradient-to-r from-[#0D7377] to-teal-700 text-white shadow-md shadow-[#0D7377]/20"
+                  : "text-slate-600 hover:text-slate-900 hover:bg-teal-50"
+              }`}
+            >
+              <Camera className="w-4 h-4" />
+              <span>Memory Art Gallery</span>
             </button>
           </div>
         </div>
@@ -284,7 +322,7 @@ export const HomeMemoryTestSection = ({
                   onClick={() => setIsVoiceEnabled(!isVoiceEnabled)}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold border transition cursor-pointer ${
                     isVoiceEnabled
-                      ? "bg-blue-50 text-blue-700 border-blue-200"
+                      ? "bg-[#001A4C]/10 text-[#001A4C] border-[#001A4C]/20"
                       : "bg-slate-100 text-slate-500 border-slate-200"
                   }`}
                   title="Toggle Voice Prompts"
@@ -298,7 +336,7 @@ export const HomeMemoryTestSection = ({
             {/* Test Body */}
             {testPhase === "idle" && (
               <div className="py-10 text-center max-w-2xl mx-auto space-y-6">
-                <div className="w-24 h-24 mx-auto rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shadow-inner text-4xl animate-pulse">
+                <div className="w-24 h-24 mx-auto rounded-full bg-[#001A4C]/10 text-[#001A4C] flex items-center justify-center shadow-inner text-4xl animate-pulse">
                   🫱👃🫲
                 </div>
 
@@ -313,8 +351,8 @@ export const HomeMemoryTestSection = ({
 
                 {/* 2 Step Preview */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
-                  <div className="p-4 rounded-2xl bg-blue-50/70 border border-blue-200">
-                    <span className="text-xs font-black text-blue-800 uppercase">Step 1</span>
+                  <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                    <span className="text-xs font-black text-[#001A4C] uppercase">Step 1</span>
                     <p className="text-sm font-bold text-slate-800 mt-1">
                       Right Hand 🫱 ➔ Nose 👃<br />Left Hand 🫲 ➔ Left Ear 👂
                     </p>
@@ -327,12 +365,12 @@ export const HomeMemoryTestSection = ({
                   </div>
                 </div>
 
-                <div className="pt-4">
+                <div className="pt-4 flex justify-center">
                   <button
                     onClick={handleStartVoiceTest}
-                    className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-black text-lg shadow-xl shadow-blue-500/25 transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+                    className="btn-glow-teal inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full bg-[#0D7377] hover:bg-[#0A5C5F] text-white font-black text-xl shadow-2xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
                   >
-                    <Play className="w-5 h-5 fill-current" />
+                    <Play className="w-6 h-6 fill-current" />
                     <span>Start Voice Assessment Now</span>
                   </button>
                 </div>
@@ -345,7 +383,7 @@ export const HomeMemoryTestSection = ({
                 {/* Round Progress Tracker */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-black text-blue-700">
+                    <span className="text-sm font-black text-[#001A4C]">
                       Round {currentRound + 1} of 4
                     </span>
                     <span className="text-xs text-slate-400 font-bold">• Alternating Pattern</span>
@@ -356,7 +394,7 @@ export const HomeMemoryTestSection = ({
                         key={r}
                         className={`h-2.5 w-8 rounded-full transition-all ${
                           r === currentRound
-                            ? "bg-blue-600 w-12"
+                            ? "bg-[#001A4C] w-12"
                             : r < currentRound
                             ? "bg-emerald-500"
                             : "bg-slate-200"
@@ -367,7 +405,7 @@ export const HomeMemoryTestSection = ({
                 </div>
 
                 {/* Main Instruction Display */}
-                <div className={`p-8 rounded-3xl bg-gradient-to-br ${currentRoundInfo.color} text-white shadow-lg text-center space-y-4`}>
+                <div className={`p-8 rounded-3xl bg-[#001A4C] text-white shadow-lg text-center space-y-4`}>
                   <div className="inline-block px-4 py-1 rounded-full bg-white/20 text-xs font-black uppercase tracking-wider backdrop-blur-sm">
                     {currentRoundInfo.title}
                   </div>
@@ -405,7 +443,7 @@ export const HomeMemoryTestSection = ({
                     onClick={() => speakText(currentRoundInfo.voiceText)}
                     className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm transition cursor-pointer"
                   >
-                    <Volume2 className="w-4 h-4 text-blue-600" />
+                    <Volume2 className="w-4 h-4 text-[#001A4C]" />
                     <span>🔊 Repeat Voice Instruction</span>
                   </button>
 
@@ -445,8 +483,8 @@ export const HomeMemoryTestSection = ({
 
                 {/* Score Cards */}
                 <div className="grid grid-cols-3 gap-3">
-                  <div className="p-4 rounded-2xl bg-blue-50 border border-blue-200">
-                    <span className="text-2xl font-black text-blue-700">98%</span>
+                  <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                    <span className="text-2xl font-black text-[#001A4C]">98%</span>
                     <p className="text-[11px] font-bold text-slate-600 uppercase mt-0.5">Motor Accuracy</p>
                   </div>
                   <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200">
@@ -462,7 +500,7 @@ export const HomeMemoryTestSection = ({
                 <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
                   <button
                     onClick={handleStartVoiceTest}
-                    className="flex items-center gap-2 px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-md transition cursor-pointer"
+                    className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#001A4C] hover:bg-[#002466] text-white font-bold text-sm shadow-md transition cursor-pointer"
                   >
                     <RotateCcw className="w-4 h-4" />
                     <span>Retake Test</span>
@@ -481,43 +519,7 @@ export const HomeMemoryTestSection = ({
           </div>
         )}
 
-        {/* TAB 2: EMBEDDED YOUTUBE VIDEO TUTORIAL */}
-        {activeTab === "video_guide" && (
-          <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200/90 space-y-6">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div>
-                <span className="px-3 py-1 rounded-lg bg-red-100 text-red-800 text-xs font-black uppercase">
-                  Embedded YouTube Tutorial
-                </span>
-                <h3 className="text-2xl font-black text-slate-900 mt-1">
-                  Brain Gym Cross-Lateral Nose & Ear Coordination Video
-                </h3>
-              </div>
-              <span className="text-xs font-bold text-slate-500">
-                Loaded directly inside your browser
-              </span>
-            </div>
 
-            {/* Embedded 16:9 YouTube Player */}
-            <div className="relative w-full overflow-hidden rounded-2xl shadow-2xl bg-black border border-slate-800" style={{ paddingBottom: "56.25%" }}>
-              <iframe
-                className="absolute top-0 left-0 w-full h-full rounded-2xl"
-                src="https://www.youtube-nocookie.com/embed/gI74e872q5Y?rel=0&modestbranding=1"
-                title="Cross Lateral Brain Gym Nose Ear Exercise Tutorial"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-            </div>
-
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-3">
-              <span className="text-2xl">🧠</span>
-              <div className="text-xs text-slate-600 leading-relaxed font-medium">
-                <strong className="text-slate-900">Clinical Benefit of Cross-Body Exercises:</strong> Touching the nose with one hand while reaching across to touch the opposite ear activates the corpus callosum, enhancing communication between the left and right hemispheres of the brain. This gentle movement improves memory retention, spatial orientation, and fine motor precision.
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* TAB 3: TOP MEMORY GAMES TEST LAUNCHER */}
         {activeTab === "game_tests" && (
@@ -526,7 +528,7 @@ export const HomeMemoryTestSection = ({
             {/* Card 1: Memory Cards */}
             <div className="bg-white rounded-3xl p-6 shadow-md border border-slate-200 hover:shadow-xl transition-all space-y-4 flex flex-col justify-between">
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center mb-3 text-2xl">
+                <div className="w-12 h-12 rounded-2xl bg-[#001A4C]/10 text-[#001A4C] flex items-center justify-center mb-3 text-2xl">
                   🃏
                 </div>
                 <h4 className="text-lg font-black text-slate-900">Memory Cards Speed Test</h4>
@@ -536,7 +538,7 @@ export const HomeMemoryTestSection = ({
               </div>
               <button
                 onClick={() => onLaunchGame?.("Memory Cards Recall")}
-                className="w-full py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-md transition cursor-pointer"
+                className="w-full py-3 rounded-2xl bg-[#001A4C] hover:bg-[#002466] text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-md transition cursor-pointer"
               >
                 <Play className="w-4 h-4 fill-current" />
                 <span>Launch Memory Cards Test</span>
@@ -556,7 +558,7 @@ export const HomeMemoryTestSection = ({
               </div>
               <button
                 onClick={() => onLaunchGame?.("Pattern Puzzle Match")}
-                className="w-full py-3 rounded-2xl bg-purple-600 hover:bg-purple-700 text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-md transition cursor-pointer"
+                className="w-full py-3 rounded-2xl bg-[#001A4C] hover:bg-[#002466] text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-md transition cursor-pointer"
               >
                 <Play className="w-4 h-4 fill-current" />
                 <span>Launch Pattern Test</span>
@@ -576,7 +578,7 @@ export const HomeMemoryTestSection = ({
               </div>
               <button
                 onClick={() => onLaunchGame?.("Object Identification")}
-                className="w-full py-3 rounded-2xl bg-rose-600 hover:bg-rose-700 text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-md transition cursor-pointer"
+                className="w-full py-3 rounded-2xl bg-[#001A4C] hover:bg-[#002466] text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-md transition cursor-pointer"
               >
                 <Play className="w-4 h-4 fill-current" />
                 <span>Launch Object Test</span>
@@ -584,6 +586,25 @@ export const HomeMemoryTestSection = ({
             </div>
 
           </div>
+        )}
+
+        {/* TAB 4: MEMORY ART GALLERY */}
+        {activeTab === "memory_gallery" && (
+          <MemoryArtGallery
+            profile={{
+              preferredName: "your loved one",
+              patientCode: "PT-7241",
+              ...(typeof t === 'object' ? {} : {}),
+            }}
+            onBack={() => setActiveTab("voice_motor_test")}
+          />
+        )}
+
+        {/* TAB 5: NOSTALGIA MEMORY LANE & BRAIN WAVE MUSIC */}
+        {activeTab === "nostalgia_recall_music" && (
+          <NostalgiaRecallMusic
+            onBack={() => setActiveTab("voice_motor_test")}
+          />
         )}
 
       </div>
