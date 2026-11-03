@@ -63,6 +63,23 @@ export const Header = ({
   const { setIsPatientChatModalOpen, startVideoCall, unreadCountForPatient, unreadCountForDoctor } = useChatCall();
   const isDoctor = currentUser?.role === "doctor";
   const unreadChatCount = isDoctor ? unreadCountForDoctor : unreadCountForPatient;
+  const [prescriptionsCount, setPrescriptionsCount] = useState(0);
+
+  useEffect(() => {
+    const updateCount = () => {
+      try {
+        const saved = localStorage.getItem("smriti_doctor_prescribed_therapies") || localStorage.getItem("smriti_prescriptions_cart");
+        if (saved) {
+          const items = JSON.parse(saved);
+          const activeUntaken = items.filter(i => !i.taken_today).length;
+          setPrescriptionsCount(activeUntaken);
+        }
+      } catch (e) {}
+    };
+    updateCount();
+    window.addEventListener("storage", updateCount);
+    return () => window.removeEventListener("storage", updateCount);
+  }, []);
 
   const handleSync = () => {
     setIsSyncing(true);
@@ -78,7 +95,7 @@ export const Header = ({
 
   const pendingReminders = reminders.filter((r) => !r.completed);
   const pendingTasks = tasks.filter((t) => t.status !== "completed");
-  const totalPending = pendingReminders.length + pendingTasks.length || 3;
+  const totalPending = pendingReminders.length + pendingTasks.length + prescriptionsCount || 3;
 
   const langOptions = [
     { code: "en", label: "English", flag: "🌐" },
@@ -130,8 +147,8 @@ export const Header = ({
       : profile?.language === "mni"
       ? "স্মৃতি সংগী"
       : profile?.language === "lus"
-      ? "SMRITI SATHI"
-      : "SMRITI SATHI";
+      ? "SMRITHI SATHI"
+      : "SMRITHI SATHI";
 
   const brandTagline =
     profile?.language === "hi"
@@ -224,6 +241,22 @@ export const Header = ({
                   </button>
                 );
               })}
+
+              {/* Neo4j Doctor Clinical Decision Support (CDS) Button */}
+              <button
+                id="header-nav-doctor-cds"
+                onClick={() => {
+                  window.open("/doctor-cds", "_blank");
+                }}
+                title="Open Doctor Clinical Decision Support (Neo4j MedGraph Portal)"
+                className="relative flex items-center gap-1.5 px-2.5 py-1.5 lg:py-2 rounded-xl transition cursor-pointer whitespace-nowrap text-[11px] md:text-xs lg:text-sm font-extrabold bg-gradient-to-r from-[#0D7377]/10 to-[#9DF3C4]/35 hover:from-[#0D7377]/20 hover:to-[#9DF3C4]/50 text-[#0D7377] border border-[#0D7377]/30 hover:border-[#0D7377] shadow-xs group ml-1"
+              >
+                <Stethoscope className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-[#0D7377] group-hover:scale-110 transition-transform" />
+                <span className="hidden xl:inline">Doctor CDS (Neo4j)</span><span className="xl:hidden">Doctor CDS</span>
+                <span className="px-1.5 py-0.5 text-[9px] font-black tracking-wider uppercase bg-[#0D7377] text-white rounded-md shadow-xs">
+                  NEO4J
+                </span>
+              </button>
 
               {/* Reminders with notification counter */}
               <button
@@ -652,6 +685,25 @@ export const Header = ({
                   );
                 })}
 
+                {/* Mobile Doctor CDS Button */}
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    window.open("/doctor-cds", "_blank");
+                  }}
+                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-bold text-sm flex items-center justify-between text-[#0D7377] bg-gradient-to-r from-[#0D7377]/10 to-[#9DF3C4]/25 border border-[#0D7377]/25 hover:border-[#0D7377]"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="p-1.5 rounded-lg bg-[#0D7377] text-white shadow-xs">
+                      <Stethoscope className="w-4 h-4" />
+                    </div>
+                    <span className="hidden xl:inline">Doctor CDS (Neo4j)</span><span className="xl:hidden">Doctor CDS</span>
+                  </div>
+                  <span className="px-2 py-0.5 text-[10px] font-black uppercase bg-[#0D7377] text-white rounded-md">
+                    NEO4J
+                  </span>
+                </button>
+
                 {/* Mobile Reminders Button */}
                 <button
                   onClick={() => {
@@ -766,6 +818,25 @@ export const Header = ({
                     </button>
                   );
                 })}
+
+                {/* Mobile Doctor CDS Button */}
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    window.open("/doctor-cds", "_blank");
+                  }}
+                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-bold text-sm flex items-center justify-between text-[#0D7377] bg-gradient-to-r from-[#0D7377]/10 to-[#9DF3C4]/25 border border-[#0D7377]/25 hover:border-[#0D7377]"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="p-1.5 rounded-lg bg-[#0D7377] text-white shadow-xs">
+                      <Stethoscope className="w-4 h-4" />
+                    </div>
+                    <span className="hidden xl:inline">Doctor CDS (Neo4j)</span><span className="xl:hidden">Doctor CDS</span>
+                  </div>
+                  <span className="px-2 py-0.5 text-[10px] font-black uppercase bg-[#0D7377] text-white rounded-md">
+                    NEO4J
+                  </span>
+                </button>
               </div>
             </div>
 

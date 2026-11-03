@@ -37,9 +37,13 @@ import {
   BellRing,
   MessageSquare,
   Video,
-  Search
+  Search,
+  FileScan
 } from "lucide-react";
 import { IconHelper } from "../common/IconHelper";
+import { DoctorPrescribedTherapiesSection } from "./DoctorPrescribedTherapiesSection";
+import { PatientScanUploadModal } from "./PatientScanUploadModal";
+
 export const PatientHome = ({
   profile,
   tasks,
@@ -65,6 +69,7 @@ export const PatientHome = ({
   const t = translations[profile.language];
   const [selectedGameFilter, setSelectedGameFilter] = useState("all");
   const [gameSearchQuery, setGameSearchQuery] = useState("");
+  const [showScanUploadModal, setShowScanUploadModal] = useState(false);
 
   const filteredGames = allUnifiedGames.filter((game) => {
     if (gameSearchQuery.trim()) {
@@ -324,6 +329,40 @@ export const PatientHome = ({
             <ElderlyAvatar size="w-11 h-11 sm:w-12 sm:h-12" />
           </button>
         </div>
+      </div>
+
+      {/* DOCTOR PRESCRIBED THERAPIES & ACTIVITIES (FROM NEO4J CDS) */}
+      <DoctorPrescribedTherapiesSection
+        profile={profile}
+        onLaunchActivity={(title) => {
+          const matched = tasks.find((t) => t.title.toLowerCase().includes(title.toLowerCase()));
+          if (matched) onStartTask(matched);
+        }}
+      />
+
+      {/* QUICK PATIENT ACTION: UPLOAD MEDICAL SCAN FOR DOCTOR */}
+      <div className="bg-white rounded-3xl p-4 sm:p-5 border border-slate-200/80 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-2xl bg-[#E6FFFA] text-[#0D7377] flex items-center justify-center shrink-0">
+            <FileScan className="w-5 h-5" />
+          </div>
+          <div>
+            <h4 className="font-extrabold text-sm text-slate-900">
+              Medical Scans & Lab Reports
+            </h4>
+            <p className="text-xs text-slate-500">
+              Upload MRI, CT, Doppler or doctor prescriptions for your physician to scan using Neo4j AI.
+            </p>
+          </div>
+        </div>
+
+        <button
+          onClick={() => setShowScanUploadModal(true)}
+          className="px-4 py-2.5 bg-[#0D7377] hover:bg-[#0A5C5F] text-white font-extrabold text-xs rounded-xl transition shadow-xs flex items-center justify-center gap-2 cursor-pointer shrink-0"
+        >
+          <FileScan className="w-4 h-4 text-[#9DF3C4]" />
+          <span>Upload Medical Scan</span>
+        </button>
       </div>
 
       {/* 2. PRIMARY HERO CARD: TODAY'S ACTIVITIES & START TODAY'S TASKS */}
@@ -820,15 +859,20 @@ export const PatientHome = ({
     /* ============================================================ */
   }
       <button
-    onClick={onOpenCaregiverCall}
-    className="w-full py-4 rounded-3xl bg-rose-500 hover:bg-rose-600 text-white font-black text-base shadow-md shadow-rose-500/20 flex items-center justify-center gap-2.5 transition active:scale-98 cursor-pointer"
-  >
+        onClick={onOpenCaregiverCall}
+        className="w-full py-4 rounded-3xl bg-rose-500 hover:bg-rose-600 text-white font-black text-base shadow-md shadow-rose-500/20 flex items-center justify-center gap-2.5 transition active:scale-98 cursor-pointer"
+      >
         <Phone className="w-5 h-5" />
         <span>CALL CAREGIVER / FAMILY</span>
       </button>
 
-
-
+      {/* Patient Medical Scan Upload Modal */}
+      <PatientScanUploadModal
+        isOpen={showScanUploadModal}
+        onClose={() => setShowScanUploadModal(false)}
+        patient={profile}
+        onUploadSuccess={() => {}}
+      />
     </div>
   );
 };

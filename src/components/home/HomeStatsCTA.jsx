@@ -1,84 +1,90 @@
 import React from "react";
+import { Play, Stethoscope, ArrowRight, Brain } from "lucide-react";
 
 export const HomeStatsCTA = ({ t, onSelectRole }) => {
   return (
     <>
       {/* ═══════════════ STATS ═══════════════ */}
-      <section className="section" id="stats">
+      <section className="section py-12 sm:py-16" id="stats">
         <div className="container">
-          <h2 className="section__title">{t?.stats?.title || "Empowering Families Across the Region"}</h2>
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+            <h2 className="section__title text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight">
+              {t?.stats?.title || "Empowering Neurological Recovery Across the Nation"}
+            </h2>
+          </div>
           <div className="stats-grid">
             <div className="scard">
-              <div className="scard-num">95<span>%</span></div>
-              <p>{t?.stats?.s1 || "Average improvement in elder cognitive engagement"}</p>
+              <div className="scard-num text-[#0D7377]">95<span>%</span></div>
+              <p>{t?.stats?.s1 || "Average improvement in motor & cognitive recovery metrics"}</p>
               <svg className="trend-svg" viewBox="0 0 120 40" fill="none">
-                <path d="M5 35C20 30 40 25 55 18C70 10 90 8 115 4" stroke="#001A4C" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-                <circle cx="115" cy="4" r="3.5" fill="#001A4C" />
+                <path d="M5 35C20 30 40 25 55 18C70 10 90 8 115 4" stroke="#0D7377" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+                <circle cx="115" cy="4" r="3.5" fill="#0D7377" />
               </svg>
             </div>
             <div className="scard">
-              <div className="scard-num">2,000<span>+</span></div>
-              <p>{t?.stats?.s2 || "Active families utilizing daily AI therapy"}</p>
+              <div className="scard-num text-[#001A4C]">2,000<span>+</span></div>
+              <p>{t?.stats?.s2 || "Active patients rehabilitating daily with prescribed protocols"}</p>
             </div>
             <div className="scard">
-              <div className="scard-num">6</div>
-              <p>{t?.stats?.s3 || "AI-calibrated cognitive training domains"}</p>
+              <div className="scard-num text-emerald-600">8<span>+</span></div>
+              <p>{t?.stats?.s3 || "Treatable brain conditions with validated therapy modules"}</p>
             </div>
             <div className="scard">
-              <div className="scard-num">7<span>+</span></div>
-              <p>{t?.stats?.s4 || "North-Eastern states actively supported"}</p>
+              <div className="scard-num text-purple-600">7<span>+</span></div>
+              <p>{t?.stats?.s4 || "North-Eastern states with full offline & regional language access"}</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ═══════════════ CTA ═══════════════ */}
-      <section className="section cta-section" id="contact">
-        <div className="container cta-inner">
-          <h2 className="cta-title">
-            {t?.cta?.title || "Start an AI Cognitive Journey for Your Elder Today"}
+      <section className="section cta-section py-14 sm:py-20 bg-gradient-to-r from-[#001A4C] via-[#0D7377] to-[#001A4C]" id="contact">
+        <div className="container cta-inner text-center max-w-4xl mx-auto px-4">
+          <h2 className="cta-title text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight mb-3">
+            {t?.cta?.title || "Heal Brain Diseases with Doctor-Prescribed Therapy & Medication"}
           </h2>
-          <p className="cta-desc">
-            {t?.cta?.desc || "Whether you are a devoted family member, neurologist, or healthcare professional — we are here to support every step."}
+          <p className="cta-desc text-white/85 text-sm sm:text-base max-w-2xl mx-auto mb-8">
+            {t?.cta?.desc || "Join neurologists, patients, and caregivers utilizing evidence-based digital therapies and precision medication schedules for lasting brain recovery."}
           </p>
-          <div className="cta-buttons">
+          <div className="cta-buttons flex flex-col sm:flex-row items-center justify-center gap-3.5">
             <button
-              className="btn btn--white btn--xl cursor-pointer"
+              className="btn btn--white btn--xl cursor-pointer w-full sm:w-auto justify-center shadow-lg active:scale-95 transition"
               onClick={() => onSelectRole && onSelectRole("patient")}
             >
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M3 9h12M9 4l5 5-5 5" stroke="#001A4C" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <span>{t?.cta?.start || "Get Started Free"}</span>
+              <Play className="w-5 h-5 text-[#0D7377] fill-[#0D7377]" />
+              <span>{t?.cta?.start || "Start Prescribed Therapy"}</span>
             </button>
             <button
-              className="btn btn--outline-white btn--xl cursor-pointer"
-              onClick={() => onSelectRole && onSelectRole("showcase")}
+              className="btn btn--outline-white btn--xl cursor-pointer w-full sm:w-auto justify-center active:scale-95 transition"
+              onClick={() => {
+                window.open("/doctor-cds", "_blank");
+              }}
             >
-              <span>{t?.cta?.demo || "View Interactive Demo"}</span>
+              <Stethoscope className="w-5 h-5 text-white" />
+              <span>{t?.cta?.demo || "Explore Doctor CDS (Neo4j)"}</span>
             </button>
           </div>
         </div>
       </section>
 
       {/* ═══════════════ FOOTER ═══════════════ */}
-      <footer className="footer">
-        <div className="container footer__inner">
-          <div className="footer__brand">
-            <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="10" fill="white" fillOpacity="0.15" />
-              <path d="M8 22 C8 16 13 10 16 10 C19 10 24 16 24 22" stroke="white" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-              <circle cx="16" cy="9" r="2.5" fill="white" />
-            </svg>
+      <footer className="footer bg-[#001438] py-8 border-t border-slate-800">
+        <div className="container footer__inner flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <div className="footer__brand flex items-center gap-2 text-white font-bold text-base">
+            <div className="w-7 h-7 rounded-lg bg-[#0D7377] flex items-center justify-center text-white">
+              <Brain className="w-4 h-4 text-[#9DF3C4]" />
+            </div>
             <span>Smriti Saathi</span>
           </div>
-          <div className="footer__links">
-            <a href="#categories">{t?.nav?.categories || "Categories"}</a>
-            <a href="#ai-engine">{t?.nav?.ai || "AI Engine"}</a>
-            <a href="#caregiver">{t?.nav?.caregiver || "Caregiver"}</a>
-            <a href="#ner">{t?.nav?.ner || "NER Focus"}</a>
+          <div className="footer__links flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-slate-300">
+            <a href="#hero" className="hover:text-white transition">Home</a>
+            <a href="#categories" className="hover:text-white transition">{t?.nav?.categories || "Brain Disease Modules"}</a>
+            <a href="#ai-engine" className="hover:text-white transition">{t?.nav?.ai || "Neuroplasticity AI"}</a>
+            <a href="/doctor-cds" target="_blank" rel="noreferrer" className="text-[#9DF3C4] hover:underline">Doctor CDS (Neo4j)</a>
+            <a href="#caregiver" className="hover:text-white transition">{t?.nav?.caregiver || "Caregiver Insights"}</a>
+            <a href="#faq" className="hover:text-white transition">FAQ</a>
           </div>
-          <div className="footer__copy">BrainBoost — AI-Powered Cognitive Companion · © 2026</div>
+          <div className="footer__copy text-xs text-slate-400">Smriti Saathi — Clinical Neurological Care & Rehabilitation · © 2026</div>
         </div>
       </footer>
     </>

@@ -244,55 +244,55 @@ export const HomeMemoryTestSection = ({
         </div>
 
         {/* Tab Switcher */}
-        <div className="flex justify-center mb-8">
-          <div className="inline-flex p-1.5 rounded-2xl bg-white border border-slate-200 shadow-sm gap-2">
+        <div className="flex justify-center mb-6 sm:mb-8 w-full">
+          <div className="flex flex-wrap sm:flex-nowrap justify-center p-1 sm:p-1.5 rounded-2xl bg-white border border-slate-200 shadow-sm gap-1.5 sm:gap-2 max-w-full overflow-x-auto">
             <button
               onClick={() => setActiveTab("voice_motor_test")}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all cursor-pointer whitespace-nowrap ${
                 activeTab === "voice_motor_test"
                   ? "bg-[#001A4C] text-white shadow-md shadow-[#001A4C]/20"
                   : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
               }`}
             >
-              <Volume2 className="w-4 h-4" />
-              <span>Voice Agent Cross-Body Test</span>
+              <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span>Voice Cross-Body Test</span>
             </button>
 
             <button
               id="nostalgia-recall-tab-btn"
               onClick={() => setActiveTab("nostalgia_recall_music")}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all cursor-pointer whitespace-nowrap ${
                 activeTab === "nostalgia_recall_music"
                   ? "bg-gradient-to-r from-[#001A4C] via-[#0D7377] to-[#001A4C] text-white shadow-md shadow-[#001A4C]/30 ring-2 ring-[#9DF3C4]/60"
                   : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
               }`}
             >
-              <Headphones className="w-4 h-4 text-[#0D7377]" />
-              <span>Memory Lane & Brain Music</span>
+              <Headphones className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#0D7377]" />
+              <span>Memory Lane & Music</span>
             </button>
 
             <button
               onClick={() => setActiveTab("game_tests")}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all cursor-pointer whitespace-nowrap ${
                 activeTab === "game_tests"
                   ? "bg-[#001A4C] text-white shadow-md shadow-[#001A4C]/20"
                   : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
               }`}
             >
-              <Award className="w-4 h-4" />
-              <span>Top Memory Game Tests</span>
+              <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span>Brain Game Puzzles</span>
             </button>
 
             <button
               onClick={() => setActiveTab("memory_gallery")}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all cursor-pointer whitespace-nowrap ${
                 activeTab === "memory_gallery"
                   ? "bg-gradient-to-r from-[#0D7377] to-teal-700 text-white shadow-md shadow-[#0D7377]/20"
                   : "text-slate-600 hover:text-slate-900 hover:bg-teal-50"
               }`}
             >
-              <Camera className="w-4 h-4" />
-              <span>Memory Art Gallery</span>
+              <Camera className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span>Memory Art Studio</span>
             </button>
           </div>
         </div>

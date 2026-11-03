@@ -174,6 +174,25 @@ export default defineConfig({
     port: 3000,
     allowedHosts: true,
     hmr: process.env.DISABLE_HMR !== "true",
-    watch: process.env.DISABLE_HMR === "true" ? null : {}
+    watch: process.env.DISABLE_HMR === "true" ? null : {},
+    proxy: {
+      "/api": {
+        target: "http://127.0.0.1:8000",
+        changeOrigin: true
+      },
+      "/uploads": {
+        target: "http://127.0.0.1:8000",
+        changeOrigin: true
+      },
+      "/doctor-cds": {
+        target: "http://127.0.0.1:8000",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/doctor-cds/, "")
+      },
+      "/static": {
+        target: "http://127.0.0.1:8000",
+        changeOrigin: true
+      }
+    }
   }
 });

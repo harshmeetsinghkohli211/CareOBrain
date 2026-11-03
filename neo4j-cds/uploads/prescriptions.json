@@ -1,0 +1,30 @@
+[
+  {
+    "therapy_id": "th_radiation",
+    "therapy_name": "Radiation Therapy",
+    "therapy_description": "Targeted high-energy radiation beams to destroy cancer cells and shrink tumors while minimizing damage to surrounding tissue",
+    "combined_score": 0.3,
+    "score_pct": 30,
+    "therapy_type": "oncology",
+    "duration": "5-7 weeks typically",
+    "evidence_level": "A",
+    "target_areas": [],
+    "prescribed": true,
+    "prescribed_at": "03 Nov 2026, 22:33",
+    "prescribed_by": "Dr. Debabrata Roy, MD"
+  },
+  {
+    "therapy_id": "th_chemo",
+    "therapy_name": "Chemotherapy",
+    "therapy_description": "Systemic administration of cytotoxic drugs to destroy rapidly dividing cancer cells through various protocols and cycles",
+    "combined_score": 0.225,
+    "score_pct": 23,
+    "therapy_type": "oncology",
+    "duration": "multiple cycles",
+    "evidence_level": "A",
+    "target_areas": [],
+    "prescribed": true,
+    "prescribed_at": "03 Nov 2026, 22:33",
+    "prescribed_by": "Dr. Debabrata Roy, MD"
+  }
+]

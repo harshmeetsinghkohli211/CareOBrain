@@ -1,0 +1,1 @@
+"""MedGraph — Models Module."""

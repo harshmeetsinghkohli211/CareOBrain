@@ -1,6 +1,7 @@
 import { translations } from "../../data/translations";
 import { IconHelper } from "../common/IconHelper";
 import { CheckCircle2, Clock, Play, ArrowLeft } from "lucide-react";
+import { DoctorPrescribedTherapiesSection } from "./DoctorPrescribedTherapiesSection";
 export const PatientTasks = ({
   tasks,
   profile,
@@ -52,6 +53,15 @@ export const PatientTasks = ({
           </div>
         </div>
       </div>
+
+      {/* Doctor Prescribed Therapies & Activities from Neo4j CDS */}
+      <DoctorPrescribedTherapiesSection
+        profile={profile}
+        onLaunchActivity={(title) => {
+          const matched = tasks.find((t2) => t2.title.toLowerCase().includes(title.toLowerCase()));
+          if (matched) onStartTask(matched);
+        }}
+      />
 
       {
     /* Vertical Large Cards (Frame 02 Specification) */

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Bell,
   BellRing,
@@ -20,8 +20,10 @@ import {
   Footprints,
   ChevronRight,
   Check,
-  RotateCcw
+  RotateCcw,
+  ShoppingBag
 } from "lucide-react";
+import { TherapyMiniGameModal } from "../patient/TherapyMiniGameModal";
 
 export const NotificationDropdown = ({
   isOpen,
@@ -34,22 +36,75 @@ export const NotificationDropdown = ({
   onMarkAllDone,
   profile
 }) => {
-  const [activeTab, setActiveTab] = useState("all"); // 'all' | 'reminders' | 'tasks'
+  const [activeTab, setActiveTab] = useState("all"); // 'all' | 'prescriptions' | 'reminders' | 'tasks'
   const [isAddingReminder, setIsAddingReminder] = useState(false);
   const [newTitle, setNewTitle] = useState("");
   const [newTime, setNewTime] = useState("08:00 PM");
   const [newCategory, setNewCategory] = useState("medicine");
   const [newNote, setNewNote] = useState("");
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [prescriptions, setPrescriptions] = useState([]);
+  const [activeTherapyForModal, setActiveTherapyForModal] = useState(null);
+
+  // Load Prescriptions from Neo4j CDS
+  const loadPrescriptions = () => {
+    try {
+      const saved = localStorage.getItem("smriti_doctor_prescribed_therapies") || localStorage.getItem("smriti_prescriptions_cart");
+      if (saved) {
+        setPrescriptions(JSON.parse(saved));
+      }
+    } catch (e) {
+      console.error("Error loading prescriptions for notifications", e);
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      loadPrescriptions();
+    }
+    const handleStorage = (e) => {
+      if (e.key === "smriti_doctor_prescribed_therapies" || e.key === "smriti_prescriptions_cart") {
+        loadPrescriptions();
+      }
+    };
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
+  }, [isOpen]);
+
+  const handleToggleMedTaken = (med) => {
+    const mid = med.id || med.medication_id || med.medication_name;
+    const updated = prescriptions.map((p) => {
+      const pId = p.id || p.medication_id || p.medication_name;
+      if (pId === mid) {
+        return {
+          ...p,
+          taken_today: !p.taken_today,
+          last_taken_at: !p.taken_today ? new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) : null
+        };
+      }
+      return p;
+    });
+    setPrescriptions(updated);
+    localStorage.setItem("smriti_doctor_prescribed_therapies", JSON.stringify(updated));
+    localStorage.setItem("smriti_prescriptions_cart", JSON.stringify(updated));
+    window.dispatchEvent(new Event("storage"));
+
+    fetch("/api/prescriptions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prescriptions: updated })
+    }).catch(() => {});
+  };
 
   if (!isOpen) return null;
 
+  const pendingPrescriptions = prescriptions.filter((p) => !p.taken_today);
   const pendingReminders = reminders.filter((r) => !r.completed);
   const completedReminders = reminders.filter((r) => r.completed);
   const pendingTasks = tasks.filter((t) => t.status !== "completed");
   const completedTasks = tasks.filter((t) => t.status === "completed");
 
-  const totalPending = pendingReminders.length + pendingTasks.length;
+  const totalPending = pendingReminders.length + pendingTasks.length + pendingPrescriptions.length;
 
   const handleCreateReminder = (e) => {
     e.preventDefault();
@@ -200,21 +255,37 @@ export const NotificationDropdown = ({
         </div>
 
         {/* Filter Navigation Tabs */}
-        <div className="px-4 py-2.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between gap-2 shrink-0">
-          <div className="flex items-center gap-1">
+        <div className="px-4 py-2 bg-slate-50 border-b border-slate-200 flex items-center justify-between gap-1.5 shrink-0 overflow-x-auto">
+          <div className="flex items-center gap-1 shrink-0">
             <button
               onClick={() => setActiveTab("all")}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer ${
+              className={`px-2.5 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer ${
                 activeTab === "all"
                   ? "bg-blue-600 text-white shadow-xs"
                   : "text-slate-600 hover:bg-slate-200/70"
               }`}
             >
-              All ({reminders.length + tasks.length})
+              All ({reminders.length + tasks.length + prescriptions.length})
+            </button>
+            <button
+              onClick={() => setActiveTab("prescriptions")}
+              className={`px-2.5 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer flex items-center gap-1 ${
+                activeTab === "prescriptions"
+                  ? "bg-[#0D7377] text-white shadow-xs"
+                  : "text-slate-600 hover:bg-slate-200/70"
+              }`}
+            >
+              <Stethoscope className="w-3.5 h-3.5" />
+              <span>Doctor Prescriptions</span>
+              {pendingPrescriptions.length > 0 && (
+                <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-black ${activeTab === "prescriptions" ? "bg-white text-[#0D7377]" : "bg-teal-100 text-teal-800"}`}>
+                  {pendingPrescriptions.length}
+                </span>
+              )}
             </button>
             <button
               onClick={() => setActiveTab("reminders")}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer flex items-center gap-1.5 ${
+              className={`px-2.5 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer flex items-center gap-1 ${
                 activeTab === "reminders"
                   ? "bg-blue-600 text-white shadow-xs"
                   : "text-slate-600 hover:bg-slate-200/70"
@@ -229,7 +300,7 @@ export const NotificationDropdown = ({
             </button>
             <button
               onClick={() => setActiveTab("tasks")}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer flex items-center gap-1.5 ${
+              className={`px-2.5 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer flex items-center gap-1 ${
                 activeTab === "tasks"
                   ? "bg-blue-600 text-white shadow-xs"
                   : "text-slate-600 hover:bg-slate-200/70"
@@ -244,10 +315,10 @@ export const NotificationDropdown = ({
             </button>
           </div>
 
-          {/* Quick Action Button: Mark all done or Add */}
+          {/* Quick Action Button: Add Reminder */}
           <button
             onClick={() => setIsAddingReminder(!isAddingReminder)}
-            className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-700 text-xs font-bold transition cursor-pointer"
+            className="flex items-center gap-1 px-2 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-700 text-xs font-bold transition cursor-pointer shrink-0"
             title="Add a new reminder"
           >
             <Plus className="w-3.5 h-3.5" />
@@ -352,6 +423,119 @@ export const NotificationDropdown = ({
         {/* Scrollable Content */}
         <div className="flex-1 overflow-y-auto p-4 space-y-4 max-h-[55vh] sm:max-h-[60vh] divide-y divide-slate-100">
           
+          {/* ================= 0. DOCTOR PRESCRIPTIONS (NEO4J CDS) ================= */}
+          {(activeTab === "all" || activeTab === "prescriptions") && (
+            <div className="space-y-2.5 pt-1">
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-extrabold text-[#0D7377] uppercase tracking-wider flex items-center gap-1.5">
+                  <Stethoscope className="w-3.5 h-3.5 text-[#0D7377]" />
+                  <span>Doctor Prescriptions & Care Plan ({prescriptions.length})</span>
+                </span>
+                <span className="text-[10px] font-bold text-slate-500 bg-teal-50 px-2 py-0.5 rounded-full border border-teal-200">
+                  Dr. Debabrata Roy, MD
+                </span>
+              </div>
+
+              {prescriptions.length === 0 ? (
+                <div className="p-4 rounded-2xl bg-teal-50/50 border border-teal-100 text-center">
+                  <p className="text-xs text-slate-500 font-medium">
+                    No doctor prescriptions in your care plan yet.
+                  </p>
+                </div>
+              ) : (
+                <div className="space-y-2.5">
+                  {prescriptions.map((item, idx) => {
+                    const itemId = item.id || item.therapy_id || item.medication_id || `rx_${idx}`;
+                    const isMed = item.item_type === "medication" || Boolean(item.medication_name);
+                    const title = item.name || item.therapy_name || item.medication_name || "Care Item";
+                    const isTaken = item.taken_today;
+
+                    return (
+                      <div
+                        key={itemId}
+                        className={`p-3.5 rounded-2xl border transition-all ${
+                          isTaken
+                            ? "bg-emerald-50/60 border-emerald-200"
+                            : isMed
+                            ? "bg-gradient-to-r from-rose-50/40 to-amber-50/40 border-rose-200 shadow-2xs"
+                            : "bg-gradient-to-r from-teal-50/40 to-blue-50/40 border-teal-200 shadow-2xs"
+                        }`}
+                      >
+                        <div className="flex items-start justify-between gap-2.5">
+                          <div className="flex items-start gap-2.5 min-w-0 flex-1">
+                            <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${
+                              isMed ? "bg-rose-100 text-rose-700" : "bg-teal-100 text-teal-700"
+                            }`}>
+                              {isMed ? <Pill className="w-4 h-4" /> : <Activity className="w-4 h-4" />}
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <div className="flex items-center gap-1.5 flex-wrap">
+                                <span className={`text-[9px] font-black uppercase px-1.5 py-0.2 rounded ${
+                                  isMed ? "bg-rose-600 text-white" : "bg-[#0D7377] text-white"
+                                }`}>
+                                  {isMed ? "Medication" : "Prescription"}
+                                </span>
+                                {item.dosage && (
+                                  <span className="text-[10px] font-bold text-amber-900 bg-amber-100 px-1.5 py-0.2 rounded">
+                                    {item.dosage}
+                                  </span>
+                                )}
+                                {item.frequency && (
+                                  <span className="text-[10px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.2 rounded">
+                                    {item.frequency}
+                                  </span>
+                                )}
+                              </div>
+
+                              <h4 className="font-extrabold text-xs sm:text-sm text-slate-900 mt-1 leading-snug">
+                                {title}
+                              </h4>
+
+                              {/* Doctor's Custom Note */}
+                              {item.doctor_note && (
+                                <p className="text-[11px] text-[#0D7377] font-semibold mt-1 bg-white/80 p-1.5 rounded-lg border border-teal-100/80">
+                                  👨‍⚕️ <strong>Doctor:</strong> {item.doctor_note}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* Quick Action Buttons */}
+                          <div className="shrink-0 flex items-center">
+                            {isMed ? (
+                              <button
+                                onClick={() => handleToggleMedTaken(item)}
+                                className={`px-2.5 py-1.5 rounded-xl text-xs font-black transition cursor-pointer flex items-center gap-1 ${
+                                  isTaken
+                                    ? "bg-emerald-100 text-emerald-800 border border-emerald-300"
+                                    : "bg-rose-600 hover:bg-rose-700 text-white shadow-xs"
+                                }`}
+                              >
+                                <Check className="w-3.5 h-3.5" />
+                                <span>{isTaken ? "Taken ✓" : "Mark Taken"}</span>
+                              </button>
+                            ) : (
+                              <button
+                                onClick={() => {
+                                  setActiveTherapyForModal(item);
+                                  onClose();
+                                }}
+                                className="px-3 py-1.5 rounded-xl text-xs font-black bg-[#0D7377] hover:bg-[#0A5C5F] text-white transition cursor-pointer flex items-center gap-1 shadow-xs"
+                              >
+                                <Play className="w-3.5 h-3.5 fill-current" />
+                                <span>Play / View</span>
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          )}
+
           {/* ================= 1. REMINDERS LIST ================= */}
           {(activeTab === "all" || activeTab === "reminders") && (
             <div className="space-y-2.5 pt-1">
@@ -658,6 +842,16 @@ export const NotificationDropdown = ({
           </button>
         </div>
       </div>
+
+      {/* Therapy Mini-Game / Protocol Modal */}
+      {activeTherapyForModal && (
+        <TherapyMiniGameModal
+          therapy={activeTherapyForModal}
+          isOpen={Boolean(activeTherapyForModal)}
+          onClose={() => setActiveTherapyForModal(null)}
+          onComplete={() => {}}
+        />
+      )}
     </div>
   );
 };

@@ -1,0 +1,138 @@
+{
+  "cases_evaluated": 6,
+  "latency_benchmarks_ms": {
+    "step_2_nlp": {
+      "p50": 54.53,
+      "mean": 64.37,
+      "max": 133.0
+    },
+    "step_3_graph_traversal": {
+      "p50": 0.56,
+      "mean": 0.69,
+      "max": 1.15
+    },
+    "step_4_vector_scorer": {
+      "p50": 28.85,
+      "mean": 28.47,
+      "max": 47.18
+    },
+    "end_to_end_pipeline": {
+      "p50": 72.15,
+      "mean": 68.4,
+      "max": 82.69
+    }
+  },
+  "accuracy_benchmarks": {
+    "nlp_mean_precision": 0.4762,
+    "nlp_mean_recall": 0.5897,
+    "nlp_mean_f1": 0.5204,
+    "ranking_top1_accuracy": 0.6667,
+    "ranking_top3_accuracy": 0.8333,
+    "mean_reciprocal_rank_mrr": 0.75,
+    "monotonicity_verified": true
+  },
+  "detailed_case_results": [
+    {
+      "case_id": "case_1_ortho_acl",
+      "domain": "Orthopedics & Sports Medicine",
+      "nlp_precision": 0.571,
+      "nlp_recall": 0.667,
+      "nlp_f1": 0.615,
+      "top1_match": true,
+      "top3_match": true,
+      "top_therapy_returned": "Cryotherapy",
+      "top_med_returned": "Ibuprofen",
+      "timing_ms": {
+        "nlp": 133.0,
+        "graph": 1.11,
+        "scoring": 28.92,
+        "total": 79.58
+      }
+    },
+    {
+      "case_id": "case_2_vascular_dvt",
+      "domain": "Vascular & Hematology",
+      "nlp_precision": 0.5,
+      "nlp_recall": 0.8,
+      "nlp_f1": 0.615,
+      "top1_match": true,
+      "top3_match": true,
+      "top_therapy_returned": "Manual Lymphatic Drainage",
+      "top_med_returned": "Heparin",
+      "timing_ms": {
+        "nlp": 22.98,
+        "graph": 0.3,
+        "scoring": 33.29,
+        "total": 74.64
+      }
+    },
+    {
+      "case_id": "case_3_neuro_stroke",
+      "domain": "Neurology & Cerebrovascular",
+      "nlp_precision": 0.286,
+      "nlp_recall": 0.5,
+      "nlp_f1": 0.364,
+      "top1_match": true,
+      "top3_match": true,
+      "top_therapy_returned": "Thrombolytic Therapy",
+      "top_med_returned": "Alteplase (tPA)",
+      "timing_ms": {
+        "nlp": 48.82,
+        "graph": 0.44,
+        "scoring": 11.47,
+        "total": 66.69
+      }
+    },
+    {
+      "case_id": "case_4_spine_sciatica",
+      "domain": "Spine & Orthopedics",
+      "nlp_precision": 0.5,
+      "nlp_recall": 0.571,
+      "nlp_f1": 0.533,
+      "top1_match": false,
+      "top3_match": true,
+      "top_therapy_returned": "Spinal Traction",
+      "top_med_returned": "Gabapentin",
+      "timing_ms": {
+        "nlp": 60.25,
+        "graph": 0.52,
+        "scoring": 21.18,
+        "total": 69.65
+      }
+    },
+    {
+      "case_id": "case_5_endocrine_ulcer",
+      "domain": "Endocrine & Wound Care",
+      "nlp_precision": 0.5,
+      "nlp_recall": 0.571,
+      "nlp_f1": 0.533,
+      "top1_match": false,
+      "top3_match": false,
+      "top_therapy_returned": "Manual Lymphatic Drainage",
+      "top_med_returned": "Omeprazole",
+      "timing_ms": {
+        "nlp": 80.45,
+        "graph": 0.6,
+        "scoring": 28.78,
+        "total": 82.69
+      }
+    },
+    {
+      "case_id": "case_6_rheuma_arthritis",
+      "domain": "Rheumatology & Autoimmune",
+      "nlp_precision": 0.5,
+      "nlp_recall": 0.429,
+      "nlp_f1": 0.462,
+      "top1_match": true,
+      "top3_match": true,
+      "top_therapy_returned": "Cryotherapy",
+      "top_med_returned": "Ibuprofen",
+      "timing_ms": {
+        "nlp": 40.74,
+        "graph": 1.15,
+        "scoring": 47.18,
+        "total": 37.15
+      }
+    }
+  ]
+}

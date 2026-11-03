@@ -1,68 +1,57 @@
 import React from "react";
+import { Brain, Activity, Clock, ShieldCheck, Pill, Stethoscope } from "lucide-react";
 
 export const HomeAIEngine = ({ t }) => {
   return (
-    <section className="section section--warm" id="ai-engine">
+    <section className="section section--warm py-12 sm:py-16" id="ai-engine">
       <div className="container ai-grid">
         <div className="ai-left">
-          <span className="section-label">{t?.ai?.label || "Core AI Innovation"}</span>
+          <span className="section-label">{t?.ai?.label || "Adaptive Neuro-Rehab & Medication Intelligence"}</span>
           <h2 className="section__title section__title--left">
-            {t?.ai?.title || "AI-Powered Adaptive Cognitive Engine"}
+            {t?.ai?.title || "AI-Powered Adaptive Neuroplasticity & Clinical CDS"}
           </h2>
           <p className="ai-desc">
-            {t?.ai?.desc || "Instead of generic exercises, our adaptive AI continuously monitors gameplay metrics and automatically calibrates difficulty to prevent cognitive fatigue or frustration."}
+            {t?.ai?.desc || "Our clinical AI evaluates motor accuracy, tremor response, decision latency, and medication compliance in real time — automatically adjusting exercise intensity and alerting physicians to neurological shifts."}
           </p>
 
           <div className="ai-metrics">
             <div className="ai-metric">
               <div className="ai-metric-icon ai-metric-icon--blue">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <circle cx="10" cy="10" r="8" stroke="white" strokeWidth="1.5" />
-                  <path d="M7 10l2 2 4-4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <Brain className="w-5 h-5 text-white" />
               </div>
               <div>
-                <strong>{t?.ai?.m1t || "Accuracy Tracking"}</strong>
-                <p>{t?.ai?.m1d || "Real-time correct vs. incorrect response ratios"}</p>
+                <strong>{t?.ai?.m1t || "Motor Accuracy & Tremor Tracking"}</strong>
+                <p>{t?.ai?.m1d || "Real-time fine-motor precision and bilateral movement symmetry"}</p>
               </div>
             </div>
 
             <div className="ai-metric">
               <div className="ai-metric-icon ai-metric-icon--amber">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <circle cx="10" cy="10" r="8" stroke="white" strokeWidth="1.5" />
-                  <path d="M10 6v4l3 2" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-                </svg>
+                <Clock className="w-5 h-5 text-white" />
               </div>
               <div>
-                <strong>{t?.ai?.m2t || "Response Latency"}</strong>
-                <p>{t?.ai?.m2d || "Time taken to formulate and execute decisions"}</p>
+                <strong>{t?.ai?.m2t || "Cognitive Latency & Processing Speed"}</strong>
+                <p>{t?.ai?.m2d || "Time taken to formulate and execute cognitive and motor decisions"}</p>
               </div>
             </div>
 
             <div className="ai-metric">
               <div className="ai-metric-icon ai-metric-icon--rose">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M5 14l3-4 3 2 4-6" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  <rect x="3" y="3" width="14" height="14" rx="3" stroke="white" strokeWidth="1.5" />
-                </svg>
+                <Activity className="w-5 h-5 text-white" />
               </div>
               <div>
-                <strong>{t?.ai?.m3t || "Longitudinal Trends"}</strong>
-                <p>{t?.ai?.m3d || "Session-over-session performance trajectories"}</p>
+                <strong>{t?.ai?.m3t || "Longitudinal Recovery Trajectory"}</strong>
+                <p>{t?.ai?.m3d || "Session-over-session neuroplastic progress and regression detection"}</p>
               </div>
             </div>
 
             <div className="ai-metric">
               <div className="ai-metric-icon ai-metric-icon--green">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <circle cx="10" cy="10" r="8" stroke="white" strokeWidth="1.5" />
-                  <path d="M10 7v3M10 13h.01" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                </svg>
+                <Pill className="w-5 h-5 text-white" />
               </div>
               <div>
-                <strong>{t?.ai?.m4t || "Hint & Retry Analytics"}</strong>
-                <p>{t?.ai?.m4d || "Frequency and timing of supportive interventions"}</p>
+                <strong>{t?.ai?.m4t || "Medication Adherence & Drug Safety"}</strong>
+                <p>{t?.ai?.m4d || "Tracking on-time dosage compliance and Neo4j drug interaction screening"}</p>
               </div>
             </div>
           </div>
@@ -70,49 +59,46 @@ export const HomeAIEngine = ({ t }) => {
 
         {/* Right: Visual Card showing adaptive difficulty */}
         <div className="ai-right">
-          <div className="ai-visual-card">
+          <div className="ai-visual-card shadow-xl border border-teal-100">
             <div className="avc-header">
-              <strong>{t?.ai?.vc?.title || "Live Cognitive Profile"}</strong>
-              <span className="avc-live">{t?.ai?.vc?.live || "● AI Active"}</span>
+              <strong>{t?.ai?.vc?.title || "Live Neurological Recovery Profile"}</strong>
+              <span className="avc-live text-[#0D7377] font-extrabold">{t?.ai?.vc?.live || "● Clinical AI Active"}</span>
             </div>
             <div className="avc-bars">
               <div className="avc-bar-row">
                 <span>{t?.ai?.vc?.memory || "Memory"}</span>
-                <div className="avc-bar"><div className="avc-fill" style={{ width: "78%" }}></div></div>
+                <div className="avc-bar"><div className="avc-fill" style={{ width: "78%", background: "#0D7377" }}></div></div>
                 <span>78%</span>
               </div>
               <div className="avc-bar-row">
-                <span>{t?.ai?.vc?.attention || "Attention"}</span>
-                <div className="avc-bar"><div className="avc-fill avc-fill--amber" style={{ width: "62%" }}></div></div>
+                <span>{t?.ai?.vc?.attention || "Stroke Rehab"}</span>
+                <div className="avc-bar"><div className="avc-fill" style={{ width: "68%", background: "#0284C7" }}></div></div>
+                <span>68%</span>
+              </div>
+              <div className="avc-bar-row">
+                <span>{t?.ai?.vc?.routine || "Medication"}</span>
+                <div className="avc-bar"><div className="avc-fill" style={{ width: "95%", background: "#059669" }}></div></div>
+                <span>95%</span>
+              </div>
+              <div className="avc-bar-row">
+                <span>{t?.ai?.vc?.pattern || "Parkinson's"}</span>
+                <div className="avc-bar"><div className="avc-fill" style={{ width: "62%", background: "#7C3AED" }}></div></div>
                 <span>62%</span>
               </div>
               <div className="avc-bar-row">
-                <span>{t?.ai?.vc?.routine || "Routine"}</span>
-                <div className="avc-bar"><div className="avc-fill avc-fill--green" style={{ width: "85%" }}></div></div>
-                <span>85%</span>
+                <span>{t?.ai?.vc?.object || "Speech"}</span>
+                <div className="avc-bar"><div className="avc-fill" style={{ width: "74%", background: "#E11D48" }}></div></div>
+                <span>74%</span>
               </div>
               <div className="avc-bar-row">
-                <span>{t?.ai?.vc?.pattern || "Pattern"}</span>
-                <div className="avc-bar"><div className="avc-fill avc-fill--rose" style={{ width: "45%" }}></div></div>
-                <span>45%</span>
-              </div>
-              <div className="avc-bar-row">
-                <span>{t?.ai?.vc?.object || "Object"}</span>
-                <div className="avc-bar"><div className="avc-fill" style={{ width: "71%" }}></div></div>
-                <span>71%</span>
-              </div>
-              <div className="avc-bar-row">
-                <span>{t?.ai?.vc?.emotion || "Emotional"}</span>
-                <div className="avc-bar"><div className="avc-fill avc-fill--green" style={{ width: "90%" }}></div></div>
-                <span>90%</span>
+                <span>{t?.ai?.vc?.emotion || "Vitality"}</span>
+                <div className="avc-bar"><div className="avc-fill" style={{ width: "88%", background: "#DB2777" }}></div></div>
+                <span>88%</span>
               </div>
             </div>
-            <div className="avc-insight">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <circle cx="8" cy="8" r="7" stroke="#2563EB" strokeWidth="1.5" />
-                <path d="M8 5v3M8 10.5h0" stroke="#2563EB" strokeWidth="2" strokeLinecap="round" />
-              </svg>
-              <span>{t?.ai?.vc?.insight || "AI Clinical Insight: Recommend additional practice in Pattern Recognition"}</span>
+            <div className="avc-insight bg-teal-50 border border-teal-200 text-[#0D7377]">
+              <Stethoscope className="w-4 h-4 shrink-0 text-[#0D7377]" />
+              <span className="text-xs font-semibold">{t?.ai?.vc?.insight || "Clinical Recommendation: Maintain morning Levodopa timing; continue bilateral cross-body motor therapy"}</span>
             </div>
           </div>
         </div>

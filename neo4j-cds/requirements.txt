@@ -1,0 +1,27 @@
+# =====================================================================
+# MedGraph Therapy Engine — Dependencies
+# All packages run LOCALLY. Zero cloud API keys required.
+# =====================================================================
+
+# --- Web Framework ---
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.9
+
+# --- OCR (Local, Apache-2.0 — wraps Tesseract C++ engine) ---
+pytesseract==0.3.13
+Pillow==10.4.0
+
+# --- NLP & Medical Keyword Extraction (MIT Licensed, fully local) ---
+spacy==3.7.6
+
+# --- Tokenization, Vectorization & Scoring (BSD/MIT, local) ---
+scikit-learn==1.5.2
+numpy==1.26.4
+
+# --- Neo4j Bolt Driver (Apache-2.0, connects to LOCAL Neo4j instance) ---
+neo4j==5.25.0
+
+# --- Utilities ---
+pydantic==2.9.2
+jinja2==3.1.4

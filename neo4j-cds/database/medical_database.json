@@ -1,0 +1,3246 @@
+{
+  "metadata": {
+    "database_name": "MedGraph Clinical Knowledge Graph",
+    "version": "1.0.0",
+    "total_diseases": 42,
+    "total_therapies": 30,
+    "total_medications": 42,
+    "total_body_areas": 30,
+    "total_symptoms": 25,
+    "total_relationships": 286
+  },
+  "nodes": {
+    "body_areas": [
+      {
+        "id": "ba_head",
+        "name": "Head",
+        "region": "cranial"
+      },
+      {
+        "id": "ba_brain",
+        "name": "Brain",
+        "region": "cranial"
+      },
+      {
+        "id": "ba_neck",
+        "name": "Neck",
+        "region": "cervical"
+      },
+      {
+        "id": "ba_chest",
+        "name": "Chest",
+        "region": "thoracic"
+      },
+      {
+        "id": "ba_lung",
+        "name": "Lung",
+        "region": "thoracic"
+      },
+      {
+        "id": "ba_heart",
+        "name": "Heart",
+        "region": "thoracic"
+      },
+      {
+        "id": "ba_abdomen",
+        "name": "Abdomen",
+        "region": "abdominal"
+      },
+      {
+        "id": "ba_liver",
+        "name": "Liver",
+        "region": "abdominal"
+      },
+      {
+        "id": "ba_kidney",
+        "name": "Kidney",
+        "region": "abdominal"
+      },
+      {
+        "id": "ba_stomach",
+        "name": "Stomach",
+        "region": "abdominal"
+      },
+      {
+        "id": "ba_intestine",
+        "name": "Intestine",
+        "region": "abdominal"
+      },
+      {
+        "id": "ba_spine",
+        "name": "Spine",
+        "region": "spinal"
+      },
+      {
+        "id": "ba_shoulder",
+        "name": "Shoulder",
+        "region": "upper extremity"
+      },
+      {
+        "id": "ba_arm",
+        "name": "Arm",
+        "region": "upper extremity"
+      },
+      {
+        "id": "ba_elbow",
+        "name": "Elbow",
+        "region": "upper extremity"
+      },
+      {
+        "id": "ba_wrist",
+        "name": "Wrist",
+        "region": "upper extremity"
+      },
+      {
+        "id": "ba_hand",
+        "name": "Hand",
+        "region": "upper extremity"
+      },
+      {
+        "id": "ba_hip",
+        "name": "Hip",
+        "region": "lower extremity"
+      },
+      {
+        "id": "ba_knee",
+        "name": "Knee",
+        "region": "lower extremity"
+      },
+      {
+        "id": "ba_leg",
+        "name": "Leg",
+        "region": "lower extremity"
+      },
+      {
+        "id": "ba_ankle",
+        "name": "Ankle",
+        "region": "lower extremity"
+      },
+      {
+        "id": "ba_foot",
+        "name": "Foot",
+        "region": "lower extremity"
+      },
+      {
+        "id": "ba_skin",
+        "name": "Skin",
+        "region": "integumentary"
+      },
+      {
+        "id": "ba_blood_vessel",
+        "name": "Blood Vessels",
+        "region": "vascular"
+      },
+      {
+        "id": "ba_nerve",
+        "name": "Peripheral Nerves",
+        "region": "nervous"
+      },
+      {
+        "id": "ba_muscle",
+        "name": "Muscle Tissue",
+        "region": "musculoskeletal"
+      },
+      {
+        "id": "ba_bone",
+        "name": "Bone",
+        "region": "musculoskeletal"
+      },
+      {
+        "id": "ba_joint",
+        "name": "Joint",
+        "region": "musculoskeletal"
+      },
+      {
+        "id": "ba_eye",
+        "name": "Eye",
+        "region": "cranial"
+      },
+      {
+        "id": "ba_pancreas",
+        "name": "Pancreas",
+        "region": "abdominal"
+      }
+    ],
+    "symptoms": [
+      {
+        "id": "sym_pain",
+        "name": "Pain",
+        "description": "Acute or chronic pain sensation"
+      },
+      {
+        "id": "sym_swelling",
+        "name": "Swelling",
+        "description": "Edema or tissue swelling"
+      },
+      {
+        "id": "sym_stiffness",
+        "name": "Stiffness",
+        "description": "Joint or muscle stiffness"
+      },
+      {
+        "id": "sym_weakness",
+        "name": "Weakness",
+        "description": "Muscle weakness or fatigue"
+      },
+      {
+        "id": "sym_numbness",
+        "name": "Numbness",
+        "description": "Loss of sensation or tingling"
+      },
+      {
+        "id": "sym_fever",
+        "name": "Fever",
+        "description": "Elevated body temperature"
+      },
+      {
+        "id": "sym_redness",
+        "name": "Redness",
+        "description": "Erythema or skin redness"
+      },
+      {
+        "id": "sym_warmth",
+        "name": "Warmth",
+        "description": "Localized heat in affected area"
+      },
+      {
+        "id": "sym_deformity",
+        "name": "Deformity",
+        "description": "Visible misalignment or deformity"
+      },
+      {
+        "id": "sym_instability",
+        "name": "Instability",
+        "description": "Joint giving way or buckling"
+      },
+      {
+        "id": "sym_crepitus",
+        "name": "Crepitus",
+        "description": "Grinding or cracking sound in joints"
+      },
+      {
+        "id": "sym_loss_function",
+        "name": "Loss of Function",
+        "description": "Inability to use affected area"
+      },
+      {
+        "id": "sym_sob",
+        "name": "Shortness of Breath",
+        "description": "Dyspnea or difficulty breathing"
+      },
+      {
+        "id": "sym_chest_pain",
+        "name": "Chest Pain",
+        "description": "Thoracic pain or angina"
+      },
+      {
+        "id": "sym_headache",
+        "name": "Headache",
+        "description": "Cephalalgia or head pain"
+      },
+      {
+        "id": "sym_dizziness",
+        "name": "Dizziness",
+        "description": "Vertigo or lightheadedness"
+      },
+      {
+        "id": "sym_nausea",
+        "name": "Nausea",
+        "description": "Feeling of sickness or emesis"
+      },
+      {
+        "id": "sym_bleeding",
+        "name": "Bleeding",
+        "description": "Hemorrhage or blood loss"
+      },
+      {
+        "id": "sym_bruising",
+        "name": "Bruising",
+        "description": "Contusion or ecchymosis"
+      },
+      {
+        "id": "sym_discharge",
+        "name": "Discharge",
+        "description": "Abnormal fluid drainage"
+      },
+      {
+        "id": "sym_skin_changes",
+        "name": "Skin Changes",
+        "description": "Discoloration, rash, or wound"
+      },
+      {
+        "id": "sym_limited_rom",
+        "name": "Limited Range of Motion",
+        "description": "Restricted movement"
+      },
+      {
+        "id": "sym_fatigue",
+        "name": "Fatigue",
+        "description": "Persistent tiredness and exhaustion"
+      },
+      {
+        "id": "sym_weight_loss",
+        "name": "Weight Loss",
+        "description": "Unexplained weight reduction"
+      },
+      {
+        "id": "sym_muscle_spasm",
+        "name": "Muscle Spasm",
+        "description": "Involuntary muscle contraction"
+      }
+    ],
+    "therapies": [
+      {
+        "id": "th_physio",
+        "name": "Physical Therapy",
+        "description": "Exercise-based rehabilitation to restore movement, strength, and function through guided physical exercises, stretching, and progressive resistance training",
+        "type": "physical",
+        "duration": "6-12 weeks",
+        "contraindications": "acute fractures, severe cardiac conditions"
+      },
+      {
+        "id": "th_hydro",
+        "name": "Hydrotherapy",
+        "description": "Water-based therapy using buoyancy and resistance for joint mobilization, pain relief, and muscle strengthening in warm water pools",
+        "type": "physical",
+        "duration": "4-8 weeks",
+        "contraindications": "open wounds, urinary infections, severe cardiac disease"
+      },
+      {
+        "id": "th_cryo",
+        "name": "Cryotherapy",
+        "description": "Cold application therapy to reduce swelling, inflammation, pain, and muscle spasm through ice packs, cold compression, or whole-body cryotherapy",
+        "type": "physical",
+        "duration": "acute: 48-72 hours",
+        "contraindications": "Raynaud disease, cold sensitivity, peripheral vascular disease"
+      },
+      {
+        "id": "th_heat",
+        "name": "Heat Therapy",
+        "description": "Application of heat via hot packs, infrared lamps, or paraffin baths to increase blood flow, relax muscles, reduce stiffness, and relieve chronic pain",
+        "type": "physical",
+        "duration": "ongoing as needed",
+        "contraindications": "acute inflammation, hemorrhage, impaired sensation"
+      },
+      {
+        "id": "th_tens",
+        "name": "TENS Therapy",
+        "description": "Transcutaneous Electrical Nerve Stimulation using low-voltage electrical currents to block pain signals and stimulate endorphin release",
+        "type": "electrotherapy",
+        "duration": "ongoing sessions",
+        "contraindications": "pacemaker, pregnancy (abdominal), epilepsy"
+      },
+      {
+        "id": "th_ultrasound",
+        "name": "Therapeutic Ultrasound",
+        "description": "Deep tissue heating using sound waves to promote tissue healing, reduce scar tissue, increase blood flow, and decrease inflammation",
+        "type": "electrotherapy",
+        "duration": "4-6 weeks",
+        "contraindications": "over malignancy, growth plates, eyes, pregnant uterus"
+      },
+      {
+        "id": "th_massage",
+        "name": "Therapeutic Massage",
+        "description": "Manual manipulation of soft tissues to reduce muscle tension, improve circulation, decrease pain, and promote lymphatic drainage",
+        "type": "manual",
+        "duration": "ongoing sessions",
+        "contraindications": "DVT, open wounds, skin infections, fractures"
+      },
+      {
+        "id": "th_manual",
+        "name": "Manual Therapy / Mobilization",
+        "description": "Hands-on joint mobilization and manipulation to restore range of motion, reduce pain, and improve joint mechanics",
+        "type": "manual",
+        "duration": "4-8 weeks",
+        "contraindications": "osteoporosis, fractures, spinal cord compression"
+      },
+      {
+        "id": "th_traction",
+        "name": "Spinal Traction",
+        "description": "Mechanical or manual stretching of the spine to decompress nerve roots, reduce disc herniation pressure, and relieve radiculopathy",
+        "type": "mechanical",
+        "duration": "4-6 weeks",
+        "contraindications": "spinal tumors, osteoporosis, pregnancy, spinal infections"
+      },
+      {
+        "id": "th_splint",
+        "name": "Splinting / Immobilization",
+        "description": "External fixation using splints, braces, or casts to protect injured structures, maintain alignment, and allow healing",
+        "type": "mechanical",
+        "duration": "2-8 weeks",
+        "contraindications": "compartment syndrome risk"
+      },
+      {
+        "id": "th_compression",
+        "name": "Compression Therapy",
+        "description": "Application of graduated compression stockings or bandages to reduce edema, prevent blood clots, and improve venous return",
+        "type": "mechanical",
+        "duration": "ongoing",
+        "contraindications": "peripheral artery disease, skin infection"
+      },
+      {
+        "id": "th_elevation",
+        "name": "Elevation Therapy",
+        "description": "Elevating the affected limb above heart level to reduce swelling through gravity-assisted venous and lymphatic drainage",
+        "type": "positional",
+        "duration": "acute: 48-72 hours",
+        "contraindications": "none significant"
+      },
+      {
+        "id": "th_rom",
+        "name": "Range of Motion Exercises",
+        "description": "Active and passive exercises to maintain and restore joint flexibility, prevent contractures, and improve functional mobility",
+        "type": "exercise",
+        "duration": "ongoing",
+        "contraindications": "unstable fractures, acute inflammation"
+      },
+      {
+        "id": "th_strength",
+        "name": "Strengthening Exercises",
+        "description": "Progressive resistance training to rebuild muscle strength, improve stability, and support injured joints through isometric, isotonic, and isokinetic protocols",
+        "type": "exercise",
+        "duration": "8-16 weeks",
+        "contraindications": "acute injury phase, uncontrolled hypertension"
+      },
+      {
+        "id": "th_balance",
+        "name": "Balance & Proprioception Training",
+        "description": "Exercises on unstable surfaces and with perturbation to restore proprioceptive awareness, prevent re-injury, and improve neuromuscular control",
+        "type": "exercise",
+        "duration": "6-12 weeks",
+        "contraindications": "acute vertigo, severe balance disorders"
+      },
+      {
+        "id": "th_occupational",
+        "name": "Occupational Therapy",
+        "description": "Rehabilitation focused on activities of daily living, hand function, adaptive equipment, and workplace ergonomics",
+        "type": "rehabilitation",
+        "duration": "8-16 weeks",
+        "contraindications": "none significant"
+      },
+      {
+        "id": "th_speech",
+        "name": "Speech & Swallowing Therapy",
+        "description": "Therapy for speech, language, cognitive-communication, and swallowing disorders following stroke or neurological injury",
+        "type": "rehabilitation",
+        "duration": "12-24 weeks",
+        "contraindications": "none significant"
+      },
+      {
+        "id": "th_respiratory",
+        "name": "Respiratory Therapy",
+        "description": "Breathing exercises, chest physiotherapy, incentive spirometry, and airway clearance techniques for pulmonary conditions",
+        "type": "respiratory",
+        "duration": "ongoing",
+        "contraindications": "pneumothorax without chest tube"
+      },
+      {
+        "id": "th_wound_care",
+        "name": "Wound Care Management",
+        "description": "Systematic wound assessment, debridement, dressing changes, infection control, and promotion of tissue granulation and epithelialization",
+        "type": "wound",
+        "duration": "until healed",
+        "contraindications": "none significant"
+      },
+      {
+        "id": "th_thrombolysis",
+        "name": "Thrombolytic Therapy",
+        "description": "Administration of clot-dissolving agents to restore blood flow in acute thrombotic events like stroke, pulmonary embolism, and DVT",
+        "type": "emergency",
+        "duration": "acute intervention",
+        "contraindications": "active bleeding, recent surgery, hemorrhagic stroke"
+      },
+      {
+        "id": "th_anticoag",
+        "name": "Anticoagulation Therapy",
+        "description": "Blood thinning therapy to prevent and treat blood clots through heparin, warfarin, or direct oral anticoagulants",
+        "type": "pharmacological",
+        "duration": "3-12 months",
+        "contraindications": "active bleeding, bleeding disorders"
+      },
+      {
+        "id": "th_insulin",
+        "name": "Insulin Therapy",
+        "description": "Exogenous insulin administration to manage blood glucose levels in diabetes through subcutaneous injection or insulin pump",
+        "type": "endocrine",
+        "duration": "lifelong for Type 1, variable for Type 2",
+        "contraindications": "hypoglycemia"
+      },
+      {
+        "id": "th_dialysis",
+        "name": "Dialysis Therapy",
+        "description": "Renal replacement therapy using hemodialysis or peritoneal dialysis to filter waste products when kidneys fail",
+        "type": "renal",
+        "duration": "ongoing until transplant",
+        "contraindications": "hemodynamic instability"
+      },
+      {
+        "id": "th_chemo",
+        "name": "Chemotherapy",
+        "description": "Systemic administration of cytotoxic drugs to destroy rapidly dividing cancer cells through various protocols and cycles",
+        "type": "oncology",
+        "duration": "multiple cycles",
+        "contraindications": "severe immunosuppression, organ failure"
+      },
+      {
+        "id": "th_radiation",
+        "name": "Radiation Therapy",
+        "description": "Targeted high-energy radiation beams to destroy cancer cells and shrink tumors while minimizing damage to surrounding tissue",
+        "type": "oncology",
+        "duration": "5-7 weeks typically",
+        "contraindications": "pregnancy, prior radiation to same area"
+      },
+      {
+        "id": "th_cbt",
+        "name": "Cognitive Behavioral Therapy",
+        "description": "Psychological therapy for chronic pain management, addressing pain catastrophizing, fear avoidance, and developing coping strategies",
+        "type": "psychological",
+        "duration": "8-16 sessions",
+        "contraindications": "acute psychosis"
+      },
+      {
+        "id": "th_acupuncture",
+        "name": "Acupuncture",
+        "description": "Insertion of fine needles at specific points to modulate pain pathways, reduce inflammation, and promote natural healing",
+        "type": "complementary",
+        "duration": "6-12 sessions",
+        "contraindications": "bleeding disorders, anticoagulant therapy"
+      },
+      {
+        "id": "th_laser",
+        "name": "Low-Level Laser Therapy",
+        "description": "Application of low-intensity laser light to stimulate cellular repair, reduce inflammation, and accelerate tissue healing",
+        "type": "electrotherapy",
+        "duration": "6-12 sessions",
+        "contraindications": "over malignancy, eyes, pregnancy"
+      },
+      {
+        "id": "th_shockwave",
+        "name": "Extracorporeal Shockwave Therapy",
+        "description": "High-energy acoustic waves directed at chronic tendinopathy to stimulate neovascularization and tissue remodeling",
+        "type": "mechanical",
+        "duration": "3-6 sessions",
+        "contraindications": "over nerves, blood vessels, lung tissue, growth plates"
+      },
+      {
+        "id": "th_lymphatic",
+        "name": "Manual Lymphatic Drainage",
+        "description": "Gentle massage technique to stimulate lymphatic flow, reduce lymphedema, and decrease post-surgical swelling",
+        "type": "manual",
+        "duration": "ongoing as needed",
+        "contraindications": "active infection, DVT, cardiac failure"
+      }
+    ],
+    "medications": [
+      {
+        "id": "med_ibuprofen",
+        "name": "Ibuprofen",
+        "description": "Non-steroidal anti-inflammatory drug for pain, inflammation, swelling, and fever reduction",
+        "dosage": "200-800mg",
+        "form": "oral tablet",
+        "frequency": "every 6-8 hours",
+        "contraindications": "GI ulcers, renal impairment, aspirin allergy"
+      },
+      {
+        "id": "med_naproxen",
+        "name": "Naproxen",
+        "description": "Long-acting NSAID for inflammation, arthritis pain, musculoskeletal pain, and swelling",
+        "dosage": "250-500mg",
+        "form": "oral tablet",
+        "frequency": "twice daily",
+        "contraindications": "GI bleeding, renal failure, cardiac disease"
+      },
+      {
+        "id": "med_diclofenac",
+        "name": "Diclofenac",
+        "description": "Potent NSAID available in oral and topical forms for acute musculoskeletal pain, inflammation, and post-surgical swelling",
+        "dosage": "50-75mg oral / 1% gel topical",
+        "form": "tablet / topical gel",
+        "frequency": "2-3 times daily",
+        "contraindications": "GI ulcers, hepatic impairment"
+      },
+      {
+        "id": "med_celecoxib",
+        "name": "Celecoxib",
+        "description": "COX-2 selective NSAID with reduced GI side effects for osteoarthritis, rheumatoid arthritis, and acute pain",
+        "dosage": "100-200mg",
+        "form": "oral capsule",
+        "frequency": "once or twice daily",
+        "contraindications": "sulfonamide allergy, cardiovascular disease"
+      },
+      {
+        "id": "med_paracetamol",
+        "name": "Paracetamol (Acetaminophen)",
+        "description": "First-line analgesic and antipyretic for mild to moderate pain and fever reduction",
+        "dosage": "500-1000mg",
+        "form": "oral tablet",
+        "frequency": "every 4-6 hours (max 4g/day)",
+        "contraindications": "severe hepatic impairment"
+      },
+      {
+        "id": "med_tramadol",
+        "name": "Tramadol",
+        "description": "Centrally acting opioid analgesic for moderate to severe pain with lower abuse potential than strong opioids",
+        "dosage": "50-100mg",
+        "form": "oral tablet",
+        "frequency": "every 4-6 hours",
+        "contraindications": "seizure disorders, MAO inhibitors, respiratory depression"
+      },
+      {
+        "id": "med_gabapentin",
+        "name": "Gabapentin",
+        "description": "Anticonvulsant used for neuropathic pain, nerve damage pain, post-herpetic neuralgia, and diabetic neuropathy",
+        "dosage": "300-3600mg/day",
+        "form": "oral capsule",
+        "frequency": "three times daily",
+        "contraindications": "renal impairment (dose adjustment)"
+      },
+      {
+        "id": "med_pregabalin",
+        "name": "Pregabalin",
+        "description": "Anticonvulsant for neuropathic pain, fibromyalgia, and generalized anxiety with nerve pain component",
+        "dosage": "75-300mg",
+        "form": "oral capsule",
+        "frequency": "twice daily",
+        "contraindications": "renal impairment, angioedema history"
+      },
+      {
+        "id": "med_prednisone",
+        "name": "Prednisone",
+        "description": "Oral corticosteroid for severe inflammation, autoimmune conditions, allergic reactions, and flare management",
+        "dosage": "5-60mg",
+        "form": "oral tablet",
+        "frequency": "once daily (with taper)",
+        "contraindications": "systemic fungal infections, live vaccines"
+      },
+      {
+        "id": "med_methylpred",
+        "name": "Methylprednisolone",
+        "description": "Potent corticosteroid for acute inflammatory conditions, spinal cord injury, severe allergic reactions, and joint injections",
+        "dosage": "4-48mg oral / 40-120mg injection",
+        "form": "oral / injection",
+        "frequency": "varies by indication",
+        "contraindications": "systemic infections, GI perforation"
+      },
+      {
+        "id": "med_cortisone_inj",
+        "name": "Cortisone Injection",
+        "description": "Local corticosteroid injection directly into joints or soft tissues for targeted inflammation and pain relief",
+        "dosage": "25-50mg per injection",
+        "form": "intra-articular injection",
+        "frequency": "every 3-6 months max",
+        "contraindications": "joint infection, bleeding disorders"
+      },
+      {
+        "id": "med_cyclobenzaprine",
+        "name": "Cyclobenzaprine",
+        "description": "Skeletal muscle relaxant for acute muscle spasm, strain-related pain, and musculoskeletal spasticity",
+        "dosage": "5-10mg",
+        "form": "oral tablet",
+        "frequency": "three times daily",
+        "contraindications": "MAO inhibitors, cardiac arrhythmias, hyperthyroidism"
+      },
+      {
+        "id": "med_baclofen",
+        "name": "Baclofen",
+        "description": "GABA-B agonist muscle relaxant for spasticity from spinal cord injury, multiple sclerosis, and cerebral palsy",
+        "dosage": "5-20mg",
+        "form": "oral tablet",
+        "frequency": "three times daily",
+        "contraindications": "epilepsy (caution), renal impairment"
+      },
+      {
+        "id": "med_tizanidine",
+        "name": "Tizanidine",
+        "description": "Alpha-2 adrenergic agonist for muscle spasticity and associated pain in multiple sclerosis and spinal cord injury",
+        "dosage": "2-8mg",
+        "form": "oral tablet",
+        "frequency": "every 6-8 hours",
+        "contraindications": "hepatic impairment, concurrent CYP1A2 inhibitors"
+      },
+      {
+        "id": "med_heparin",
+        "name": "Heparin",
+        "description": "Rapid-acting anticoagulant for prevention and treatment of deep vein thrombosis, pulmonary embolism, and clot formation",
+        "dosage": "5000-10000 units",
+        "form": "IV / subcutaneous injection",
+        "frequency": "continuous IV or every 8-12 hours SC",
+        "contraindications": "active bleeding, HIT, severe thrombocytopenia"
+      },
+      {
+        "id": "med_warfarin",
+        "name": "Warfarin",
+        "description": "Oral anticoagulant for long-term prevention of blood clots, stroke prevention in atrial fibrillation, and DVT/PE treatment",
+        "dosage": "2-10mg (INR-guided)",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "pregnancy, active bleeding, recent surgery"
+      },
+      {
+        "id": "med_rivaroxaban",
+        "name": "Rivaroxaban",
+        "description": "Direct oral anticoagulant (DOAC) Factor Xa inhibitor for DVT/PE treatment and stroke prevention without INR monitoring",
+        "dosage": "10-20mg",
+        "form": "oral tablet",
+        "frequency": "once or twice daily",
+        "contraindications": "active bleeding, severe hepatic disease"
+      },
+      {
+        "id": "med_aspirin",
+        "name": "Aspirin (Low-Dose)",
+        "description": "Antiplatelet agent for cardiovascular protection, secondary stroke prevention, and peripheral artery disease",
+        "dosage": "75-325mg",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "active GI bleeding, aspirin allergy, children under 16"
+      },
+      {
+        "id": "med_enoxaparin",
+        "name": "Enoxaparin",
+        "description": "Low molecular weight heparin for DVT prophylaxis, treatment of acute coronary syndrome, and bridge anticoagulation",
+        "dosage": "40mg prophylaxis / 1mg/kg treatment",
+        "form": "subcutaneous injection",
+        "frequency": "once or twice daily",
+        "contraindications": "active bleeding, HIT, severe renal impairment"
+      },
+      {
+        "id": "med_amoxicillin",
+        "name": "Amoxicillin",
+        "description": "Broad-spectrum penicillin antibiotic for bacterial infections including skin, respiratory, urinary, and bone infections",
+        "dosage": "250-500mg",
+        "form": "oral capsule",
+        "frequency": "three times daily for 7-14 days",
+        "contraindications": "penicillin allergy"
+      },
+      {
+        "id": "med_cephalexin",
+        "name": "Cephalexin",
+        "description": "First-generation cephalosporin for skin infections, cellulitis, bone infections, and UTIs",
+        "dosage": "250-500mg",
+        "form": "oral capsule",
+        "frequency": "four times daily",
+        "contraindications": "cephalosporin allergy"
+      },
+      {
+        "id": "med_clindamycin",
+        "name": "Clindamycin",
+        "description": "Lincosamide antibiotic for serious skin, bone, and soft tissue infections, especially in penicillin-allergic patients",
+        "dosage": "150-450mg",
+        "form": "oral capsule",
+        "frequency": "every 6-8 hours",
+        "contraindications": "C. difficile history"
+      },
+      {
+        "id": "med_ciprofloxacin",
+        "name": "Ciprofloxacin",
+        "description": "Fluoroquinolone antibiotic for complicated urinary tract, bone, joint, and respiratory infections",
+        "dosage": "250-750mg",
+        "form": "oral tablet",
+        "frequency": "twice daily",
+        "contraindications": "tendon disorders, myasthenia gravis, QT prolongation"
+      },
+      {
+        "id": "med_calcium",
+        "name": "Calcium + Vitamin D",
+        "description": "Calcium and vitamin D supplementation for bone health, osteoporosis prevention, and fracture healing support",
+        "dosage": "500-1000mg calcium + 400-800 IU vitamin D",
+        "form": "oral tablet",
+        "frequency": "once or twice daily",
+        "contraindications": "hypercalcemia, kidney stones"
+      },
+      {
+        "id": "med_alendronate",
+        "name": "Alendronate",
+        "description": "Bisphosphonate for osteoporosis treatment and prevention, reducing fracture risk by inhibiting bone resorption",
+        "dosage": "70mg",
+        "form": "oral tablet",
+        "frequency": "once weekly",
+        "contraindications": "esophageal disorders, hypocalcemia, renal impairment"
+      },
+      {
+        "id": "med_colchicine",
+        "name": "Colchicine",
+        "description": "Anti-inflammatory agent specifically for acute gout flares and gout prophylaxis by inhibiting neutrophil migration",
+        "dosage": "0.5-1mg",
+        "form": "oral tablet",
+        "frequency": "twice daily during flare",
+        "contraindications": "severe renal/hepatic impairment, blood dyscrasias"
+      },
+      {
+        "id": "med_allopurinol",
+        "name": "Allopurinol",
+        "description": "Xanthine oxidase inhibitor to lower uric acid levels for chronic gout management and prevention of urate crystal deposition",
+        "dosage": "100-300mg",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "acute gout flare (initiation), severe renal impairment"
+      },
+      {
+        "id": "med_metformin",
+        "name": "Metformin",
+        "description": "First-line oral antidiabetic for type 2 diabetes, improving insulin sensitivity and reducing hepatic glucose output",
+        "dosage": "500-2000mg",
+        "form": "oral tablet",
+        "frequency": "twice daily with meals",
+        "contraindications": "renal impairment (eGFR < 30), lactic acidosis risk"
+      },
+      {
+        "id": "med_insulin_glargine",
+        "name": "Insulin Glargine",
+        "description": "Long-acting basal insulin for type 1 and type 2 diabetes providing 24-hour glucose control",
+        "dosage": "10-80 units",
+        "form": "subcutaneous injection",
+        "frequency": "once daily",
+        "contraindications": "hypoglycemia"
+      },
+      {
+        "id": "med_atorvastatin",
+        "name": "Atorvastatin",
+        "description": "HMG-CoA reductase inhibitor (statin) for cholesterol reduction, atherosclerosis management, and cardiovascular risk reduction",
+        "dosage": "10-80mg",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "liver disease, pregnancy, myopathy"
+      },
+      {
+        "id": "med_amlodipine",
+        "name": "Amlodipine",
+        "description": "Calcium channel blocker for hypertension, angina, and coronary artery disease management",
+        "dosage": "5-10mg",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "severe aortic stenosis, cardiogenic shock"
+      },
+      {
+        "id": "med_lisinopril",
+        "name": "Lisinopril",
+        "description": "ACE inhibitor for hypertension, heart failure, and diabetic nephropathy protection",
+        "dosage": "5-40mg",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "pregnancy, angioedema history, bilateral renal artery stenosis"
+      },
+      {
+        "id": "med_salbutamol",
+        "name": "Salbutamol (Albuterol)",
+        "description": "Short-acting beta-2 agonist bronchodilator for acute bronchospasm, asthma, and COPD symptom relief",
+        "dosage": "100-200mcg per puff",
+        "form": "inhaler / nebulizer",
+        "frequency": "as needed (max 8 puffs/day)",
+        "contraindications": "hypertrophic cardiomyopathy"
+      },
+      {
+        "id": "med_amoxiclav",
+        "name": "Amoxicillin-Clavulanate",
+        "description": "Enhanced penicillin with beta-lactamase inhibitor for pneumonia, sinusitis, and complicated skin infections",
+        "dosage": "625-1000mg",
+        "form": "oral tablet",
+        "frequency": "twice or three times daily",
+        "contraindications": "penicillin allergy, hepatic impairment"
+      },
+      {
+        "id": "med_silver_sulfadiazine",
+        "name": "Silver Sulfadiazine",
+        "description": "Topical antimicrobial cream for burn wound infection prevention and treatment",
+        "dosage": "1% cream",
+        "form": "topical cream",
+        "frequency": "once or twice daily",
+        "contraindications": "sulfonamide allergy, premature infants"
+      },
+      {
+        "id": "med_mupirocin",
+        "name": "Mupirocin",
+        "description": "Topical antibiotic for superficial skin infections, impetigo, and wound infection prevention",
+        "dosage": "2% ointment",
+        "form": "topical ointment",
+        "frequency": "three times daily for 10 days",
+        "contraindications": "large open wounds (polyethylene glycol absorption)"
+      },
+      {
+        "id": "med_omeprazole",
+        "name": "Omeprazole",
+        "description": "Proton pump inhibitor for peptic ulcers, GERD, and GI protection during NSAID therapy",
+        "dosage": "20-40mg",
+        "form": "oral capsule",
+        "frequency": "once daily before breakfast",
+        "contraindications": "none significant (long-term: monitor magnesium)"
+      },
+      {
+        "id": "med_mesalamine",
+        "name": "Mesalamine",
+        "description": "5-ASA anti-inflammatory for ulcerative colitis and inflammatory bowel disease maintenance",
+        "dosage": "800mg-1.2g",
+        "form": "oral tablet / rectal",
+        "frequency": "2-3 times daily",
+        "contraindications": "salicylate allergy, renal impairment"
+      },
+      {
+        "id": "med_alteplase",
+        "name": "Alteplase (tPA)",
+        "description": "Tissue plasminogen activator for emergency dissolution of blood clots in acute ischemic stroke and pulmonary embolism",
+        "dosage": "0.9mg/kg (max 90mg)",
+        "form": "IV infusion",
+        "frequency": "single dose in emergency",
+        "contraindications": "active bleeding, recent surgery, hemorrhagic stroke"
+      },
+      {
+        "id": "med_methotrexate",
+        "name": "Methotrexate",
+        "description": "Disease-modifying antirheumatic drug (DMARD) for rheumatoid arthritis, psoriatic arthritis, and autoimmune conditions",
+        "dosage": "7.5-25mg",
+        "form": "oral / injection",
+        "frequency": "once weekly",
+        "contraindications": "pregnancy, liver disease, immunodeficiency, renal impairment"
+      },
+      {
+        "id": "med_hydroxychloroquine",
+        "name": "Hydroxychloroquine",
+        "description": "DMARD for rheumatoid arthritis and systemic lupus with anti-inflammatory and immunomodulatory effects",
+        "dosage": "200-400mg",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "retinal disease, G6PD deficiency"
+      },
+      {
+        "id": "med_furosemide",
+        "name": "Furosemide",
+        "description": "Loop diuretic for edema reduction in heart failure, renal disease, and hepatic cirrhosis",
+        "dosage": "20-80mg",
+        "form": "oral / IV",
+        "frequency": "once or twice daily",
+        "contraindications": "anuria, severe electrolyte depletion"
+      }
+    ],
+    "diseases": [
+      {
+        "id": "dis_fracture",
+        "name": "Bone Fracture",
+        "description": "Complete or partial break in bone continuity due to trauma, stress, or pathological weakening",
+        "category": "orthopedic",
+        "tags": [
+          "fracture",
+          "broken bone",
+          "crack",
+          "displaced",
+          "comminuted",
+          "stress fracture",
+          "hairline"
+        ]
+      },
+      {
+        "id": "dis_acl_tear",
+        "name": "ACL Tear",
+        "description": "Anterior cruciate ligament tear in the knee causing instability and functional impairment",
+        "category": "orthopedic",
+        "tags": [
+          "acl",
+          "ligament tear",
+          "cruciate",
+          "knee instability",
+          "sprain",
+          "grade iii sprain"
+        ]
+      },
+      {
+        "id": "dis_meniscus",
+        "name": "Meniscus Tear",
+        "description": "Tear in the knee meniscal cartilage causing pain, locking, and swelling",
+        "category": "orthopedic",
+        "tags": [
+          "meniscus",
+          "meniscal tear",
+          "knee cartilage",
+          "locking knee",
+          "torn meniscus"
+        ]
+      },
+      {
+        "id": "dis_rotator_cuff",
+        "name": "Rotator Cuff Tear",
+        "description": "Tear in one or more rotator cuff tendons causing shoulder pain and weakness",
+        "category": "orthopedic",
+        "tags": [
+          "rotator cuff",
+          "shoulder tear",
+          "supraspinatus",
+          "shoulder weakness",
+          "tear"
+        ]
+      },
+      {
+        "id": "dis_disc_herniation",
+        "name": "Spinal Disc Herniation",
+        "description": "Rupture or protrusion of intervertebral disc material compressing spinal nerves causing radiculopathy",
+        "category": "orthopedic",
+        "tags": [
+          "disc herniation",
+          "herniated disc",
+          "bulging disc",
+          "prolapse",
+          "sciatica",
+          "radiculopathy",
+          "nerve compression"
+        ]
+      },
+      {
+        "id": "dis_osteoarthritis",
+        "name": "Osteoarthritis",
+        "description": "Degenerative joint disease with cartilage loss, osteophyte formation, and progressive joint dysfunction",
+        "category": "orthopedic",
+        "tags": [
+          "osteoarthritis",
+          "degenerative",
+          "cartilage loss",
+          "joint space narrowing",
+          "osteophyte",
+          "bone spur",
+          "wear and tear"
+        ]
+      },
+      {
+        "id": "dis_rheumatoid",
+        "name": "Rheumatoid Arthritis",
+        "description": "Autoimmune inflammatory arthritis causing symmetric joint inflammation, erosion, and systemic effects",
+        "category": "autoimmune",
+        "tags": [
+          "rheumatoid",
+          "autoimmune",
+          "arthritis",
+          "joint inflammation",
+          "synovitis",
+          "erosion"
+        ]
+      },
+      {
+        "id": "dis_tendinitis",
+        "name": "Tendinitis",
+        "description": "Inflammation or irritation of a tendon causing pain and tenderness near joints",
+        "category": "orthopedic",
+        "tags": [
+          "tendinitis",
+          "tendonitis",
+          "tendon inflammation",
+          "tennis elbow",
+          "golfer elbow",
+          "achilles tendinitis"
+        ]
+      },
+      {
+        "id": "dis_bursitis",
+        "name": "Bursitis",
+        "description": "Inflammation of bursae (fluid-filled sacs) near joints causing pain and restricted movement",
+        "category": "orthopedic",
+        "tags": [
+          "bursitis",
+          "bursa inflammation",
+          "prepatellar",
+          "olecranon",
+          "trochanteric"
+        ]
+      },
+      {
+        "id": "dis_muscle_strain",
+        "name": "Muscle Strain",
+        "description": "Stretching or tearing of muscle fibers due to overuse, fatigue, or acute trauma",
+        "category": "orthopedic",
+        "tags": [
+          "strain",
+          "muscle tear",
+          "pulled muscle",
+          "muscle injury",
+          "grade i strain",
+          "grade ii strain"
+        ]
+      },
+      {
+        "id": "dis_spinal_stenosis",
+        "name": "Spinal Stenosis",
+        "description": "Narrowing of spinal canal compressing the spinal cord and nerve roots causing pain and neurological symptoms",
+        "category": "orthopedic",
+        "tags": [
+          "stenosis",
+          "narrowing",
+          "spinal canal",
+          "cord compression",
+          "claudication"
+        ]
+      },
+      {
+        "id": "dis_osteoporosis",
+        "name": "Osteoporosis",
+        "description": "Systemic skeletal disease with reduced bone mineral density increasing fracture risk",
+        "category": "orthopedic",
+        "tags": [
+          "osteoporosis",
+          "osteopenia",
+          "bone density loss",
+          "t-score",
+          "fragility fracture"
+        ]
+      },
+      {
+        "id": "dis_plantar_fasciitis",
+        "name": "Plantar Fasciitis",
+        "description": "Inflammation of the plantar fascia causing heel pain, especially with first steps in the morning",
+        "category": "orthopedic",
+        "tags": [
+          "plantar fasciitis",
+          "heel pain",
+          "fasciitis",
+          "plantar",
+          "foot pain"
+        ]
+      },
+      {
+        "id": "dis_dvt",
+        "name": "Deep Vein Thrombosis",
+        "description": "Blood clot formation in deep veins, typically in the legs, causing swelling, pain, and risk of pulmonary embolism",
+        "category": "cardiovascular",
+        "tags": [
+          "dvt",
+          "deep vein thrombosis",
+          "blood clot",
+          "thrombus",
+          "thrombosis",
+          "leg clot",
+          "venous thrombosis"
+        ]
+      },
+      {
+        "id": "dis_pe",
+        "name": "Pulmonary Embolism",
+        "description": "Blood clot lodged in pulmonary arteries blocking blood flow to lungs causing chest pain and dyspnea",
+        "category": "cardiovascular",
+        "tags": [
+          "pulmonary embolism",
+          "pe",
+          "lung clot",
+          "embolus",
+          "chest pain",
+          "dyspnea"
+        ]
+      },
+      {
+        "id": "dis_stroke",
+        "name": "Ischemic Stroke",
+        "description": "Acute cerebrovascular event due to blood clot blocking brain blood supply causing neurological deficits",
+        "category": "neurological",
+        "tags": [
+          "stroke",
+          "cva",
+          "cerebrovascular",
+          "ischemic",
+          "brain clot",
+          "hemiparesis",
+          "aphasia"
+        ]
+      },
+      {
+        "id": "dis_atherosclerosis",
+        "name": "Atherosclerosis",
+        "description": "Plaque buildup in arterial walls causing narrowing, reduced blood flow, and risk of thrombotic events",
+        "category": "cardiovascular",
+        "tags": [
+          "atherosclerosis",
+          "plaque",
+          "arterial narrowing",
+          "stenosis",
+          "calcification",
+          "coronary artery disease"
+        ]
+      },
+      {
+        "id": "dis_pad",
+        "name": "Peripheral Artery Disease",
+        "description": "Atherosclerotic narrowing of peripheral arteries, usually in legs, causing claudication and tissue ischemia",
+        "category": "cardiovascular",
+        "tags": [
+          "peripheral artery disease",
+          "pad",
+          "claudication",
+          "ischemia",
+          "arterial disease"
+        ]
+      },
+      {
+        "id": "dis_hypertension",
+        "name": "Hypertension",
+        "description": "Chronically elevated blood pressure increasing risk of stroke, heart failure, and kidney disease",
+        "category": "cardiovascular",
+        "tags": [
+          "hypertension",
+          "high blood pressure",
+          "elevated bp",
+          "systolic",
+          "diastolic"
+        ]
+      },
+      {
+        "id": "dis_neuropathy",
+        "name": "Peripheral Neuropathy",
+        "description": "Damage to peripheral nerves causing numbness, tingling, weakness, and burning pain in extremities",
+        "category": "neurological",
+        "tags": [
+          "neuropathy",
+          "nerve damage",
+          "peripheral nerve",
+          "numbness",
+          "tingling",
+          "paresthesia",
+          "burning pain"
+        ]
+      },
+      {
+        "id": "dis_carpal_tunnel",
+        "name": "Carpal Tunnel Syndrome",
+        "description": "Compression of the median nerve at the wrist causing numbness, tingling, and weakness in the hand",
+        "category": "neurological",
+        "tags": [
+          "carpal tunnel",
+          "median nerve",
+          "wrist compression",
+          "hand numbness",
+          "nerve compression"
+        ]
+      },
+      {
+        "id": "dis_sciatica",
+        "name": "Sciatica",
+        "description": "Radicular pain along the sciatic nerve path from lower back through hip and down the leg",
+        "category": "neurological",
+        "tags": [
+          "sciatica",
+          "sciatic nerve",
+          "radiculopathy",
+          "leg pain",
+          "lower back pain",
+          "nerve root"
+        ]
+      },
+      {
+        "id": "dis_concussion",
+        "name": "Concussion / TBI",
+        "description": "Traumatic brain injury causing temporary cognitive, physical, and emotional symptoms",
+        "category": "neurological",
+        "tags": [
+          "concussion",
+          "tbi",
+          "traumatic brain injury",
+          "head injury",
+          "loss of consciousness"
+        ]
+      },
+      {
+        "id": "dis_ms",
+        "name": "Multiple Sclerosis",
+        "description": "Autoimmune demyelinating disease of the central nervous system causing varied neurological symptoms",
+        "category": "neurological",
+        "tags": [
+          "multiple sclerosis",
+          "ms",
+          "demyelination",
+          "autoimmune",
+          "spasticity",
+          "optic neuritis"
+        ]
+      },
+      {
+        "id": "dis_burn",
+        "name": "Burn Injury",
+        "description": "Thermal, chemical, or radiation injury to skin causing tissue damage from superficial to full-thickness",
+        "category": "dermatological",
+        "tags": [
+          "burn",
+          "thermal injury",
+          "scald",
+          "first degree",
+          "second degree",
+          "third degree",
+          "skin damage"
+        ]
+      },
+      {
+        "id": "dis_diabetic_ulcer",
+        "name": "Diabetic Foot Ulcer",
+        "description": "Chronic non-healing wound on the foot caused by diabetic neuropathy and vascular insufficiency",
+        "category": "dermatological",
+        "tags": [
+          "diabetic ulcer",
+          "foot ulcer",
+          "diabetic wound",
+          "non-healing wound",
+          "neuropathic ulcer"
+        ]
+      },
+      {
+        "id": "dis_pressure_ulcer",
+        "name": "Pressure Ulcer",
+        "description": "Tissue damage from sustained pressure on bony prominences causing skin breakdown and necrosis",
+        "category": "dermatological",
+        "tags": [
+          "pressure ulcer",
+          "decubitus",
+          "bedsore",
+          "pressure sore",
+          "skin breakdown"
+        ]
+      },
+      {
+        "id": "dis_cellulitis",
+        "name": "Cellulitis",
+        "description": "Bacterial skin infection causing redness, swelling, warmth, and pain in affected area",
+        "category": "dermatological",
+        "tags": [
+          "cellulitis",
+          "skin infection",
+          "bacterial infection",
+          "redness",
+          "swelling",
+          "warmth"
+        ]
+      },
+      {
+        "id": "dis_abscess",
+        "name": "Abscess",
+        "description": "Localized collection of pus caused by bacterial infection requiring drainage and antibiotics",
+        "category": "dermatological",
+        "tags": [
+          "abscess",
+          "pus",
+          "infection",
+          "swelling",
+          "drainage"
+        ]
+      },
+      {
+        "id": "dis_gout",
+        "name": "Gout",
+        "description": "Inflammatory arthritis caused by uric acid crystal deposition in joints causing acute severe pain and swelling",
+        "category": "inflammatory",
+        "tags": [
+          "gout",
+          "gouty arthritis",
+          "uric acid",
+          "crystal",
+          "tophi",
+          "hyperuricemia"
+        ]
+      },
+      {
+        "id": "dis_lymphedema",
+        "name": "Lymphedema",
+        "description": "Chronic swelling due to lymphatic system obstruction or damage causing fluid accumulation in tissues",
+        "category": "inflammatory",
+        "tags": [
+          "lymphedema",
+          "lymphatic",
+          "swelling",
+          "edema",
+          "fluid retention"
+        ]
+      },
+      {
+        "id": "dis_ankylosing",
+        "name": "Ankylosing Spondylitis",
+        "description": "Chronic inflammatory disease primarily affecting the spine causing pain, stiffness, and potential spinal fusion",
+        "category": "inflammatory",
+        "tags": [
+          "ankylosing spondylitis",
+          "spinal inflammation",
+          "sacroiliitis",
+          "stiffness",
+          "bamboo spine"
+        ]
+      },
+      {
+        "id": "dis_pneumonia",
+        "name": "Pneumonia",
+        "description": "Infection of lung parenchyma causing consolidation, cough, fever, and respiratory distress",
+        "category": "respiratory",
+        "tags": [
+          "pneumonia",
+          "lung infection",
+          "consolidation",
+          "infiltrate",
+          "cough",
+          "fever"
+        ]
+      },
+      {
+        "id": "dis_copd",
+        "name": "COPD",
+        "description": "Chronic obstructive pulmonary disease with irreversible airflow limitation causing dyspnea and chronic cough",
+        "category": "respiratory",
+        "tags": [
+          "copd",
+          "chronic obstructive",
+          "emphysema",
+          "chronic bronchitis",
+          "airflow limitation"
+        ]
+      },
+      {
+        "id": "dis_pleural_effusion",
+        "name": "Pleural Effusion",
+        "description": "Accumulation of fluid in the pleural space causing chest pain and shortness of breath",
+        "category": "respiratory",
+        "tags": [
+          "pleural effusion",
+          "fluid",
+          "pleural",
+          "chest fluid",
+          "dyspnea"
+        ]
+      },
+      {
+        "id": "dis_peptic_ulcer",
+        "name": "Peptic Ulcer Disease",
+        "description": "Erosion of the stomach or duodenal lining causing epigastric pain, bleeding, and perforation risk",
+        "category": "gastrointestinal",
+        "tags": [
+          "peptic ulcer",
+          "gastric ulcer",
+          "duodenal ulcer",
+          "stomach ulcer",
+          "erosion",
+          "h pylori"
+        ]
+      },
+      {
+        "id": "dis_ibd",
+        "name": "Inflammatory Bowel Disease",
+        "description": "Chronic inflammation of the gastrointestinal tract including Crohn's disease and ulcerative colitis",
+        "category": "gastrointestinal",
+        "tags": [
+          "ibd",
+          "crohn",
+          "ulcerative colitis",
+          "bowel inflammation",
+          "colitis"
+        ]
+      },
+      {
+        "id": "dis_cirrhosis",
+        "name": "Liver Cirrhosis",
+        "description": "End-stage liver fibrosis causing portal hypertension, ascites, and hepatic dysfunction",
+        "category": "gastrointestinal",
+        "tags": [
+          "cirrhosis",
+          "liver fibrosis",
+          "hepatic",
+          "portal hypertension",
+          "ascites"
+        ]
+      },
+      {
+        "id": "dis_diabetes_t2",
+        "name": "Type 2 Diabetes",
+        "description": "Metabolic disorder with insulin resistance and progressive beta-cell failure causing hyperglycemia",
+        "category": "endocrine",
+        "tags": [
+          "diabetes",
+          "type 2",
+          "hyperglycemia",
+          "insulin resistance",
+          "hba1c",
+          "blood sugar"
+        ]
+      },
+      {
+        "id": "dis_diabetic_neuropathy",
+        "name": "Diabetic Neuropathy",
+        "description": "Nerve damage caused by chronic hyperglycemia affecting peripheral, autonomic, and cranial nerves",
+        "category": "endocrine",
+        "tags": [
+          "diabetic neuropathy",
+          "nerve damage",
+          "numbness",
+          "tingling",
+          "burning",
+          "diabetes complication"
+        ]
+      },
+      {
+        "id": "dis_tumor",
+        "name": "Tumor / Neoplasm",
+        "description": "Abnormal tissue growth (benign or malignant) requiring assessment, staging, and appropriate treatment",
+        "category": "oncology",
+        "tags": [
+          "tumor",
+          "tumour",
+          "mass",
+          "lesion",
+          "neoplasm",
+          "carcinoma",
+          "malignant",
+          "benign",
+          "metastasis"
+        ]
+      },
+      {
+        "id": "dis_anemia",
+        "name": "Iron Deficiency Anemia",
+        "description": "Reduced hemoglobin due to iron deficiency causing fatigue, weakness, and pallor",
+        "category": "hematological",
+        "tags": [
+          "anemia",
+          "iron deficiency",
+          "hemoglobin",
+          "fatigue",
+          "pallor",
+          "low iron"
+        ]
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_fracture",
+      "to_id": "th_splint",
+      "priority": 10,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_fracture",
+      "to_id": "th_cryo",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_fracture",
+      "to_id": "th_elevation",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_fracture",
+      "to_id": "th_physio",
+      "priority": 7,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_fracture",
+      "to_id": "th_rom",
+      "priority": 6,
+      "evidence": "B"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_fracture",
+      "to_id": "th_strength",
+      "priority": 5,
+      "evidence": "B"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_fracture",
+      "to_id": "med_paracetamol",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_fracture",
+      "to_id": "med_ibuprofen",
+      "priority": 7,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_fracture",
+      "to_id": "med_tramadol",
+      "priority": 6,
+      "evidence": "B"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_fracture",
+      "to_id": "med_calcium",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_fracture",
+      "to_id": "sym_pain"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_fracture",
+      "to_id": "sym_swelling"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_fracture",
+      "to_id": "sym_deformity"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_fracture",
+      "to_id": "sym_bruising"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_fracture",
+      "to_id": "sym_loss_function"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_fracture",
+      "to_id": "ba_bone"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_acl_tear",
+      "to_id": "th_cryo",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_acl_tear",
+      "to_id": "th_compression",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_acl_tear",
+      "to_id": "th_physio",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_acl_tear",
+      "to_id": "th_strength",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_acl_tear",
+      "to_id": "th_balance",
+      "priority": 7,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_acl_tear",
+      "to_id": "th_rom",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_acl_tear",
+      "to_id": "med_ibuprofen",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_acl_tear",
+      "to_id": "med_paracetamol",
+      "priority": 7,
+      "evidence": "A"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_acl_tear",
+      "to_id": "sym_pain"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_acl_tear",
+      "to_id": "sym_swelling"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_acl_tear",
+      "to_id": "sym_instability"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_acl_tear",
+      "to_id": "ba_knee"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_meniscus",
+      "to_id": "th_cryo",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_meniscus",
+      "to_id": "th_physio",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_meniscus",
+      "to_id": "th_strength",
+      "priority": 7,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_meniscus",
+      "to_id": "med_ibuprofen",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_meniscus",
+      "to_id": "med_cortisone_inj",
+      "priority": 6,
+      "evidence": "B"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_meniscus",
+      "to_id": "sym_pain"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_meniscus",
+      "to_id": "sym_swelling"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_meniscus",
+      "to_id": "sym_crepitus"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_meniscus",
+      "to_id": "ba_knee"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_rotator_cuff",
+      "to_id": "th_physio",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_rotator_cuff",
+      "to_id": "th_cryo",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_rotator_cuff",
+      "to_id": "th_ultrasound",
+      "priority": 6,
+      "evidence": "B"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_rotator_cuff",
+      "to_id": "th_strength",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_rotator_cuff",
+      "to_id": "med_ibuprofen",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_rotator_cuff",
+      "to_id": "med_cortisone_inj",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_rotator_cuff",
+      "to_id": "sym_pain"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_rotator_cuff",
+      "to_id": "sym_weakness"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_rotator_cuff",
+      "to_id": "sym_limited_rom"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_rotator_cuff",
+      "to_id": "ba_shoulder"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_disc_herniation",
+      "to_id": "th_physio",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_disc_herniation",
+      "to_id": "th_traction",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_disc_herniation",
+      "to_id": "th_tens",
+      "priority": 6,
+      "evidence": "B"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_disc_herniation",
+      "to_id": "th_manual",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_disc_herniation",
+      "to_id": "med_ibuprofen",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_disc_herniation",
+      "to_id": "med_gabapentin",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_disc_herniation",
+      "to_id": "med_cyclobenzaprine",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_disc_herniation",
+      "to_id": "med_methylpred",
+      "priority": 6,
+      "evidence": "B"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_disc_herniation",
+      "to_id": "sym_pain"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_disc_herniation",
+      "to_id": "sym_numbness"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_disc_herniation",
+      "to_id": "sym_weakness"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_disc_herniation",
+      "to_id": "ba_spine"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_disc_herniation",
+      "to_id": "ba_leg"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_osteoarthritis",
+      "to_id": "th_physio",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_osteoarthritis",
+      "to_id": "th_heat",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_osteoarthritis",
+      "to_id": "th_hydro",
+      "priority": 7,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_osteoarthritis",
+      "to_id": "th_strength",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_osteoarthritis",
+      "to_id": "th_acupuncture",
+      "priority": 5,
+      "evidence": "B"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_osteoarthritis",
+      "to_id": "med_paracetamol",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_osteoarthritis",
+      "to_id": "med_ibuprofen",
+      "priority": 7,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_osteoarthritis",
+      "to_id": "med_celecoxib",
+      "priority": 7,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_osteoarthritis",
+      "to_id": "med_cortisone_inj",
+      "priority": 6,
+      "evidence": "B"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_osteoarthritis",
+      "to_id": "sym_pain"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_osteoarthritis",
+      "to_id": "sym_stiffness"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_osteoarthritis",
+      "to_id": "sym_crepitus"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_osteoarthritis",
+      "to_id": "sym_limited_rom"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_osteoarthritis",
+      "to_id": "ba_knee"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_osteoarthritis",
+      "to_id": "ba_hip"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_osteoarthritis",
+      "to_id": "ba_hand"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_osteoarthritis",
+      "to_id": "ba_joint"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_rheumatoid",
+      "to_id": "th_physio",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_rheumatoid",
+      "to_id": "th_hydro",
+      "priority": 6,
+      "evidence": "B"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_rheumatoid",
+      "to_id": "th_occupational",
+      "priority": 7,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_rheumatoid",
+      "to_id": "med_methotrexate",
+      "priority": 10,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_rheumatoid",
+      "to_id": "med_hydroxychloroquine",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_rheumatoid",
+      "to_id": "med_prednisone",
+      "priority": 7,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_rheumatoid",
+      "to_id": "med_ibuprofen",
+      "priority": 6,
+      "evidence": "B"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_rheumatoid",
+      "to_id": "sym_pain"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_rheumatoid",
+      "to_id": "sym_swelling"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_rheumatoid",
+      "to_id": "sym_stiffness"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_rheumatoid",
+      "to_id": "sym_fatigue"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_rheumatoid",
+      "to_id": "ba_joint"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_rheumatoid",
+      "to_id": "ba_hand"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_tendinitis",
+      "to_id": "th_cryo",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_tendinitis",
+      "to_id": "th_ultrasound",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_tendinitis",
+      "to_id": "th_shockwave",
+      "priority": 7,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_tendinitis",
+      "to_id": "th_physio",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_tendinitis",
+      "to_id": "med_ibuprofen",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_tendinitis",
+      "to_id": "med_diclofenac",
+      "priority": 7,
+      "evidence": "A"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_tendinitis",
+      "to_id": "sym_pain"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_tendinitis",
+      "to_id": "sym_swelling"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_tendinitis",
+      "to_id": "ba_shoulder"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_tendinitis",
+      "to_id": "ba_elbow"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_tendinitis",
+      "to_id": "ba_ankle"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_dvt",
+      "to_id": "th_anticoag",
+      "priority": 10,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_dvt",
+      "to_id": "th_compression",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_dvt",
+      "to_id": "th_elevation",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_dvt",
+      "to_id": "med_heparin",
+      "priority": 10,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_dvt",
+      "to_id": "med_enoxaparin",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_dvt",
+      "to_id": "med_warfarin",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_dvt",
+      "to_id": "med_rivaroxaban",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_dvt",
+      "to_id": "sym_swelling"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_dvt",
+      "to_id": "sym_pain"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_dvt",
+      "to_id": "sym_redness"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_dvt",
+      "to_id": "sym_warmth"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_dvt",
+      "to_id": "ba_leg"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_dvt",
+      "to_id": "ba_blood_vessel"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_pe",
+      "to_id": "th_thrombolysis",
+      "priority": 10,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_pe",
+      "to_id": "th_anticoag",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_pe",
+      "to_id": "med_alteplase",
+      "priority": 10,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_pe",
+      "to_id": "med_heparin",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_pe",
+      "to_id": "med_rivaroxaban",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_pe",
+      "to_id": "sym_sob"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_pe",
+      "to_id": "sym_chest_pain"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_pe",
+      "to_id": "ba_lung"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_stroke",
+      "to_id": "th_thrombolysis",
+      "priority": 10,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_stroke",
+      "to_id": "th_physio",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_stroke",
+      "to_id": "th_speech",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_stroke",
+      "to_id": "th_occupational",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_stroke",
+      "to_id": "med_alteplase",
+      "priority": 10,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_stroke",
+      "to_id": "med_aspirin",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_stroke",
+      "to_id": "med_atorvastatin",
+      "priority": 7,
+      "evidence": "A"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_stroke",
+      "to_id": "sym_weakness"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_stroke",
+      "to_id": "sym_numbness"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_stroke",
+      "to_id": "sym_headache"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_stroke",
+      "to_id": "sym_dizziness"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_stroke",
+      "to_id": "ba_brain"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_neuropathy",
+      "to_id": "th_physio",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_neuropathy",
+      "to_id": "th_tens",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_neuropathy",
+      "to_id": "th_balance",
+      "priority": 6,
+      "evidence": "B"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_neuropathy",
+      "to_id": "med_gabapentin",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_neuropathy",
+      "to_id": "med_pregabalin",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_neuropathy",
+      "to_id": "med_paracetamol",
+      "priority": 5,
+      "evidence": "B"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_neuropathy",
+      "to_id": "sym_numbness"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_neuropathy",
+      "to_id": "sym_pain"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_neuropathy",
+      "to_id": "sym_weakness"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_neuropathy",
+      "to_id": "ba_nerve"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_neuropathy",
+      "to_id": "ba_foot"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_neuropathy",
+      "to_id": "ba_hand"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_burn",
+      "to_id": "th_wound_care",
+      "priority": 10,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_burn",
+      "to_id": "th_cryo",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_burn",
+      "to_id": "th_physio",
+      "priority": 6,
+      "evidence": "B"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_burn",
+      "to_id": "med_silver_sulfadiazine",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_burn",
+      "to_id": "med_paracetamol",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_burn",
+      "to_id": "med_tramadol",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_burn",
+      "to_id": "sym_pain"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_burn",
+      "to_id": "sym_redness"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_burn",
+      "to_id": "sym_skin_changes"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_burn",
+      "to_id": "ba_skin"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_cellulitis",
+      "to_id": "th_elevation",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_cellulitis",
+      "to_id": "th_wound_care",
+      "priority": 6,
+      "evidence": "B"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_cellulitis",
+      "to_id": "med_cephalexin",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_cellulitis",
+      "to_id": "med_clindamycin",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_cellulitis",
+      "to_id": "med_ibuprofen",
+      "priority": 6,
+      "evidence": "B"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_cellulitis",
+      "to_id": "sym_redness"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_cellulitis",
+      "to_id": "sym_swelling"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_cellulitis",
+      "to_id": "sym_warmth"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_cellulitis",
+      "to_id": "sym_fever"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_cellulitis",
+      "to_id": "ba_skin"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_cellulitis",
+      "to_id": "ba_leg"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_gout",
+      "to_id": "th_cryo",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_gout",
+      "to_id": "th_elevation",
+      "priority": 6,
+      "evidence": "C"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_gout",
+      "to_id": "med_colchicine",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_gout",
+      "to_id": "med_ibuprofen",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_gout",
+      "to_id": "med_allopurinol",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_gout",
+      "to_id": "med_prednisone",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_gout",
+      "to_id": "sym_pain"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_gout",
+      "to_id": "sym_swelling"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_gout",
+      "to_id": "sym_redness"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_gout",
+      "to_id": "ba_foot"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_gout",
+      "to_id": "ba_joint"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_pneumonia",
+      "to_id": "th_respiratory",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_pneumonia",
+      "to_id": "med_amoxiclav",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_pneumonia",
+      "to_id": "med_paracetamol",
+      "priority": 7,
+      "evidence": "A"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_pneumonia",
+      "to_id": "sym_fever"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_pneumonia",
+      "to_id": "sym_sob"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_pneumonia",
+      "to_id": "sym_chest_pain"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_pneumonia",
+      "to_id": "ba_lung"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_copd",
+      "to_id": "th_respiratory",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_copd",
+      "to_id": "th_physio",
+      "priority": 7,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_copd",
+      "to_id": "med_salbutamol",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_copd",
+      "to_id": "sym_sob"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_copd",
+      "to_id": "sym_fatigue"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_copd",
+      "to_id": "ba_lung"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_diabetes_t2",
+      "to_id": "th_insulin",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_diabetes_t2",
+      "to_id": "med_metformin",
+      "priority": 10,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_diabetes_t2",
+      "to_id": "med_insulin_glargine",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_diabetes_t2",
+      "to_id": "ba_pancreas"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_diabetic_neuropathy",
+      "to_id": "th_physio",
+      "priority": 7,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_diabetic_neuropathy",
+      "to_id": "th_tens",
+      "priority": 6,
+      "evidence": "B"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_diabetic_neuropathy",
+      "to_id": "med_gabapentin",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_diabetic_neuropathy",
+      "to_id": "med_pregabalin",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_diabetic_neuropathy",
+      "to_id": "sym_numbness"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_diabetic_neuropathy",
+      "to_id": "sym_pain"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_diabetic_neuropathy",
+      "to_id": "ba_nerve"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_diabetic_neuropathy",
+      "to_id": "ba_foot"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_diabetic_ulcer",
+      "to_id": "th_wound_care",
+      "priority": 10,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_diabetic_ulcer",
+      "to_id": "med_mupirocin",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_diabetic_ulcer",
+      "to_id": "med_amoxiclav",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_diabetic_ulcer",
+      "to_id": "sym_skin_changes"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_diabetic_ulcer",
+      "to_id": "sym_discharge"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_diabetic_ulcer",
+      "to_id": "ba_foot"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_diabetic_ulcer",
+      "to_id": "ba_skin"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_peptic_ulcer",
+      "to_id": "med_omeprazole",
+      "priority": 10,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_peptic_ulcer",
+      "to_id": "med_amoxicillin",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_peptic_ulcer",
+      "to_id": "sym_pain"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_peptic_ulcer",
+      "to_id": "sym_nausea"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_peptic_ulcer",
+      "to_id": "sym_bleeding"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_peptic_ulcer",
+      "to_id": "ba_stomach"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_ibd",
+      "to_id": "med_mesalamine",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_ibd",
+      "to_id": "med_prednisone",
+      "priority": 7,
+      "evidence": "A"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_ibd",
+      "to_id": "sym_pain"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_ibd",
+      "to_id": "sym_bleeding"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_ibd",
+      "to_id": "ba_intestine"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_lymphedema",
+      "to_id": "th_lymphatic",
+      "priority": 10,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_lymphedema",
+      "to_id": "th_compression",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_lymphedema",
+      "to_id": "th_elevation",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_lymphedema",
+      "to_id": "med_furosemide",
+      "priority": 5,
+      "evidence": "C"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_lymphedema",
+      "to_id": "sym_swelling"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_lymphedema",
+      "to_id": "ba_leg"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_lymphedema",
+      "to_id": "ba_arm"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_osteoporosis",
+      "to_id": "th_strength",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_osteoporosis",
+      "to_id": "th_balance",
+      "priority": 7,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_osteoporosis",
+      "to_id": "med_calcium",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_osteoporosis",
+      "to_id": "med_alendronate",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_osteoporosis",
+      "to_id": "ba_bone"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_osteoporosis",
+      "to_id": "ba_spine"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_osteoporosis",
+      "to_id": "ba_hip"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_tumor",
+      "to_id": "th_chemo",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_tumor",
+      "to_id": "th_radiation",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_tumor",
+      "to_id": "sym_pain"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_tumor",
+      "to_id": "sym_weight_loss"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_tumor",
+      "to_id": "sym_fatigue"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_sciatica",
+      "to_id": "th_physio",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_sciatica",
+      "to_id": "th_tens",
+      "priority": 6,
+      "evidence": "B"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_sciatica",
+      "to_id": "th_manual",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_sciatica",
+      "to_id": "med_ibuprofen",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_sciatica",
+      "to_id": "med_gabapentin",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_sciatica",
+      "to_id": "med_cyclobenzaprine",
+      "priority": 6,
+      "evidence": "B"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_sciatica",
+      "to_id": "sym_pain"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_sciatica",
+      "to_id": "sym_numbness"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_sciatica",
+      "to_id": "ba_spine"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_sciatica",
+      "to_id": "ba_hip"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_sciatica",
+      "to_id": "ba_leg"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_carpal_tunnel",
+      "to_id": "th_splint",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_carpal_tunnel",
+      "to_id": "th_physio",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_carpal_tunnel",
+      "to_id": "med_ibuprofen",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_carpal_tunnel",
+      "to_id": "med_cortisone_inj",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_carpal_tunnel",
+      "to_id": "sym_numbness"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_carpal_tunnel",
+      "to_id": "sym_pain"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_carpal_tunnel",
+      "to_id": "sym_weakness"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_carpal_tunnel",
+      "to_id": "ba_wrist"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_carpal_tunnel",
+      "to_id": "ba_hand"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_hypertension",
+      "to_id": "med_amlodipine",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_hypertension",
+      "to_id": "med_lisinopril",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_hypertension",
+      "to_id": "ba_heart"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_hypertension",
+      "to_id": "ba_blood_vessel"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_muscle_strain",
+      "to_id": "th_cryo",
+      "priority": 9,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_muscle_strain",
+      "to_id": "th_compression",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_muscle_strain",
+      "to_id": "th_elevation",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_muscle_strain",
+      "to_id": "th_massage",
+      "priority": 6,
+      "evidence": "B"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_muscle_strain",
+      "to_id": "th_physio",
+      "priority": 7,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_muscle_strain",
+      "to_id": "med_ibuprofen",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_muscle_strain",
+      "to_id": "med_cyclobenzaprine",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_muscle_strain",
+      "to_id": "sym_pain"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_muscle_strain",
+      "to_id": "sym_swelling"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_muscle_strain",
+      "to_id": "sym_muscle_spasm"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_muscle_strain",
+      "to_id": "ba_muscle"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_plantar_fasciitis",
+      "to_id": "th_shockwave",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_plantar_fasciitis",
+      "to_id": "th_physio",
+      "priority": 8,
+      "evidence": "A"
+    },
+    {
+      "type": "TREATED_BY",
+      "from_id": "dis_plantar_fasciitis",
+      "to_id": "th_splint",
+      "priority": 7,
+      "evidence": "B"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_plantar_fasciitis",
+      "to_id": "med_ibuprofen",
+      "priority": 7,
+      "evidence": "A"
+    },
+    {
+      "type": "MEDICATED_WITH",
+      "from_id": "dis_plantar_fasciitis",
+      "to_id": "med_cortisone_inj",
+      "priority": 6,
+      "evidence": "B"
+    },
+    {
+      "type": "PRESENTS_SYMPTOM",
+      "from_id": "dis_plantar_fasciitis",
+      "to_id": "sym_pain"
+    },
+    {
+      "type": "AFFECTS_AREA",
+      "from_id": "dis_plantar_fasciitis",
+      "to_id": "ba_foot"
+    },
+    {
+      "type": "INTERACTS_WITH",
+      "from_id": "med_warfarin",
+      "to_id": "med_ibuprofen",
+      "severity": "high",
+      "description": "Increased bleeding risk"
+    },
+    {
+      "type": "INTERACTS_WITH",
+      "from_id": "med_warfarin",
+      "to_id": "med_aspirin",
+      "severity": "high",
+      "description": "Increased bleeding risk"
+    },
+    {
+      "type": "INTERACTS_WITH",
+      "from_id": "med_methotrexate",
+      "to_id": "med_ibuprofen",
+      "severity": "high",
+      "description": "Increased methotrexate toxicity"
+    },
+    {
+      "type": "INTERACTS_WITH",
+      "from_id": "med_heparin",
+      "to_id": "med_aspirin",
+      "severity": "moderate",
+      "description": "Additive anticoagulation effect"
+    }
+  ]
+}

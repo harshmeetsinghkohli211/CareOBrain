@@ -12,6 +12,8 @@ import { PatientReportModal } from "./PatientReportModal";
 import { NewReportModal } from "./NewReportModal";
 import { LiveTelemetryDashboard } from "./LiveTelemetryDashboard";
 import { DoctorChatTab } from "./DoctorChatTab";
+import { Neo4jMedicalScanStudio } from "./Neo4jMedicalScanStudio";
+import { DoctorPrescribedTherapiesSection } from "../patient/DoctorPrescribedTherapiesSection";
 import { useChatCall } from "../../context/ChatCallContext";
 import {
   Stethoscope,
@@ -678,6 +680,12 @@ export const DoctorDashboard = ({
               badge: isLiveActive ? "LIVE" : "SYNC"
             },
             {
+              id: "neo4j_cds",
+              label: "Neo4j Clinical CDS & Scan",
+              icon: Brain,
+              badge: "NEO4J"
+            },
+            {
               id: "reports",
               label: `Patient Reports (${patientReports.length})`,
               icon: FileText,
@@ -802,6 +810,20 @@ export const DoctorDashboard = ({
       )}
 
       {/* ========================================================= */}
+      {/* TAB: NEO4J CLINICAL DECISION SUPPORT & MEDICAL SCAN STUDIO */}
+      {/* ========================================================= */}
+      {activeTab === "neo4j_cds" && (
+        <div className="space-y-6 animate-in fade-in duration-200">
+          <Neo4jMedicalScanStudio
+            activePatient={activePatient}
+            onPrescriptionChange={(prescriptions) => {
+              // Update timeline tasks or notify if desired
+            }}
+          />
+        </div>
+      )}
+
+      {/* ========================================================= */}
       {/* TAB 1: MAIN DOCTOR CLINICAL DASHBOARD */}
       {/* ========================================================= */}
       {activeTab === "dashboard" && (
@@ -835,6 +857,50 @@ export const DoctorDashboard = ({
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
+
+          {/* Neo4j Medical Scan & CDS Quick Banner */}
+          <div className="bg-gradient-to-r from-[#132A2F] via-[#0D7377] to-[#14B8A6] rounded-3xl p-5 text-white shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-3.5">
+              <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-[#9DF3C4] shrink-0 border border-white/20">
+                <Brain className="w-6 h-6" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-black uppercase tracking-wider text-[#9DF3C4]">
+                    Neo4j Local Clinical Decision Support & Scan Engine
+                  </span>
+                  <span className="bg-[#9DF3C4] text-slate-950 font-black text-[10px] px-2 py-0.5 rounded-full">
+                    INDEX-FREE ADJACENCY
+                  </span>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-200 font-medium mt-0.5">
+                  Scan patient medical reports with local OCR, traverse Neo4j knowledge graph, and prescribe ranked therapies directly to {activePatient.name}.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 shrink-0 self-start sm:self-auto">
+              <button
+                onClick={() => setActiveTab("neo4j_cds")}
+                className="px-4 py-2.5 bg-[#9DF3C4] hover:bg-[#8AE8B3] text-slate-950 font-extrabold text-xs sm:text-sm rounded-2xl transition shadow-xs flex items-center gap-2 cursor-pointer"
+              >
+                <span>Launch Medical Scan</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <a
+                href="/doctor-cds"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-2.5 bg-white/15 hover:bg-white/25 text-white font-bold text-xs rounded-2xl transition border border-white/20 flex items-center gap-1.5"
+                title="Open Standalone Doctor CDS in New Tab"
+              >
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+
+          {/* ACTIVE DOCTOR PRESCRIBED CARE PLAN (NEO4J CDS) */}
+          <DoctorPrescribedTherapiesSection profile={profile} />
 
           {/* Top Metric Cards */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
