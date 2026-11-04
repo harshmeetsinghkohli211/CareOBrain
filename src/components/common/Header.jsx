@@ -147,8 +147,8 @@ export const Header = ({
       : profile?.language === "mni"
       ? "স্মৃতি সংগী"
       : profile?.language === "lus"
-      ? "SMRITHI SATHI"
-      : "SMRITHI SATHI";
+      ? "CareOBrain"
+      : "CareOBrain";
 
   const brandTagline =
     profile?.language === "hi"
@@ -329,69 +329,7 @@ export const Header = ({
               <span className="hidden xl:inline">Video Call</span>
             </button>
 
-            {/* Language Selector Dropdown (Desktop & Tablet) */}
-            <div className="relative hidden sm:block" ref={dropdownRef}>
-              <button
-                id="header-lang-toggle"
-                onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-                className="flex items-center gap-1 px-1.5 sm:px-2 py-1.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200/80 text-xs font-semibold text-slate-700 transition cursor-pointer"
-                aria-label="Select Language"
-              >
-                <Globe className="w-3.5 h-3.5 text-slate-600" />
-                <span className="hidden xl:inline">
-                  {langOptions.find((l) => l.code === (profile?.language || "en"))?.label || "English"}
-                </span>
-                <span className="xl:hidden uppercase font-bold text-[10px]">
-                  {(profile?.language || "en")}
-                </span>
-                <ChevronDown className="w-3 h-3 text-slate-400" />
-              </button>
-
-              {langDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-2xl shadow-xl border border-slate-200 py-1.5 z-50 animate-in fade-in zoom-in-95 duration-100">
-                  <div className="px-3.5 py-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                    Select Language
-                  </div>
-                  {langOptions.map((opt) => (
-                    <button
-                      key={opt.code}
-                      onClick={() => {
-                        if (onProfileUpdate) onProfileUpdate({ language: opt.code });
-                        setLangDropdownOpen(false);
-                      }}
-                      className={`w-full text-left px-3.5 py-2 text-xs font-semibold flex items-center justify-between hover:bg-blue-50 transition cursor-pointer ${
-                        (profile?.language || "en") === opt.code
-                          ? "text-blue-600 font-bold bg-blue-50/70"
-                          : "text-slate-700"
-                      }`}
-                    >
-                      <span className="flex items-center gap-2">
-                        <span>{opt.flag}</span>
-                        <span>{opt.label}</span>
-                      </span>
-                      {(profile?.language || "en") === opt.code && (
-                        <Check className="w-3.5 h-3.5 text-blue-600" />
-                      )}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Main Settings Button in Navbar (Compact on tablet, labelled on desktop) */}
-            <button
-              id="header-settings-btn"
-              onClick={() => {
-                if (onOpenSettings) onOpenSettings();
-              }}
-              className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200/80 text-slate-700 hover:text-[#0D7377] text-xs font-semibold transition shadow-2xs cursor-pointer active:scale-95 whitespace-nowrap shrink-0"
-              title={`Settings (${appMode === "expert" ? "Expert" : appMode === "beginners" ? "Beginner" : "Advanced"} Mode)`}
-            >
-              <Settings className="w-3.5 h-3.5 text-[#0D7377]" />
-              <span className="hidden lg:inline">Settings</span>
-            </button>
-
-            {/* Three Dots More Options Button - Visible on BOTH Mobile and Laptop views */}
+            {/* Three Dots More Options Button - Contains Language, Settings, & Account */}
             <div className="relative flex items-center shrink-0">
               <button
                 id="header-three-dots-btn"
@@ -510,20 +448,67 @@ export const Header = ({
                       <span className="text-[10px] font-bold text-slate-500">{isSyncing ? "Syncing..." : syncSuccess ? "Done" : "Sync"}</span>
                     </button>
 
-                    {/* Settings */}
+                    {/* Settings & Voice Assistant */}
                     <button
+                      id="header-settings-btn"
                       onClick={() => {
                         setMobileMenuOpen(false);
                         if (onOpenSettings) onOpenSettings();
                       }}
-                      className="w-full text-left px-3 py-2 rounded-xl text-xs font-semibold flex items-center justify-between text-slate-700 hover:bg-slate-100 transition cursor-pointer"
+                      className="w-full text-left px-3 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-between text-slate-700 hover:bg-slate-100 hover:text-[#0D7377] transition cursor-pointer"
+                      title={`Settings (${appMode === "expert" ? "Expert" : appMode === "beginners" ? "Beginner" : "Advanced"} Mode)`}
                     >
                       <div className="flex items-center gap-2.5">
-                        <Settings className="w-4 h-4 text-slate-600" />
-                        <span>Settings & Voice Assistant</span>
+                        <div className="p-1.5 rounded-lg bg-teal-50 text-[#0D7377] shrink-0">
+                          <Settings className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <span className="font-bold text-slate-800 block">Settings</span>
+                          <span className="text-[10px] text-slate-500 font-normal">
+                            {appMode === "expert" ? "Expert" : appMode === "beginners" ? "Beginner" : "Advanced"} Mode · Voice Assistant
+                          </span>
+                        </div>
                       </div>
                       <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
                     </button>
+                  </div>
+
+                  {/* Language Selector */}
+                  <div className="pt-2 border-t border-slate-100">
+                    <div className="flex items-center justify-between px-1 pb-1.5 text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">
+                      <div className="flex items-center gap-1.5">
+                        <Globe className="w-3.5 h-3.5 text-[#0D7377]" />
+                        <span>Language</span>
+                      </div>
+                      <span className="text-[10px] font-bold text-[#0D7377] bg-teal-50 px-2 py-0.5 rounded-full border border-teal-200">
+                        {langOptions.find((l) => l.code === (profile?.language || "en"))?.label || "English"}
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-1.5 pt-1">
+                      {langOptions.map((opt) => {
+                        const isSelected = (profile?.language || "en") === opt.code;
+                        return (
+                          <button
+                            key={opt.code}
+                            onClick={() => {
+                              if (onProfileUpdate) onProfileUpdate({ language: opt.code });
+                              setMobileMenuOpen(false);
+                            }}
+                            className={`px-2.5 py-1.5 rounded-xl text-xs font-semibold flex items-center justify-between border transition cursor-pointer ${
+                              isSelected
+                                ? "bg-teal-50 border-teal-300 text-[#0D7377] font-bold shadow-2xs"
+                                : "bg-slate-50 border-slate-200/80 text-slate-700 hover:bg-slate-100"
+                            }`}
+                          >
+                            <span className="flex items-center gap-1.5 truncate">
+                              <span>{opt.flag}</span>
+                              <span className="truncate">{opt.label}</span>
+                            </span>
+                            {isSelected && <Check className="w-3.5 h-3.5 text-[#0D7377] shrink-0" />}
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
 
                   {/* Sign Out / Sign In Button */}
@@ -818,25 +803,6 @@ export const Header = ({
                     </button>
                   );
                 })}
-
-                {/* Mobile Doctor CDS Button */}
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    window.open("/doctor-cds", "_blank");
-                  }}
-                  className="w-full text-left px-3.5 py-2.5 rounded-xl font-bold text-sm flex items-center justify-between text-[#0D7377] bg-gradient-to-r from-[#0D7377]/10 to-[#9DF3C4]/25 border border-[#0D7377]/25 hover:border-[#0D7377]"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="p-1.5 rounded-lg bg-[#0D7377] text-white shadow-xs">
-                      <Stethoscope className="w-4 h-4" />
-                    </div>
-                    <span className="hidden xl:inline">Doctor CDS (Neo4j)</span><span className="xl:hidden">Doctor CDS</span>
-                  </div>
-                  <span className="px-2 py-0.5 text-[10px] font-black uppercase bg-[#0D7377] text-white rounded-md">
-                    NEO4J
-                  </span>
-                </button>
               </div>
             </div>
 

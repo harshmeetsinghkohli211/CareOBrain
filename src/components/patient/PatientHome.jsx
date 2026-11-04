@@ -335,8 +335,21 @@ export const PatientHome = ({
       <DoctorPrescribedTherapiesSection
         profile={profile}
         onLaunchActivity={(title) => {
-          const matched = tasks.find((t) => t.title.toLowerCase().includes(title.toLowerCase()));
-          if (matched) onStartTask(matched);
+          const cleanTitle = (title || "").toLowerCase();
+          const matched =
+            tasks.find((t) => t.title.toLowerCase().includes(cleanTitle)) ||
+            (freePlayGames && freePlayGames.find((t) => t.title.toLowerCase().includes(cleanTitle)));
+          if (matched) {
+            onStartTask(matched);
+          } else {
+            onStartTask({
+              id: `pm-${Date.now()}`,
+              title: title,
+              domain: "Coordination",
+              difficulty: "Easy",
+              duration: "10 mins"
+            });
+          }
         }}
       />
 

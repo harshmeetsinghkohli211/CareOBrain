@@ -423,7 +423,7 @@
   background: linear-gradient(135deg, #001F54 0%, #0D7377 100%);
   color: white;
   border-radius: var(--r-full);
-  font-size: 1.15rem;
+  font-size: 1.0rem;
   font-weight: 900;
   letter-spacing: 0.02em;
   text-decoration: none;

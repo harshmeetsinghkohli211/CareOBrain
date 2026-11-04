@@ -44,7 +44,8 @@ import {
   Share2,
   Radio,
   MessageSquare,
-  Video
+  Video,
+  ExternalLink
 } from "lucide-react";
 
 export const DoctorDashboard = ({

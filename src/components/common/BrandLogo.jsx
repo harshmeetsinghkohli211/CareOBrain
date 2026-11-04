@@ -128,7 +128,7 @@ export const BrandLogo = ({
       {showText && (
         <div className="shrink-0 flex flex-col justify-center">
           <span className={textClassName}>
-            SMRITHI SATHI
+            CareOBrain
           </span>
           {tagline && (
             <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-widest block">

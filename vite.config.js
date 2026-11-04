@@ -1,6 +1,7 @@
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
+import fs from "fs";
 import { defineConfig } from "vite";
 import { WebSocketServer, WebSocket } from "ws";
 
@@ -157,11 +158,50 @@ function webSocketChatSignalingPlugin() {
   };
 }
 
+function doctorCdsStaticPlugin() {
+  return {
+    name: "vite-doctor-cds-static",
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        const url = (req.url || "").split("?")[0];
+        if (url === "/doctor-cds" || url === "/doctor-cds/") {
+          const indexPath = path.resolve(__dirname, "neo4j-cds/static/index.html");
+          if (fs.existsSync(indexPath)) {
+            res.setHeader("Content-Type", "text/html; charset=utf-8");
+            return res.end(fs.readFileSync(indexPath));
+          }
+        }
+        if (url.startsWith("/static/")) {
+          const filePath = path.resolve(__dirname, "neo4j-cds" + url);
+          if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+            const ext = path.extname(filePath);
+            const mimeTypes = {
+              ".html": "text/html; charset=utf-8",
+              ".js": "application/javascript; charset=utf-8",
+              ".css": "text/css; charset=utf-8",
+              ".json": "application/json",
+              ".svg": "image/svg+xml",
+              ".png": "image/png",
+              ".jpg": "image/jpeg",
+              ".jpeg": "image/jpeg",
+              ".woff2": "font/woff2"
+            };
+            res.setHeader("Content-Type", mimeTypes[ext] || "application/octet-stream");
+            return res.end(fs.readFileSync(filePath));
+          }
+        }
+        next();
+      });
+    }
+  };
+}
+
 export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
     webSocketChatSignalingPlugin(),
+    doctorCdsStaticPlugin(),
   ],
   base: "./",
   resolve: {
