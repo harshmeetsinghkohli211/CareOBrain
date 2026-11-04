@@ -1,0 +1,4549 @@
+{
+  "sample_knee_acl": {
+    "ocr": {
+      "raw_text": "CLINICAL INDICATION: 28-year-old athlete following non-contact deceleration injury to right knee with audible pop.\n\nMAGNETIC RESONANCE IMAGING (MRI) RIGHT KNEE:\n- Anterior Cruciate Ligament (ACL): Complete disruption / grade III tear of mid-substance fibers with retraction.\n- Meniscus: Radial tear noted in posterior horn of the medial meniscus.\n- Effusion: Extensive intra-articular joint effusion and significant soft tissue swelling around suprapatellar pouch.\n- Bone Contusions: Marked kissing bone contusions involving posterior lateral tibial plateau and lateral femoral condyle.\n- Range of Motion: Severely restricted secondary to acute pain, effusion, and mechanical joint instability.\n\nIMPRESSION: Acute complete ACL rupture accompanied by medial meniscus tear, severe joint swelling, and lateral compartment bone contusions.",
+      "confidence": 100.0,
+      "word_count": 111,
+      "lines": [
+        "CLINICAL INDICATION: 28-year-old athlete following non-contact deceleration injury to right knee with audible pop.",
+        "MAGNETIC RESONANCE IMAGING (MRI) RIGHT KNEE:",
+        "- Anterior Cruciate Ligament (ACL): Complete disruption / grade III tear of mid-substance fibers with retraction.",
+        "- Meniscus: Radial tear noted in posterior horn of the medial meniscus.",
+        "- Effusion: Extensive intra-articular joint effusion and significant soft tissue swelling around suprapatellar pouch.",
+        "- Bone Contusions: Marked kissing bone contusions involving posterior lateral tibial plateau and lateral femoral condyle.",
+        "- Range of Motion: Severely restricted secondary to acute pain, effusion, and mechanical joint instability.",
+        "IMPRESSION: Acute complete ACL rupture accompanied by medial meniscus tear, severe joint swelling, and lateral compartment bone contusions."
+      ],
+      "engine": "direct_input",
+      "status": "success"
+    },
+    "summary": {
+      "entities": {
+        "body_areas": [
+          "bone",
+          "forearm",
+          "joint",
+          "knee",
+          "leg",
+          "muscle",
+          "thigh"
+        ],
+        "conditions": [
+          "swelling",
+          "tear"
+        ],
+        "symptoms": [
+          "instability",
+          "pain"
+        ],
+        "severity": [
+          "moderate",
+          "severe"
+        ],
+        "imaging_findings": [
+          "mri_findings"
+        ],
+        "lab_markers": [],
+        "measurements": [],
+        "entities_raw": [
+          [
+            "knee",
+            "body_area:knee"
+          ],
+          [
+            "magnetic resonance",
+            "imaging:mri_findings"
+          ],
+          [
+            "mri",
+            "imaging:mri_findings"
+          ],
+          [
+            "knee",
+            "body_area:knee"
+          ],
+          [
+            "cruciate",
+            "body_area:knee"
+          ],
+          [
+            "ligament",
+            "body_area:muscle"
+          ],
+          [
+            "acl",
+            "body_area:knee"
+          ],
+          [
+            "complete",
+            "severity:severe"
+          ],
+          [
+            "grade iii",
+            "severity:severe"
+          ],
+          [
+            "tear",
+            "condition:tear"
+          ],
+          [
+            "meniscus",
+            "body_area:joint"
+          ],
+          [
+            "radial",
+            "body_area:forearm"
+          ],
+          [
+            "tear",
+            "condition:tear"
+          ],
+          [
+            "meniscus",
+            "body_area:joint"
+          ],
+          [
+            "effusion",
+            "condition:swelling"
+          ],
+          [
+            "extensive",
+            "severity:severe"
+          ],
+          [
+            "articular",
+            "body_area:joint"
+          ],
+          [
+            "joint",
+            "body_area:joint"
+          ],
+          [
+            "effusion",
+            "condition:swelling"
+          ],
+          [
+            "significant",
+            "severity:moderate"
+          ],
+          [
+            "swelling",
+            "condition:swelling"
+          ],
+          [
+            "bone",
+            "body_area:bone"
+          ],
+          [
+            "bone",
+            "body_area:bone"
+          ],
+          [
+            "tibial",
+            "body_area:leg"
+          ],
+          [
+            "tibial plateau",
+            "body_area:knee"
+          ],
+          [
+            "femoral",
+            "body_area:thigh"
+          ],
+          [
+            "condyle",
+            "body_area:knee"
+          ],
+          [
+            "acute",
+            "severity:severe"
+          ],
+          [
+            "acute pain",
+            "symptom:pain"
+          ],
+          [
+            "pain",
+            "symptom:pain"
+          ],
+          [
+            "effusion",
+            "condition:swelling"
+          ],
+          [
+            "joint",
+            "body_area:joint"
+          ],
+          [
+            "instability",
+            "symptom:instability"
+          ],
+          [
+            "acute",
+            "severity:severe"
+          ],
+          [
+            "complete",
+            "severity:severe"
+          ],
+          [
+            "acl",
+            "body_area:knee"
+          ],
+          [
+            "rupture",
+            "condition:tear"
+          ],
+          [
+            "meniscus",
+            "body_area:joint"
+          ],
+          [
+            "tear",
+            "condition:tear"
+          ],
+          [
+            "severe",
+            "severity:severe"
+          ],
+          [
+            "joint",
+            "body_area:joint"
+          ],
+          [
+            "swelling",
+            "condition:swelling"
+          ],
+          [
+            "bone",
+            "body_area:bone"
+          ]
+        ]
+      },
+      "summary_sentences": [
+        {
+          "sentence": "MAGNETIC RESONANCE IMAGING (MRI) RIGHT KNEE:\n- Anterior Cruciate Ligament (ACL): Complete disruption / grade III tear of mid-substance fibers with retraction.\n- Meniscus: Radial tear noted in posterior horn of the medial meniscus.",
+          "score": 0.7735,
+          "keyword_hits": 11
+        },
+        {
+          "sentence": "- Effusion: Extensive intra-articular joint effusion and significant soft tissue swelling around suprapatellar pouch.",
+          "score": 0.7286,
+          "keyword_hits": 6
+        },
+        {
+          "sentence": "IMPRESSION: Acute complete ACL rupture accompanied by medial meniscus tear, severe joint swelling, and lateral compartment bone contusions.",
+          "score": 0.7056,
+          "keyword_hits": 10
+        },
+        {
+          "sentence": "- Range of Motion: Severely restricted secondary to acute pain, effusion, and mechanical joint instability.",
+          "score": 0.55,
+          "keyword_hits": 6
+        },
+        {
+          "sentence": "- Bone Contusions: Marked kissing bone contusions involving posterior lateral tibial plateau and lateral femoral condyle.",
+          "score": 0.3125,
+          "keyword_hits": 5
+        },
+        {
+          "sentence": "CLINICAL INDICATION: 28-year-old athlete following non-contact deceleration injury to right knee with audible pop.",
+          "score": 0.0714,
+          "keyword_hits": 1
+        }
+      ],
+      "clinical_profile": {
+        "affected_areas": [
+          "bone",
+          "forearm",
+          "joint",
+          "knee",
+          "leg",
+          "muscle",
+          "thigh"
+        ],
+        "diagnosed_conditions": [
+          "swelling",
+          "tear"
+        ],
+        "reported_symptoms": [
+          "instability",
+          "pain"
+        ],
+        "severity_level": "severe",
+        "imaging_notes": [
+          "mri_findings"
+        ],
+        "lab_observations": [],
+        "measurements": []
+      },
+      "search_keywords": [
+        "swelling",
+        "tear",
+        "instability",
+        "pain",
+        "bone",
+        "forearm",
+        "joint",
+        "knee",
+        "leg",
+        "muscle",
+        "thigh"
+      ]
+    },
+    "therapies": [
+      {
+        "therapy_id": "th_cryo",
+        "therapy_name": "Cryotherapy",
+        "therapy_description": "Cold application therapy to reduce swelling, inflammation, pain, and muscle spasm through ice packs, cold compression, or whole-body cryotherapy",
+        "therapy_type": "physical",
+        "duration": "acute: 48-72 hours",
+        "contraindications": "Raynaud disease, cold sensitivity, peripheral vascular disease",
+        "graph_priority": 9,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Rotator Cuff Tear",
+          "Meniscus Tear",
+          "ACL Tear",
+          "Muscle Strain",
+          "Gout"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0399,
+        "keyword_overlap": 0.2727,
+        "combined_score": 0.3248
+      },
+      {
+        "therapy_id": "th_lymphatic",
+        "therapy_name": "Manual Lymphatic Drainage",
+        "therapy_description": "Gentle massage technique to stimulate lymphatic flow, reduce lymphedema, and decrease post-surgical swelling",
+        "therapy_type": "manual",
+        "duration": "ongoing as needed",
+        "contraindications": "active infection, DVT, cardiac failure",
+        "graph_priority": 10,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Lymphedema"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0224,
+        "keyword_overlap": 0.0909,
+        "combined_score": 0.2873
+      },
+      {
+        "therapy_id": "th_hydro",
+        "therapy_name": "Hydrotherapy",
+        "therapy_description": "Water-based therapy using buoyancy and resistance for joint mobilization, pain relief, and muscle strengthening in warm water pools",
+        "therapy_type": "physical",
+        "duration": "4-8 weeks",
+        "contraindications": "open wounds, urinary infections, severe cardiac disease",
+        "graph_priority": 7,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Osteoarthritis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0429,
+        "keyword_overlap": 0.2727,
+        "combined_score": 0.2761
+      },
+      {
+        "therapy_id": "th_strength",
+        "therapy_name": "Strengthening Exercises",
+        "therapy_description": "Progressive resistance training to rebuild muscle strength, improve stability, and support injured joints through isometric, isotonic, and isokinetic protocols",
+        "therapy_type": "exercise",
+        "duration": "8-16 weeks",
+        "contraindications": "acute injury phase, uncontrolled hypertension",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Rotator Cuff Tear",
+          "Meniscus Tear",
+          "ACL Tear",
+          "Osteoarthritis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.007,
+        "keyword_overlap": 0.1818,
+        "combined_score": 0.2577
+      },
+      {
+        "therapy_id": "th_anticoag",
+        "therapy_name": "Anticoagulation Therapy",
+        "therapy_description": "Blood thinning therapy to prevent and treat blood clots through heparin, warfarin, or direct oral anticoagulants",
+        "therapy_type": "pharmacological",
+        "duration": "3-12 months",
+        "contraindications": "active bleeding, bleeding disorders",
+        "graph_priority": 10,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.25
+      },
+      {
+        "therapy_id": "th_heat",
+        "therapy_name": "Heat Therapy",
+        "therapy_description": "Application of heat via hot packs, infrared lamps, or paraffin baths to increase blood flow, relax muscles, reduce stiffness, and relieve chronic pain",
+        "therapy_type": "physical",
+        "duration": "ongoing as needed",
+        "contraindications": "acute inflammation, hemorrhage, impaired sensation",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Osteoarthritis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0115,
+        "keyword_overlap": 0.1818,
+        "combined_score": 0.2347
+      },
+      {
+        "therapy_id": "th_physio",
+        "therapy_name": "Physical Therapy",
+        "therapy_description": "Exercise-based rehabilitation to restore movement, strength, and function through guided physical exercises, stretching, and progressive resistance training",
+        "therapy_type": "physical",
+        "duration": "6-12 weeks",
+        "contraindications": "acute fractures, severe cardiac conditions",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Rotator Cuff Tear",
+          "Meniscus Tear",
+          "ACL Tear",
+          "Muscle Strain",
+          "Osteoarthritis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.225
+      },
+      {
+        "therapy_id": "th_compression",
+        "therapy_name": "Compression Therapy",
+        "therapy_description": "Application of graduated compression stockings or bandages to reduce edema, prevent blood clots, and improve venous return",
+        "therapy_type": "mechanical",
+        "duration": "ongoing",
+        "contraindications": "peripheral artery disease, skin infection",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "ACL Tear",
+          "Lymphedema",
+          "Muscle Strain",
+          "Deep Vein Thrombosis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.225
+      },
+      {
+        "therapy_id": "th_rom",
+        "therapy_name": "Range of Motion Exercises",
+        "therapy_description": "Active and passive exercises to maintain and restore joint flexibility, prevent contractures, and improve functional mobility",
+        "therapy_type": "exercise",
+        "duration": "ongoing",
+        "contraindications": "unstable fractures, acute inflammation",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "ACL Tear"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.027,
+        "keyword_overlap": 0.0909,
+        "combined_score": 0.2144
+      },
+      {
+        "therapy_id": "th_massage",
+        "therapy_name": "Therapeutic Massage",
+        "therapy_description": "Manual manipulation of soft tissues to reduce muscle tension, improve circulation, decrease pain, and promote lymphatic drainage",
+        "therapy_type": "manual",
+        "duration": "ongoing sessions",
+        "contraindications": "DVT, open wounds, skin infections, fractures",
+        "graph_priority": 6,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Muscle Strain"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.021,
+        "keyword_overlap": 0.1818,
+        "combined_score": 0.214
+      },
+      {
+        "therapy_id": "th_elevation",
+        "therapy_name": "Elevation Therapy",
+        "therapy_description": "Elevating the affected limb above heart level to reduce swelling through gravity-assisted venous and lymphatic drainage",
+        "therapy_type": "positional",
+        "duration": "acute: 48-72 hours",
+        "contraindications": "none significant",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Cellulitis",
+          "Lymphedema",
+          "Muscle Strain",
+          "Deep Vein Thrombosis",
+          "Gout"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0225,
+        "keyword_overlap": 0.0909,
+        "combined_score": 0.2124
+      },
+      {
+        "therapy_id": "th_balance",
+        "therapy_name": "Balance & Proprioception Training",
+        "therapy_description": "Exercises on unstable surfaces and with perturbation to restore proprioceptive awareness, prevent re-injury, and improve neuromuscular control",
+        "therapy_type": "exercise",
+        "duration": "6-12 weeks",
+        "contraindications": "acute vertigo, severe balance disorders",
+        "graph_priority": 7,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "ACL Tear"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.175
+      },
+      {
+        "therapy_id": "th_acupuncture",
+        "therapy_name": "Acupuncture",
+        "therapy_description": "Insertion of fine needles at specific points to modulate pain pathways, reduce inflammation, and promote natural healing",
+        "therapy_type": "complementary",
+        "duration": "6-12 sessions",
+        "contraindications": "bleeding disorders, anticoagulant therapy",
+        "graph_priority": 5,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Osteoarthritis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0135,
+        "keyword_overlap": 0.0909,
+        "combined_score": 0.1583
+      },
+      {
+        "therapy_id": "th_ultrasound",
+        "therapy_name": "Therapeutic Ultrasound",
+        "therapy_description": "Deep tissue heating using sound waves to promote tissue healing, reduce scar tissue, increase blood flow, and decrease inflammation",
+        "therapy_type": "electrotherapy",
+        "duration": "4-6 weeks",
+        "contraindications": "over malignancy, growth plates, eyes, pregnant uterus",
+        "graph_priority": 6,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Rotator Cuff Tear"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.15
+      },
+      {
+        "therapy_id": "th_wound_care",
+        "therapy_name": "Wound Care Management",
+        "therapy_description": "Systematic wound assessment, debridement, dressing changes, infection control, and promotion of tissue granulation and epithelialization",
+        "therapy_type": "wound",
+        "duration": "until healed",
+        "contraindications": "none significant",
+        "graph_priority": 6,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Cellulitis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.15
+      }
+    ],
+    "medications": [
+      {
+        "medication_id": "med_ibuprofen",
+        "medication_name": "Ibuprofen",
+        "medication_description": "Non-steroidal anti-inflammatory drug for pain, inflammation, swelling, and fever reduction",
+        "dosage": "200-800mg",
+        "form": "oral tablet",
+        "frequency": "every 6-8 hours",
+        "contraindications": "GI ulcers, renal impairment, aspirin allergy",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Rotator Cuff Tear",
+          "Meniscus Tear",
+          "ACL Tear",
+          "Cellulitis",
+          "Muscle Strain",
+          "Osteoarthritis",
+          "Gout"
+        ],
+        "relevance_score": 0.0546,
+        "keyword_overlap": 0.1818,
+        "combined_score": 0.2791
+      },
+      {
+        "medication_id": "med_cephalexin",
+        "medication_name": "Cephalexin",
+        "medication_description": "First-generation cephalosporin for skin infections, cellulitis, bone infections, and UTIs",
+        "dosage": "250-500mg",
+        "form": "oral capsule",
+        "frequency": "four times daily",
+        "contraindications": "cephalosporin allergy",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Cellulitis"
+        ],
+        "relevance_score": 0.0325,
+        "keyword_overlap": 0.0909,
+        "combined_score": 0.2669
+      },
+      {
+        "medication_id": "med_cyclobenzaprine",
+        "medication_name": "Cyclobenzaprine",
+        "medication_description": "Skeletal muscle relaxant for acute muscle spasm, strain-related pain, and musculoskeletal spasticity",
+        "dosage": "5-10mg",
+        "form": "oral tablet",
+        "frequency": "three times daily",
+        "contraindications": "MAO inhibitors, cardiac arrhythmias, hyperthyroidism",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Muscle Strain"
+        ],
+        "relevance_score": 0.056,
+        "keyword_overlap": 0.1818,
+        "combined_score": 0.2547
+      },
+      {
+        "medication_id": "med_heparin",
+        "medication_name": "Heparin",
+        "medication_description": "Rapid-acting anticoagulant for prevention and treatment of deep vein thrombosis, pulmonary embolism, and clot formation",
+        "dosage": "5000-10000 units",
+        "form": "IV / subcutaneous injection",
+        "frequency": "continuous IV or every 8-12 hours SC",
+        "contraindications": "active bleeding, HIT, severe thrombocytopenia",
+        "graph_priority": 10,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.25
+      },
+      {
+        "medication_id": "med_clindamycin",
+        "medication_name": "Clindamycin",
+        "medication_description": "Lincosamide antibiotic for serious skin, bone, and soft tissue infections, especially in penicillin-allergic patients",
+        "dosage": "150-450mg",
+        "form": "oral capsule",
+        "frequency": "every 6-8 hours",
+        "contraindications": "C. difficile history",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Cellulitis"
+        ],
+        "relevance_score": 0.0279,
+        "keyword_overlap": 0.0909,
+        "combined_score": 0.2398
+      },
+      {
+        "medication_id": "med_cortisone_inj",
+        "medication_name": "Cortisone Injection",
+        "medication_description": "Local corticosteroid injection directly into joints or soft tissues for targeted inflammation and pain relief",
+        "dosage": "25-50mg per injection",
+        "form": "intra-articular injection",
+        "frequency": "every 3-6 months max",
+        "contraindications": "joint infection, bleeding disorders",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Rotator Cuff Tear",
+          "Meniscus Tear",
+          "Osteoarthritis"
+        ],
+        "relevance_score": 0.0147,
+        "keyword_overlap": 0.1818,
+        "combined_score": 0.2362
+      },
+      {
+        "medication_id": "med_paracetamol",
+        "medication_name": "Paracetamol (Acetaminophen)",
+        "medication_description": "First-line analgesic and antipyretic for mild to moderate pain and fever reduction",
+        "dosage": "500-1000mg",
+        "form": "oral tablet",
+        "frequency": "every 4-6 hours (max 4g/day)",
+        "contraindications": "severe hepatic impairment",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "ACL Tear",
+          "Osteoarthritis"
+        ],
+        "relevance_score": 0.0176,
+        "keyword_overlap": 0.0909,
+        "combined_score": 0.2352
+      },
+      {
+        "medication_id": "med_enoxaparin",
+        "medication_name": "Enoxaparin",
+        "medication_description": "Low molecular weight heparin for DVT prophylaxis, treatment of acute coronary syndrome, and bridge anticoagulation",
+        "dosage": "40mg prophylaxis / 1mg/kg treatment",
+        "form": "subcutaneous injection",
+        "frequency": "once or twice daily",
+        "contraindications": "active bleeding, HIT, severe renal impairment",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "relevance_score": 0.0164,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2324
+      },
+      {
+        "medication_id": "med_colchicine",
+        "medication_name": "Colchicine",
+        "medication_description": "Anti-inflammatory agent specifically for acute gout flares and gout prophylaxis by inhibiting neutrophil migration",
+        "dosage": "0.5-1mg",
+        "form": "oral tablet",
+        "frequency": "twice daily during flare",
+        "contraindications": "severe renal/hepatic impairment, blood dyscrasias",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Gout"
+        ],
+        "relevance_score": 0.0163,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2323
+      },
+      {
+        "medication_id": "med_celecoxib",
+        "medication_name": "Celecoxib",
+        "medication_description": "COX-2 selective NSAID with reduced GI side effects for osteoarthritis, rheumatoid arthritis, and acute pain",
+        "dosage": "100-200mg",
+        "form": "oral capsule",
+        "frequency": "once or twice daily",
+        "contraindications": "sulfonamide allergy, cardiovascular disease",
+        "graph_priority": 7,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Osteoarthritis"
+        ],
+        "relevance_score": 0.0465,
+        "keyword_overlap": 0.0909,
+        "combined_score": 0.2232
+      },
+      {
+        "medication_id": "med_warfarin",
+        "medication_name": "Warfarin",
+        "medication_description": "Oral anticoagulant for long-term prevention of blood clots, stroke prevention in atrial fibrillation, and DVT/PE treatment",
+        "dosage": "2-10mg (INR-guided)",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "pregnancy, active bleeding, recent surgery",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2
+      },
+      {
+        "medication_id": "med_rivaroxaban",
+        "medication_name": "Rivaroxaban",
+        "medication_description": "Direct oral anticoagulant (DOAC) Factor Xa inhibitor for DVT/PE treatment and stroke prevention without INR monitoring",
+        "dosage": "10-20mg",
+        "form": "oral tablet",
+        "frequency": "once or twice daily",
+        "contraindications": "active bleeding, severe hepatic disease",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2
+      },
+      {
+        "medication_id": "med_allopurinol",
+        "medication_name": "Allopurinol",
+        "medication_description": "Xanthine oxidase inhibitor to lower uric acid levels for chronic gout management and prevention of urate crystal deposition",
+        "dosage": "100-300mg",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "acute gout flare (initiation), severe renal impairment",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Gout"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2
+      },
+      {
+        "medication_id": "med_prednisone",
+        "medication_name": "Prednisone",
+        "medication_description": "Oral corticosteroid for severe inflammation, autoimmune conditions, allergic reactions, and flare management",
+        "dosage": "5-60mg",
+        "form": "oral tablet",
+        "frequency": "once daily (with taper)",
+        "contraindications": "systemic fungal infections, live vaccines",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Gout"
+        ],
+        "relevance_score": 0.0327,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.1897
+      },
+      {
+        "medication_id": "med_furosemide",
+        "medication_name": "Furosemide",
+        "medication_description": "Loop diuretic for edema reduction in heart failure, renal disease, and hepatic cirrhosis",
+        "dosage": "20-80mg",
+        "form": "oral / IV",
+        "frequency": "once or twice daily",
+        "contraindications": "anuria, severe electrolyte depletion",
+        "graph_priority": 5,
+        "evidence_level": "C",
+        "matching_diseases": [
+          "Lymphedema"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.125
+      }
+    ],
+    "drug_interactions": [],
+    "matched_diseases": [
+      "Cellulitis",
+      "Lymphedema",
+      "Gout",
+      "Deep Vein Thrombosis",
+      "ACL Tear",
+      "Muscle Strain",
+      "Meniscus Tear",
+      "Rotator Cuff Tear",
+      "Osteoarthritis"
+    ],
+    "stats": {
+      "therapies_count": 15,
+      "medications_count": 15,
+      "interactions_count": 0,
+      "graph_mode": "Embedded Graph Engine (Local Standby)"
+    }
+  },
+  "sample_dvt_clot": {
+    "ocr": {
+      "raw_text": "CLINICAL INDICATION: 54-year-old female presenting with 48 hours of progressive right lower extremity swelling, warmth, and erythema following a 14-hour transcontinental flight.\n\nDUPLEX ULTRASOUND OF LOWER EXTREMITY DEEP VEINS:\n- Right Popliteal Vein: Demonstrates lack of compressibility with internal hypoechoic material consistent with acute occlusive blood clot (thrombus).\n- Posterior Tibial Veins: Non-compressible segments identified with absent color Doppler flow signaling extended thrombosis.\n- Edema: Marked subcutaneous edema and swollen soft tissue throughout the right calf compartment.\n- Superficial System: Greater saphenous vein is patent without evidence of superficial thrombophlebitis.\n\nIMPRESSION: Acute deep vein thrombosis (DVT) involving the right popliteal and posterior tibial veins with significant leg swelling. High risk for pulmonary embolism.",
+      "confidence": 100.0,
+      "word_count": 113,
+      "lines": [
+        "CLINICAL INDICATION: 54-year-old female presenting with 48 hours of progressive right lower extremity swelling, warmth, and erythema following a 14-hour transcontinental flight.",
+        "DUPLEX ULTRASOUND OF LOWER EXTREMITY DEEP VEINS:",
+        "- Right Popliteal Vein: Demonstrates lack of compressibility with internal hypoechoic material consistent with acute occlusive blood clot (thrombus).",
+        "- Posterior Tibial Veins: Non-compressible segments identified with absent color Doppler flow signaling extended thrombosis.",
+        "- Edema: Marked subcutaneous edema and swollen soft tissue throughout the right calf compartment.",
+        "- Superficial System: Greater saphenous vein is patent without evidence of superficial thrombophlebitis.",
+        "IMPRESSION: Acute deep vein thrombosis (DVT) involving the right popliteal and posterior tibial veins with significant leg swelling. High risk for pulmonary embolism."
+      ],
+      "engine": "direct_input",
+      "status": "success"
+    },
+    "summary": {
+      "entities": {
+        "body_areas": [
+          "blood_vessel",
+          "leg",
+          "lung",
+          "skin"
+        ],
+        "conditions": [
+          "blood_clot",
+          "swelling"
+        ],
+        "symptoms": [
+          "redness",
+          "warmth"
+        ],
+        "severity": [
+          "chronic",
+          "moderate",
+          "severe"
+        ],
+        "imaging_findings": [
+          "ultrasound_findings"
+        ],
+        "lab_markers": [],
+        "measurements": [],
+        "entities_raw": [
+          [
+            "progressive",
+            "severity:chronic"
+          ],
+          [
+            "swelling",
+            "condition:swelling"
+          ],
+          [
+            "warmth",
+            "symptom:warmth"
+          ],
+          [
+            "erythema",
+            "symptom:redness"
+          ],
+          [
+            "ultrasound",
+            "imaging:ultrasound_findings"
+          ],
+          [
+            "vein",
+            "body_area:blood_vessel"
+          ],
+          [
+            "hypoechoic",
+            "imaging:ultrasound_findings"
+          ],
+          [
+            "acute",
+            "severity:severe"
+          ],
+          [
+            "blood clot",
+            "condition:blood_clot"
+          ],
+          [
+            "thrombus",
+            "condition:blood_clot"
+          ],
+          [
+            "tibial",
+            "body_area:leg"
+          ],
+          [
+            "doppler",
+            "imaging:ultrasound_findings"
+          ],
+          [
+            "thrombosis",
+            "condition:blood_clot"
+          ],
+          [
+            "edema",
+            "condition:swelling"
+          ],
+          [
+            "subcutaneous",
+            "body_area:skin"
+          ],
+          [
+            "edema",
+            "condition:swelling"
+          ],
+          [
+            "swollen",
+            "condition:swelling"
+          ],
+          [
+            "calf",
+            "body_area:leg"
+          ],
+          [
+            "vein",
+            "body_area:blood_vessel"
+          ],
+          [
+            "acute",
+            "severity:severe"
+          ],
+          [
+            "deep vein thrombosis",
+            "condition:blood_clot"
+          ],
+          [
+            "vein",
+            "body_area:blood_vessel"
+          ],
+          [
+            "thrombosis",
+            "condition:blood_clot"
+          ],
+          [
+            "dvt",
+            "condition:blood_clot"
+          ],
+          [
+            "tibial",
+            "body_area:leg"
+          ],
+          [
+            "significant",
+            "severity:moderate"
+          ],
+          [
+            "leg",
+            "body_area:leg"
+          ],
+          [
+            "swelling",
+            "condition:swelling"
+          ],
+          [
+            "pulmonary",
+            "body_area:lung"
+          ],
+          [
+            "pulmonary embolism",
+            "condition:blood_clot"
+          ],
+          [
+            "embolism",
+            "condition:blood_clot"
+          ]
+        ]
+      },
+      "summary_sentences": [
+        {
+          "sentence": "IMPRESSION: Acute deep vein thrombosis (DVT) involving the right popliteal and posterior tibial veins with significant leg swelling.",
+          "score": 0.8,
+          "keyword_hits": 9
+        },
+        {
+          "sentence": "High risk for pulmonary embolism.",
+          "score": 0.6,
+          "keyword_hits": 3
+        },
+        {
+          "sentence": "Demonstrates lack of compressibility with internal hypoechoic material consistent with acute occlusive blood clot (thrombus).\n- Posterior Tibial Veins: Non-compressible segments identified with absent color Doppler flow signaling extended thrombosis.\n- Edema: Marked subcutaneous edema and swollen soft tissue throughout the right calf compartment.\n- Superficial System: Greater saphenous vein is patent without evidence of superficial thrombophlebitis.",
+          "score": 0.3605,
+          "keyword_hits": 12
+        },
+        {
+          "sentence": "Right Popliteal Vein:",
+          "score": 0.3333,
+          "keyword_hits": 1
+        },
+        {
+          "sentence": "CLINICAL INDICATION: 54-year-old female presenting with 48 hours of progressive right lower extremity swelling, warmth, and erythema following a 14-hour transcontinental flight.",
+          "score": 0.3318,
+          "keyword_hits": 4
+        },
+        {
+          "sentence": "DUPLEX ULTRASOUND OF LOWER EXTREMITY DEEP VEINS:\n-",
+          "score": 0.125,
+          "keyword_hits": 1
+        }
+      ],
+      "clinical_profile": {
+        "affected_areas": [
+          "blood_vessel",
+          "leg",
+          "lung",
+          "skin"
+        ],
+        "diagnosed_conditions": [
+          "blood_clot",
+          "swelling"
+        ],
+        "reported_symptoms": [
+          "redness",
+          "warmth"
+        ],
+        "severity_level": "severe",
+        "imaging_notes": [
+          "ultrasound_findings"
+        ],
+        "lab_observations": [],
+        "measurements": []
+      },
+      "search_keywords": [
+        "blood_clot",
+        "swelling",
+        "redness",
+        "warmth",
+        "blood_vessel",
+        "leg",
+        "lung",
+        "skin"
+      ]
+    },
+    "therapies": [
+      {
+        "therapy_id": "th_lymphatic",
+        "therapy_name": "Manual Lymphatic Drainage",
+        "therapy_description": "Gentle massage technique to stimulate lymphatic flow, reduce lymphedema, and decrease post-surgical swelling",
+        "therapy_type": "manual",
+        "duration": "ongoing as needed",
+        "contraindications": "active infection, DVT, cardiac failure",
+        "graph_priority": 10,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Lymphedema"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0211,
+        "keyword_overlap": 0.125,
+        "combined_score": 0.297
+      },
+      {
+        "therapy_id": "th_anticoag",
+        "therapy_name": "Anticoagulation Therapy",
+        "therapy_description": "Blood thinning therapy to prevent and treat blood clots through heparin, warfarin, or direct oral anticoagulants",
+        "therapy_type": "pharmacological",
+        "duration": "3-12 months",
+        "contraindications": "active bleeding, bleeding disorders",
+        "graph_priority": 10,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0192,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2586
+      },
+      {
+        "therapy_id": "th_cryo",
+        "therapy_name": "Cryotherapy",
+        "therapy_description": "Cold application therapy to reduce swelling, inflammation, pain, and muscle spasm through ice packs, cold compression, or whole-body cryotherapy",
+        "therapy_type": "physical",
+        "duration": "acute: 48-72 hours",
+        "contraindications": "Raynaud disease, cold sensitivity, peripheral vascular disease",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Meniscus Tear",
+          "Gout"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0187,
+        "keyword_overlap": 0.125,
+        "combined_score": 0.2459
+      },
+      {
+        "therapy_id": "th_compression",
+        "therapy_name": "Compression Therapy",
+        "therapy_description": "Application of graduated compression stockings or bandages to reduce edema, prevent blood clots, and improve venous return",
+        "therapy_type": "mechanical",
+        "duration": "ongoing",
+        "contraindications": "peripheral artery disease, skin infection",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Lymphedema",
+          "Deep Vein Thrombosis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0366,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2415
+      },
+      {
+        "therapy_id": "th_physio",
+        "therapy_name": "Physical Therapy",
+        "therapy_description": "Exercise-based rehabilitation to restore movement, strength, and function through guided physical exercises, stretching, and progressive resistance training",
+        "therapy_type": "physical",
+        "duration": "6-12 weeks",
+        "contraindications": "acute fractures, severe cardiac conditions",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Meniscus Tear"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0105,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2297
+      },
+      {
+        "therapy_id": "th_elevation",
+        "therapy_name": "Elevation Therapy",
+        "therapy_description": "Elevating the affected limb above heart level to reduce swelling through gravity-assisted venous and lymphatic drainage",
+        "therapy_type": "positional",
+        "duration": "acute: 48-72 hours",
+        "contraindications": "none significant",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Cellulitis",
+          "Lymphedema",
+          "Deep Vein Thrombosis",
+          "Gout"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0214,
+        "keyword_overlap": 0.125,
+        "combined_score": 0.2221
+      },
+      {
+        "therapy_id": "th_strength",
+        "therapy_name": "Strengthening Exercises",
+        "therapy_description": "Progressive resistance training to rebuild muscle strength, improve stability, and support injured joints through isometric, isotonic, and isokinetic protocols",
+        "therapy_type": "exercise",
+        "duration": "8-16 weeks",
+        "contraindications": "acute injury phase, uncontrolled hypertension",
+        "graph_priority": 7,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Meniscus Tear"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0102,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.1796
+      },
+      {
+        "therapy_id": "th_wound_care",
+        "therapy_name": "Wound Care Management",
+        "therapy_description": "Systematic wound assessment, debridement, dressing changes, infection control, and promotion of tissue granulation and epithelialization",
+        "therapy_type": "wound",
+        "duration": "until healed",
+        "contraindications": "none significant",
+        "graph_priority": 6,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Cellulitis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.15
+      }
+    ],
+    "medications": [
+      {
+        "medication_id": "med_heparin",
+        "medication_name": "Heparin",
+        "medication_description": "Rapid-acting anticoagulant for prevention and treatment of deep vein thrombosis, pulmonary embolism, and clot formation",
+        "dosage": "5000-10000 units",
+        "form": "IV / subcutaneous injection",
+        "frequency": "continuous IV or every 8-12 hours SC",
+        "contraindications": "active bleeding, HIT, severe thrombocytopenia",
+        "graph_priority": 10,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "relevance_score": 0.2308,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.3539
+      },
+      {
+        "medication_id": "med_cephalexin",
+        "medication_name": "Cephalexin",
+        "medication_description": "First-generation cephalosporin for skin infections, cellulitis, bone infections, and UTIs",
+        "dosage": "250-500mg",
+        "form": "oral capsule",
+        "frequency": "four times daily",
+        "contraindications": "cephalosporin allergy",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Cellulitis"
+        ],
+        "relevance_score": 0.0154,
+        "keyword_overlap": 0.125,
+        "combined_score": 0.2694
+      },
+      {
+        "medication_id": "med_ibuprofen",
+        "medication_name": "Ibuprofen",
+        "medication_description": "Non-steroidal anti-inflammatory drug for pain, inflammation, swelling, and fever reduction",
+        "dosage": "200-800mg",
+        "form": "oral tablet",
+        "frequency": "every 6-8 hours",
+        "contraindications": "GI ulcers, renal impairment, aspirin allergy",
+        "graph_priority": 8,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Cellulitis",
+          "Meniscus Tear",
+          "Gout"
+        ],
+        "relevance_score": 0.0431,
+        "keyword_overlap": 0.125,
+        "combined_score": 0.2569
+      },
+      {
+        "medication_id": "med_clindamycin",
+        "medication_name": "Clindamycin",
+        "medication_description": "Lincosamide antibiotic for serious skin, bone, and soft tissue infections, especially in penicillin-allergic patients",
+        "dosage": "150-450mg",
+        "form": "oral capsule",
+        "frequency": "every 6-8 hours",
+        "contraindications": "C. difficile history",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Cellulitis"
+        ],
+        "relevance_score": 0.0133,
+        "keyword_overlap": 0.125,
+        "combined_score": 0.2435
+      },
+      {
+        "medication_id": "med_enoxaparin",
+        "medication_name": "Enoxaparin",
+        "medication_description": "Low molecular weight heparin for DVT prophylaxis, treatment of acute coronary syndrome, and bridge anticoagulation",
+        "dosage": "40mg prophylaxis / 1mg/kg treatment",
+        "form": "subcutaneous injection",
+        "frequency": "once or twice daily",
+        "contraindications": "active bleeding, HIT, severe renal impairment",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "relevance_score": 0.0319,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2394
+      },
+      {
+        "medication_id": "med_colchicine",
+        "medication_name": "Colchicine",
+        "medication_description": "Anti-inflammatory agent specifically for acute gout flares and gout prophylaxis by inhibiting neutrophil migration",
+        "dosage": "0.5-1mg",
+        "form": "oral tablet",
+        "frequency": "twice daily during flare",
+        "contraindications": "severe renal/hepatic impairment, blood dyscrasias",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Gout"
+        ],
+        "relevance_score": 0.0213,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2346
+      },
+      {
+        "medication_id": "med_warfarin",
+        "medication_name": "Warfarin",
+        "medication_description": "Oral anticoagulant for long-term prevention of blood clots, stroke prevention in atrial fibrillation, and DVT/PE treatment",
+        "dosage": "2-10mg (INR-guided)",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "pregnancy, active bleeding, recent surgery",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "relevance_score": 0.0257,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2116
+      },
+      {
+        "medication_id": "med_rivaroxaban",
+        "medication_name": "Rivaroxaban",
+        "medication_description": "Direct oral anticoagulant (DOAC) Factor Xa inhibitor for DVT/PE treatment and stroke prevention without INR monitoring",
+        "dosage": "10-20mg",
+        "form": "oral tablet",
+        "frequency": "once or twice daily",
+        "contraindications": "active bleeding, severe hepatic disease",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "relevance_score": 0.01,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2045
+      },
+      {
+        "medication_id": "med_allopurinol",
+        "medication_name": "Allopurinol",
+        "medication_description": "Xanthine oxidase inhibitor to lower uric acid levels for chronic gout management and prevention of urate crystal deposition",
+        "dosage": "100-300mg",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "acute gout flare (initiation), severe renal impairment",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Gout"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2
+      },
+      {
+        "medication_id": "med_prednisone",
+        "medication_name": "Prednisone",
+        "medication_description": "Oral corticosteroid for severe inflammation, autoimmune conditions, allergic reactions, and flare management",
+        "dosage": "5-60mg",
+        "form": "oral tablet",
+        "frequency": "once daily (with taper)",
+        "contraindications": "systemic fungal infections, live vaccines",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Gout"
+        ],
+        "relevance_score": 0.0305,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.1887
+      },
+      {
+        "medication_id": "med_cortisone_inj",
+        "medication_name": "Cortisone Injection",
+        "medication_description": "Local corticosteroid injection directly into joints or soft tissues for targeted inflammation and pain relief",
+        "dosage": "25-50mg per injection",
+        "form": "intra-articular injection",
+        "frequency": "every 3-6 months max",
+        "contraindications": "joint infection, bleeding disorders",
+        "graph_priority": 6,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Meniscus Tear"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.15
+      },
+      {
+        "medication_id": "med_furosemide",
+        "medication_name": "Furosemide",
+        "medication_description": "Loop diuretic for edema reduction in heart failure, renal disease, and hepatic cirrhosis",
+        "dosage": "20-80mg",
+        "form": "oral / IV",
+        "frequency": "once or twice daily",
+        "contraindications": "anuria, severe electrolyte depletion",
+        "graph_priority": 5,
+        "evidence_level": "C",
+        "matching_diseases": [
+          "Lymphedema"
+        ],
+        "relevance_score": 0.0294,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.1382
+      }
+    ],
+    "drug_interactions": [
+      {
+        "drug_a": "Warfarin",
+        "drug_b": "Ibuprofen",
+        "severity": "high",
+        "interaction_note": "Increased bleeding risk"
+      }
+    ],
+    "matched_diseases": [
+      "Lymphedema",
+      "Deep Vein Thrombosis",
+      "Gout",
+      "Cellulitis",
+      "Meniscus Tear"
+    ],
+    "stats": {
+      "therapies_count": 8,
+      "medications_count": 12,
+      "interactions_count": 1,
+      "graph_mode": "Embedded Graph Engine (Local Standby)"
+    }
+  },
+  "sample_brain_stroke": {
+    "ocr": {
+      "raw_text": "CLINICAL INDICATION: 66-year-old male with sudden onset of left hemiparesis, facial droop, and dysarthria presenting within 2.5 hours of symptom onset.\n\nDIFFUSION WEIGHTED MRI & NON-CONTRAST CT OF BRAIN:\n- Findings: High signal intensity on DWI with corresponding ADC hypointensity in the right middle cerebral artery (MCA) territory.\n- Damaged Area: Focal region of acute cytotoxic edema and cerebral tissue damage involving the right corona radiata and basal ganglia measuring 3.2 cm.\n- Perfusion: Hypoperfused ischemic penumbra surrounding core infarct.\n- Hemorrhage: No evidence of intracranial hemorrhage or midline shift.\n\nIMPRESSION: Acute right MCA ischemic stroke with localized brain tissue injury and contralateral hemiparesis. Urgent thrombolytic / antiplatelet therapy evaluation required.",
+      "confidence": 100.0,
+      "word_count": 111,
+      "lines": [
+        "CLINICAL INDICATION: 66-year-old male with sudden onset of left hemiparesis, facial droop, and dysarthria presenting within 2.5 hours of symptom onset.",
+        "DIFFUSION WEIGHTED MRI & NON-CONTRAST CT OF BRAIN:",
+        "- Findings: High signal intensity on DWI with corresponding ADC hypointensity in the right middle cerebral artery (MCA) territory.",
+        "- Damaged Area: Focal region of acute cytotoxic edema and cerebral tissue damage involving the right corona radiata and basal ganglia measuring 3.2 cm.",
+        "- Perfusion: Hypoperfused ischemic penumbra surrounding core infarct.",
+        "- Hemorrhage: No evidence of intracranial hemorrhage or midline shift.",
+        "IMPRESSION: Acute right MCA ischemic stroke with localized brain tissue injury and contralateral hemiparesis. Urgent thrombolytic / antiplatelet therapy evaluation required."
+      ],
+      "engine": "direct_input",
+      "status": "success"
+    },
+    "summary": {
+      "entities": {
+        "body_areas": [
+          "blood_vessel",
+          "brain"
+        ],
+        "conditions": [
+          "necrosis",
+          "stroke",
+          "swelling"
+        ],
+        "symptoms": [
+          "bleeding",
+          "weakness"
+        ],
+        "severity": [
+          "severe"
+        ],
+        "imaging_findings": [
+          "ct_findings",
+          "mri_findings"
+        ],
+        "lab_markers": [],
+        "measurements": [
+          {
+            "value": 3.2,
+            "unit": "cm"
+          }
+        ],
+        "entities_raw": [
+          [
+            "hemiparesis",
+            "symptom:weakness"
+          ],
+          [
+            "mri",
+            "imaging:mri_findings"
+          ],
+          [
+            "contrast",
+            "imaging:ct_findings"
+          ],
+          [
+            "ct",
+            "imaging:ct_findings"
+          ],
+          [
+            "brain",
+            "body_area:brain"
+          ],
+          [
+            "high signal",
+            "imaging:mri_findings"
+          ],
+          [
+            "signal intensity",
+            "imaging:mri_findings"
+          ],
+          [
+            "cerebral",
+            "body_area:brain"
+          ],
+          [
+            "artery",
+            "body_area:blood_vessel"
+          ],
+          [
+            "acute",
+            "severity:severe"
+          ],
+          [
+            "edema",
+            "condition:swelling"
+          ],
+          [
+            "cerebral",
+            "body_area:brain"
+          ],
+          [
+            "ischemic",
+            "condition:necrosis"
+          ],
+          [
+            "infarct",
+            "condition:necrosis"
+          ],
+          [
+            "hemorrhage",
+            "symptom:bleeding"
+          ],
+          [
+            "hemorrhage",
+            "symptom:bleeding"
+          ],
+          [
+            "acute",
+            "severity:severe"
+          ],
+          [
+            "ischemic",
+            "condition:necrosis"
+          ],
+          [
+            "ischemic stroke",
+            "condition:stroke"
+          ],
+          [
+            "stroke",
+            "condition:stroke"
+          ],
+          [
+            "brain",
+            "body_area:brain"
+          ],
+          [
+            "hemiparesis",
+            "symptom:weakness"
+          ]
+        ]
+      },
+      "summary_sentences": [
+        {
+          "sentence": "IMPRESSION: Acute right MCA ischemic stroke with localized brain tissue injury and contralateral hemiparesis.",
+          "score": 0.5786,
+          "keyword_hits": 6
+        },
+        {
+          "sentence": "DIFFUSION WEIGHTED MRI & NON-CONTRAST CT OF BRAIN:\n- Findings: High signal intensity on DWI with corresponding ADC hypointensity in the right middle cerebral artery (MCA) territory.\n- Damaged Area: Focal region of acute cytotoxic edema and cerebral tissue damage involving the right corona radiata and basal ganglia measuring 3.2 cm.\n- Perfusion: Hypoperfused ischemic penumbra surrounding core infarct.\n- Hemorrhage: No evidence of intracranial hemorrhage or midline shift.",
+          "score": 0.3384,
+          "keyword_hits": 13
+        },
+        {
+          "sentence": "CLINICAL INDICATION: 66-year-old male with sudden onset of left hemiparesis, facial droop, and dysarthria presenting within 2.5 hours of symptom onset.",
+          "score": 0.0476,
+          "keyword_hits": 1
+        },
+        {
+          "sentence": "Urgent thrombolytic / antiplatelet therapy evaluation required.",
+          "score": 0.0,
+          "keyword_hits": 0
+        }
+      ],
+      "clinical_profile": {
+        "affected_areas": [
+          "blood_vessel",
+          "brain"
+        ],
+        "diagnosed_conditions": [
+          "necrosis",
+          "stroke",
+          "swelling"
+        ],
+        "reported_symptoms": [
+          "bleeding",
+          "weakness"
+        ],
+        "severity_level": "severe",
+        "imaging_notes": [
+          "ct_findings",
+          "mri_findings"
+        ],
+        "lab_observations": [],
+        "measurements": [
+          {
+            "value": 3.2,
+            "unit": "cm"
+          }
+        ]
+      },
+      "search_keywords": [
+        "necrosis",
+        "stroke",
+        "swelling",
+        "bleeding",
+        "weakness",
+        "blood_vessel",
+        "brain"
+      ]
+    },
+    "therapies": [
+      {
+        "therapy_id": "th_thrombolysis",
+        "therapy_name": "Thrombolytic Therapy",
+        "therapy_description": "Administration of clot-dissolving agents to restore blood flow in acute thrombotic events like stroke, pulmonary embolism, and DVT",
+        "therapy_type": "emergency",
+        "duration": "acute intervention",
+        "contraindications": "active bleeding, recent surgery, hemorrhagic stroke",
+        "graph_priority": 10,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Ischemic Stroke"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0539,
+        "keyword_overlap": 0.1429,
+        "combined_score": 0.3171
+      },
+      {
+        "therapy_id": "th_lymphatic",
+        "therapy_name": "Manual Lymphatic Drainage",
+        "therapy_description": "Gentle massage technique to stimulate lymphatic flow, reduce lymphedema, and decrease post-surgical swelling",
+        "therapy_type": "manual",
+        "duration": "ongoing as needed",
+        "contraindications": "active infection, DVT, cardiac failure",
+        "graph_priority": 10,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Lymphedema"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0183,
+        "keyword_overlap": 0.1429,
+        "combined_score": 0.3011
+      },
+      {
+        "therapy_id": "th_speech",
+        "therapy_name": "Speech & Swallowing Therapy",
+        "therapy_description": "Therapy for speech, language, cognitive-communication, and swallowing disorders following stroke or neurological injury",
+        "therapy_type": "rehabilitation",
+        "duration": "12-24 weeks",
+        "contraindications": "none significant",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Ischemic Stroke"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0329,
+        "keyword_overlap": 0.1429,
+        "combined_score": 0.2577
+      },
+      {
+        "therapy_id": "th_cryo",
+        "therapy_name": "Cryotherapy",
+        "therapy_description": "Cold application therapy to reduce swelling, inflammation, pain, and muscle spasm through ice packs, cold compression, or whole-body cryotherapy",
+        "therapy_type": "physical",
+        "duration": "acute: 48-72 hours",
+        "contraindications": "Raynaud disease, cold sensitivity, peripheral vascular disease",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Meniscus Tear",
+          "Gout"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0162,
+        "keyword_overlap": 0.1429,
+        "combined_score": 0.2502
+      },
+      {
+        "therapy_id": "th_anticoag",
+        "therapy_name": "Anticoagulation Therapy",
+        "therapy_description": "Blood thinning therapy to prevent and treat blood clots through heparin, warfarin, or direct oral anticoagulants",
+        "therapy_type": "pharmacological",
+        "duration": "3-12 months",
+        "contraindications": "active bleeding, bleeding disorders",
+        "graph_priority": 10,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.25
+      },
+      {
+        "therapy_id": "th_compression",
+        "therapy_name": "Compression Therapy",
+        "therapy_description": "Application of graduated compression stockings or bandages to reduce edema, prevent blood clots, and improve venous return",
+        "therapy_type": "mechanical",
+        "duration": "ongoing",
+        "contraindications": "peripheral artery disease, skin infection",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Lymphedema",
+          "Deep Vein Thrombosis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0169,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2326
+      },
+      {
+        "therapy_id": "th_elevation",
+        "therapy_name": "Elevation Therapy",
+        "therapy_description": "Elevating the affected limb above heart level to reduce swelling through gravity-assisted venous and lymphatic drainage",
+        "therapy_type": "positional",
+        "duration": "acute: 48-72 hours",
+        "contraindications": "none significant",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Cellulitis",
+          "Lymphedema",
+          "Deep Vein Thrombosis",
+          "Gout"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0184,
+        "keyword_overlap": 0.1429,
+        "combined_score": 0.2261
+      },
+      {
+        "therapy_id": "th_physio",
+        "therapy_name": "Physical Therapy",
+        "therapy_description": "Exercise-based rehabilitation to restore movement, strength, and function through guided physical exercises, stretching, and progressive resistance training",
+        "therapy_type": "physical",
+        "duration": "6-12 weeks",
+        "contraindications": "acute fractures, severe cardiac conditions",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Ischemic Stroke",
+          "Meniscus Tear"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.225
+      },
+      {
+        "therapy_id": "th_occupational",
+        "therapy_name": "Occupational Therapy",
+        "therapy_description": "Rehabilitation focused on activities of daily living, hand function, adaptive equipment, and workplace ergonomics",
+        "therapy_type": "rehabilitation",
+        "duration": "8-16 weeks",
+        "contraindications": "none significant",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Ischemic Stroke"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2
+      },
+      {
+        "therapy_id": "th_strength",
+        "therapy_name": "Strengthening Exercises",
+        "therapy_description": "Progressive resistance training to rebuild muscle strength, improve stability, and support injured joints through isometric, isotonic, and isokinetic protocols",
+        "therapy_type": "exercise",
+        "duration": "8-16 weeks",
+        "contraindications": "acute injury phase, uncontrolled hypertension",
+        "graph_priority": 7,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Meniscus Tear"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.175
+      },
+      {
+        "therapy_id": "th_wound_care",
+        "therapy_name": "Wound Care Management",
+        "therapy_description": "Systematic wound assessment, debridement, dressing changes, infection control, and promotion of tissue granulation and epithelialization",
+        "therapy_type": "wound",
+        "duration": "until healed",
+        "contraindications": "none significant",
+        "graph_priority": 6,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Cellulitis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.15
+      }
+    ],
+    "medications": [
+      {
+        "medication_id": "med_alteplase",
+        "medication_name": "Alteplase (tPA)",
+        "medication_description": "Tissue plasminogen activator for emergency dissolution of blood clots in acute ischemic stroke and pulmonary embolism",
+        "dosage": "0.9mg/kg (max 90mg)",
+        "form": "IV infusion",
+        "frequency": "single dose in emergency",
+        "contraindications": "active bleeding, recent surgery, hemorrhagic stroke",
+        "graph_priority": 10,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Ischemic Stroke"
+        ],
+        "relevance_score": 0.1252,
+        "keyword_overlap": 0.1429,
+        "combined_score": 0.3492
+      },
+      {
+        "medication_id": "med_aspirin",
+        "medication_name": "Aspirin (Low-Dose)",
+        "medication_description": "Antiplatelet agent for cardiovascular protection, secondary stroke prevention, and peripheral artery disease",
+        "dosage": "75-325mg",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "active GI bleeding, aspirin allergy, children under 16",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Ischemic Stroke"
+        ],
+        "relevance_score": 0.0459,
+        "keyword_overlap": 0.1429,
+        "combined_score": 0.2635
+      },
+      {
+        "medication_id": "med_ibuprofen",
+        "medication_name": "Ibuprofen",
+        "medication_description": "Non-steroidal anti-inflammatory drug for pain, inflammation, swelling, and fever reduction",
+        "dosage": "200-800mg",
+        "form": "oral tablet",
+        "frequency": "every 6-8 hours",
+        "contraindications": "GI ulcers, renal impairment, aspirin allergy",
+        "graph_priority": 8,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Cellulitis",
+          "Meniscus Tear",
+          "Gout"
+        ],
+        "relevance_score": 0.0344,
+        "keyword_overlap": 0.1429,
+        "combined_score": 0.2584
+      },
+      {
+        "medication_id": "med_warfarin",
+        "medication_name": "Warfarin",
+        "medication_description": "Oral anticoagulant for long-term prevention of blood clots, stroke prevention in atrial fibrillation, and DVT/PE treatment",
+        "dosage": "2-10mg (INR-guided)",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "pregnancy, active bleeding, recent surgery",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "relevance_score": 0.0244,
+        "keyword_overlap": 0.1429,
+        "combined_score": 0.2539
+      },
+      {
+        "medication_id": "med_rivaroxaban",
+        "medication_name": "Rivaroxaban",
+        "medication_description": "Direct oral anticoagulant (DOAC) Factor Xa inhibitor for DVT/PE treatment and stroke prevention without INR monitoring",
+        "dosage": "10-20mg",
+        "form": "oral tablet",
+        "frequency": "once or twice daily",
+        "contraindications": "active bleeding, severe hepatic disease",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "relevance_score": 0.0242,
+        "keyword_overlap": 0.1429,
+        "combined_score": 0.2538
+      },
+      {
+        "medication_id": "med_heparin",
+        "medication_name": "Heparin",
+        "medication_description": "Rapid-acting anticoagulant for prevention and treatment of deep vein thrombosis, pulmonary embolism, and clot formation",
+        "dosage": "5000-10000 units",
+        "form": "IV / subcutaneous injection",
+        "frequency": "continuous IV or every 8-12 hours SC",
+        "contraindications": "active bleeding, HIT, severe thrombocytopenia",
+        "graph_priority": 10,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.25
+      },
+      {
+        "medication_id": "med_enoxaparin",
+        "medication_name": "Enoxaparin",
+        "medication_description": "Low molecular weight heparin for DVT prophylaxis, treatment of acute coronary syndrome, and bridge anticoagulation",
+        "dosage": "40mg prophylaxis / 1mg/kg treatment",
+        "form": "subcutaneous injection",
+        "frequency": "once or twice daily",
+        "contraindications": "active bleeding, HIT, severe renal impairment",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "relevance_score": 0.0208,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2344
+      },
+      {
+        "medication_id": "med_colchicine",
+        "medication_name": "Colchicine",
+        "medication_description": "Anti-inflammatory agent specifically for acute gout flares and gout prophylaxis by inhibiting neutrophil migration",
+        "dosage": "0.5-1mg",
+        "form": "oral tablet",
+        "frequency": "twice daily during flare",
+        "contraindications": "severe renal/hepatic impairment, blood dyscrasias",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Gout"
+        ],
+        "relevance_score": 0.0206,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2343
+      },
+      {
+        "medication_id": "med_amlodipine",
+        "medication_name": "Amlodipine",
+        "medication_description": "Calcium channel blocker for hypertension, angina, and coronary artery disease management",
+        "dosage": "5-10mg",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "severe aortic stenosis, cardiogenic shock",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Hypertension"
+        ],
+        "relevance_score": 0.0175,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2329
+      },
+      {
+        "medication_id": "med_cephalexin",
+        "medication_name": "Cephalexin",
+        "medication_description": "First-generation cephalosporin for skin infections, cellulitis, bone infections, and UTIs",
+        "dosage": "250-500mg",
+        "form": "oral capsule",
+        "frequency": "four times daily",
+        "contraindications": "cephalosporin allergy",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Cellulitis"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.225
+      },
+      {
+        "medication_id": "med_lisinopril",
+        "medication_name": "Lisinopril",
+        "medication_description": "ACE inhibitor for hypertension, heart failure, and diabetic nephropathy protection",
+        "dosage": "5-40mg",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "pregnancy, angioedema history, bilateral renal artery stenosis",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Hypertension"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.225
+      },
+      {
+        "medication_id": "med_clindamycin",
+        "medication_name": "Clindamycin",
+        "medication_description": "Lincosamide antibiotic for serious skin, bone, and soft tissue infections, especially in penicillin-allergic patients",
+        "dosage": "150-450mg",
+        "form": "oral capsule",
+        "frequency": "every 6-8 hours",
+        "contraindications": "C. difficile history",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Cellulitis"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2
+      },
+      {
+        "medication_id": "med_allopurinol",
+        "medication_name": "Allopurinol",
+        "medication_description": "Xanthine oxidase inhibitor to lower uric acid levels for chronic gout management and prevention of urate crystal deposition",
+        "dosage": "100-300mg",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "acute gout flare (initiation), severe renal impairment",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Gout"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2
+      },
+      {
+        "medication_id": "med_prednisone",
+        "medication_name": "Prednisone",
+        "medication_description": "Oral corticosteroid for severe inflammation, autoimmune conditions, allergic reactions, and flare management",
+        "dosage": "5-60mg",
+        "form": "oral tablet",
+        "frequency": "once daily (with taper)",
+        "contraindications": "systemic fungal infections, live vaccines",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Gout"
+        ],
+        "relevance_score": 0.0344,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.1905
+      },
+      {
+        "medication_id": "med_atorvastatin",
+        "medication_name": "Atorvastatin",
+        "medication_description": "HMG-CoA reductase inhibitor (statin) for cholesterol reduction, atherosclerosis management, and cardiovascular risk reduction",
+        "dosage": "10-80mg",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "liver disease, pregnancy, myopathy",
+        "graph_priority": 7,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Ischemic Stroke"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.175
+      },
+      {
+        "medication_id": "med_cortisone_inj",
+        "medication_name": "Cortisone Injection",
+        "medication_description": "Local corticosteroid injection directly into joints or soft tissues for targeted inflammation and pain relief",
+        "dosage": "25-50mg per injection",
+        "form": "intra-articular injection",
+        "frequency": "every 3-6 months max",
+        "contraindications": "joint infection, bleeding disorders",
+        "graph_priority": 6,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Meniscus Tear"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.15
+      },
+      {
+        "medication_id": "med_furosemide",
+        "medication_name": "Furosemide",
+        "medication_description": "Loop diuretic for edema reduction in heart failure, renal disease, and hepatic cirrhosis",
+        "dosage": "20-80mg",
+        "form": "oral / IV",
+        "frequency": "once or twice daily",
+        "contraindications": "anuria, severe electrolyte depletion",
+        "graph_priority": 5,
+        "evidence_level": "C",
+        "matching_diseases": [
+          "Lymphedema"
+        ],
+        "relevance_score": 0.0202,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.1341
+      }
+    ],
+    "drug_interactions": [
+      {
+        "drug_a": "Warfarin",
+        "drug_b": "Ibuprofen",
+        "severity": "high",
+        "interaction_note": "Increased bleeding risk"
+      },
+      {
+        "drug_a": "Warfarin",
+        "drug_b": "Aspirin (Low-Dose)",
+        "severity": "high",
+        "interaction_note": "Increased bleeding risk"
+      },
+      {
+        "drug_a": "Heparin",
+        "drug_b": "Aspirin (Low-Dose)",
+        "severity": "moderate",
+        "interaction_note": "Additive anticoagulation effect"
+      }
+    ],
+    "matched_diseases": [
+      "Lymphedema",
+      "Ischemic Stroke",
+      "Deep Vein Thrombosis",
+      "Hypertension",
+      "Gout",
+      "Cellulitis",
+      "Meniscus Tear"
+    ],
+    "stats": {
+      "therapies_count": 11,
+      "medications_count": 17,
+      "interactions_count": 3,
+      "graph_mode": "Embedded Graph Engine (Local Standby)"
+    }
+  },
+  "sample_spine_sciatica": {
+    "ocr": {
+      "raw_text": "CLINICAL INDICATION: 45-year-old male reporting 3 weeks of excruciating lower back pain radiating down the posterior left leg into the lateral foot (sciatica).\n\nMRI LUMBAR SPINE (L1-S1):\n- L4-L5 Level: Prominent 6.5 mm posterolateral disc protrusion / herniation encroaching upon the left lateral recess.\n- Nerve Root: Definite compression of the traversing left L5 nerve root with surrounding inflammatory edema.\n- L5-S1 Level: Mild disc desiccation with minor concentric bulge, without significant canal stenosis.\n- Symptoms: Severe numbness and paresthesia in the L5 dermatomal distribution and paraspinal muscle spasms.\n\nIMPRESSION: Extruded L4-L5 intervertebral disc herniation causing severe left L5 radiculopathy and sciatic nerve impingement.",
+      "confidence": 100.0,
+      "word_count": 104,
+      "lines": [
+        "CLINICAL INDICATION: 45-year-old male reporting 3 weeks of excruciating lower back pain radiating down the posterior left leg into the lateral foot (sciatica).",
+        "MRI LUMBAR SPINE (L1-S1):",
+        "- L4-L5 Level: Prominent 6.5 mm posterolateral disc protrusion / herniation encroaching upon the left lateral recess.",
+        "- Nerve Root: Definite compression of the traversing left L5 nerve root with surrounding inflammatory edema.",
+        "- L5-S1 Level: Mild disc desiccation with minor concentric bulge, without significant canal stenosis.",
+        "- Symptoms: Severe numbness and paresthesia in the L5 dermatomal distribution and paraspinal muscle spasms.",
+        "IMPRESSION: Extruded L4-L5 intervertebral disc herniation causing severe left L5 radiculopathy and sciatic nerve impingement."
+      ],
+      "engine": "direct_input",
+      "status": "success"
+    },
+    "summary": {
+      "entities": {
+        "body_areas": [
+          "foot",
+          "leg",
+          "muscle",
+          "nerve",
+          "spine"
+        ],
+        "conditions": [
+          "compression",
+          "inflammation",
+          "neuropathy",
+          "prolapse",
+          "stenosis",
+          "swelling"
+        ],
+        "symptoms": [
+          "numbness",
+          "pain"
+        ],
+        "severity": [
+          "mild",
+          "moderate",
+          "severe"
+        ],
+        "imaging_findings": [
+          "mri_findings"
+        ],
+        "lab_markers": [],
+        "measurements": [
+          {
+            "value": 6.5,
+            "unit": "mm"
+          }
+        ],
+        "entities_raw": [
+          [
+            "pain",
+            "symptom:pain"
+          ],
+          [
+            "leg",
+            "body_area:leg"
+          ],
+          [
+            "foot",
+            "body_area:foot"
+          ],
+          [
+            "mri",
+            "imaging:mri_findings"
+          ],
+          [
+            "lumbar",
+            "body_area:spine"
+          ],
+          [
+            "spine",
+            "body_area:spine"
+          ],
+          [
+            "disc",
+            "body_area:spine"
+          ],
+          [
+            "disc protrusion",
+            "imaging:mri_findings"
+          ],
+          [
+            "protrusion",
+            "condition:prolapse"
+          ],
+          [
+            "herniation",
+            "condition:prolapse"
+          ],
+          [
+            "nerve",
+            "body_area:nerve"
+          ],
+          [
+            "compression",
+            "condition:compression"
+          ],
+          [
+            "nerve",
+            "body_area:nerve"
+          ],
+          [
+            "inflammatory",
+            "condition:inflammation"
+          ],
+          [
+            "edema",
+            "condition:swelling"
+          ],
+          [
+            "mild",
+            "severity:mild"
+          ],
+          [
+            "disc",
+            "body_area:spine"
+          ],
+          [
+            "minor",
+            "severity:mild"
+          ],
+          [
+            "bulge",
+            "condition:prolapse"
+          ],
+          [
+            "significant",
+            "severity:moderate"
+          ],
+          [
+            "canal stenosis",
+            "condition:compression"
+          ],
+          [
+            "stenosis",
+            "condition:stenosis"
+          ],
+          [
+            "severe",
+            "severity:severe"
+          ],
+          [
+            "numbness",
+            "symptom:numbness"
+          ],
+          [
+            "paresthesia",
+            "symptom:numbness"
+          ],
+          [
+            "muscle",
+            "body_area:muscle"
+          ],
+          [
+            "intervertebral",
+            "body_area:spine"
+          ],
+          [
+            "disc",
+            "body_area:spine"
+          ],
+          [
+            "disc herniation",
+            "condition:prolapse"
+          ],
+          [
+            "herniation",
+            "condition:prolapse"
+          ],
+          [
+            "severe",
+            "severity:severe"
+          ],
+          [
+            "radiculopathy",
+            "condition:neuropathy"
+          ],
+          [
+            "nerve",
+            "body_area:nerve"
+          ],
+          [
+            "impingement",
+            "condition:compression"
+          ]
+        ]
+      },
+      "summary_sentences": [
+        {
+          "sentence": "MRI LUMBAR SPINE (L1-S1):\n- L4-L5 Level: Prominent 6.5 mm posterolateral disc protrusion / herniation encroaching upon the left lateral recess.\n- Nerve Root: Definite compression of the traversing left L5 nerve root with surrounding inflammatory edema.\n- L5-S1 Level: Mild disc desiccation with minor concentric bulge, without significant canal stenosis.\n- Symptoms: Severe numbness and paresthesia in the L5 dermatomal distribution and paraspinal muscle spasms.",
+          "score": 0.7682,
+          "keyword_hits": 21
+        },
+        {
+          "sentence": "IMPRESSION: Extruded L4-L5 intervertebral disc herniation causing severe left L5 radiculopathy and sciatic nerve impingement.",
+          "score": 0.6833,
+          "keyword_hits": 8
+        },
+        {
+          "sentence": "CLINICAL INDICATION: 45-year-old male reporting 3 weeks of excruciating lower back pain radiating down the posterior left leg into the lateral foot (sciatica).",
+          "score": 0.1304,
+          "keyword_hits": 3
+        }
+      ],
+      "clinical_profile": {
+        "affected_areas": [
+          "foot",
+          "leg",
+          "muscle",
+          "nerve",
+          "spine"
+        ],
+        "diagnosed_conditions": [
+          "compression",
+          "inflammation",
+          "neuropathy",
+          "prolapse",
+          "stenosis",
+          "swelling"
+        ],
+        "reported_symptoms": [
+          "numbness",
+          "pain"
+        ],
+        "severity_level": "severe",
+        "imaging_notes": [
+          "mri_findings"
+        ],
+        "lab_observations": [],
+        "measurements": [
+          {
+            "value": 6.5,
+            "unit": "mm"
+          }
+        ]
+      },
+      "search_keywords": [
+        "compression",
+        "inflammation",
+        "neuropathy",
+        "prolapse",
+        "stenosis",
+        "swelling",
+        "numbness",
+        "pain",
+        "foot",
+        "leg",
+        "muscle",
+        "nerve",
+        "spine"
+      ]
+    },
+    "therapies": [
+      {
+        "therapy_id": "th_cryo",
+        "therapy_name": "Cryotherapy",
+        "therapy_description": "Cold application therapy to reduce swelling, inflammation, pain, and muscle spasm through ice packs, cold compression, or whole-body cryotherapy",
+        "therapy_type": "physical",
+        "duration": "acute: 48-72 hours",
+        "contraindications": "Raynaud disease, cold sensitivity, peripheral vascular disease",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Tendinitis",
+          "Meniscus Tear",
+          "Gout"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0842,
+        "keyword_overlap": 0.3846,
+        "combined_score": 0.3533
+      },
+      {
+        "therapy_id": "th_traction",
+        "therapy_name": "Spinal Traction",
+        "therapy_description": "Mechanical or manual stretching of the spine to decompress nerve roots, reduce disc herniation pressure, and relieve radiculopathy",
+        "therapy_type": "mechanical",
+        "duration": "4-6 weeks",
+        "contraindications": "spinal tumors, osteoporosis, pregnancy, spinal infections",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Spinal Disc Herniation"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.1481,
+        "keyword_overlap": 0.1538,
+        "combined_score": 0.2878
+      },
+      {
+        "therapy_id": "th_lymphatic",
+        "therapy_name": "Manual Lymphatic Drainage",
+        "therapy_description": "Gentle massage technique to stimulate lymphatic flow, reduce lymphedema, and decrease post-surgical swelling",
+        "therapy_type": "manual",
+        "duration": "ongoing as needed",
+        "contraindications": "active infection, DVT, cardiac failure",
+        "graph_priority": 10,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Lymphedema"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.017,
+        "keyword_overlap": 0.0769,
+        "combined_score": 0.2807
+      },
+      {
+        "therapy_id": "th_compression",
+        "therapy_name": "Compression Therapy",
+        "therapy_description": "Application of graduated compression stockings or bandages to reduce edema, prevent blood clots, and improve venous return",
+        "therapy_type": "mechanical",
+        "duration": "ongoing",
+        "contraindications": "peripheral artery disease, skin infection",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Lymphedema",
+          "Deep Vein Thrombosis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0395,
+        "keyword_overlap": 0.0769,
+        "combined_score": 0.2658
+      },
+      {
+        "therapy_id": "th_wound_care",
+        "therapy_name": "Wound Care Management",
+        "therapy_description": "Systematic wound assessment, debridement, dressing changes, infection control, and promotion of tissue granulation and epithelialization",
+        "therapy_type": "wound",
+        "duration": "until healed",
+        "contraindications": "none significant",
+        "graph_priority": 10,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Cellulitis",
+          "Diabetic Foot Ulcer"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.25
+      },
+      {
+        "therapy_id": "th_anticoag",
+        "therapy_name": "Anticoagulation Therapy",
+        "therapy_description": "Blood thinning therapy to prevent and treat blood clots through heparin, warfarin, or direct oral anticoagulants",
+        "therapy_type": "pharmacological",
+        "duration": "3-12 months",
+        "contraindications": "active bleeding, bleeding disorders",
+        "graph_priority": 10,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.25
+      },
+      {
+        "therapy_id": "th_tens",
+        "therapy_name": "TENS Therapy",
+        "therapy_description": "Transcutaneous Electrical Nerve Stimulation using low-voltage electrical currents to block pain signals and stimulate endorphin release",
+        "therapy_type": "electrotherapy",
+        "duration": "ongoing sessions",
+        "contraindications": "pacemaker, pregnancy (abdominal), epilepsy",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Peripheral Neuropathy",
+          "Spinal Disc Herniation",
+          "Diabetic Neuropathy"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0372,
+        "keyword_overlap": 0.1538,
+        "combined_score": 0.2379
+      },
+      {
+        "therapy_id": "th_physio",
+        "therapy_name": "Physical Therapy",
+        "therapy_description": "Exercise-based rehabilitation to restore movement, strength, and function through guided physical exercises, stretching, and progressive resistance training",
+        "therapy_type": "physical",
+        "duration": "6-12 weeks",
+        "contraindications": "acute fractures, severe cardiac conditions",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Peripheral Neuropathy",
+          "Spinal Disc Herniation",
+          "Carpal Tunnel Syndrome",
+          "Diabetic Neuropathy",
+          "Rheumatoid Arthritis",
+          "Tendinitis",
+          "Plantar Fasciitis",
+          "Meniscus Tear"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.225
+      },
+      {
+        "therapy_id": "th_splint",
+        "therapy_name": "Splinting / Immobilization",
+        "therapy_description": "External fixation using splints, braces, or casts to protect injured structures, maintain alignment, and allow healing",
+        "therapy_type": "mechanical",
+        "duration": "2-8 weeks",
+        "contraindications": "compartment syndrome risk",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Carpal Tunnel Syndrome",
+          "Plantar Fasciitis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.225
+      },
+      {
+        "therapy_id": "th_hydro",
+        "therapy_name": "Hydrotherapy",
+        "therapy_description": "Water-based therapy using buoyancy and resistance for joint mobilization, pain relief, and muscle strengthening in warm water pools",
+        "therapy_type": "physical",
+        "duration": "4-8 weeks",
+        "contraindications": "open wounds, urinary infections, severe cardiac disease",
+        "graph_priority": 6,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Rheumatoid Arthritis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0278,
+        "keyword_overlap": 0.1538,
+        "combined_score": 0.2087
+      },
+      {
+        "therapy_id": "th_ultrasound",
+        "therapy_name": "Therapeutic Ultrasound",
+        "therapy_description": "Deep tissue heating using sound waves to promote tissue healing, reduce scar tissue, increase blood flow, and decrease inflammation",
+        "therapy_type": "electrotherapy",
+        "duration": "4-6 weeks",
+        "contraindications": "over malignancy, growth plates, eyes, pregnant uterus",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Tendinitis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.017,
+        "keyword_overlap": 0.0769,
+        "combined_score": 0.2057
+      },
+      {
+        "therapy_id": "th_elevation",
+        "therapy_name": "Elevation Therapy",
+        "therapy_description": "Elevating the affected limb above heart level to reduce swelling through gravity-assisted venous and lymphatic drainage",
+        "therapy_type": "positional",
+        "duration": "acute: 48-72 hours",
+        "contraindications": "none significant",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Cellulitis",
+          "Lymphedema",
+          "Deep Vein Thrombosis",
+          "Gout"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0169,
+        "keyword_overlap": 0.0769,
+        "combined_score": 0.2057
+      },
+      {
+        "therapy_id": "th_strength",
+        "therapy_name": "Strengthening Exercises",
+        "therapy_description": "Progressive resistance training to rebuild muscle strength, improve stability, and support injured joints through isometric, isotonic, and isokinetic protocols",
+        "therapy_type": "exercise",
+        "duration": "8-16 weeks",
+        "contraindications": "acute injury phase, uncontrolled hypertension",
+        "graph_priority": 7,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Meniscus Tear"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0151,
+        "keyword_overlap": 0.0769,
+        "combined_score": 0.2049
+      },
+      {
+        "therapy_id": "th_manual",
+        "therapy_name": "Manual Therapy / Mobilization",
+        "therapy_description": "Hands-on joint mobilization and manipulation to restore range of motion, reduce pain, and improve joint mechanics",
+        "therapy_type": "manual",
+        "duration": "4-8 weeks",
+        "contraindications": "osteoporosis, fractures, spinal cord compression",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Spinal Disc Herniation"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0145,
+        "keyword_overlap": 0.0769,
+        "combined_score": 0.2046
+      },
+      {
+        "therapy_id": "th_shockwave",
+        "therapy_name": "Extracorporeal Shockwave Therapy",
+        "therapy_description": "High-energy acoustic waves directed at chronic tendinopathy to stimulate neovascularization and tissue remodeling",
+        "therapy_type": "mechanical",
+        "duration": "3-6 sessions",
+        "contraindications": "over nerves, blood vessels, lung tissue, growth plates",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Tendinitis",
+          "Plantar Fasciitis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2
+      },
+      {
+        "therapy_id": "th_occupational",
+        "therapy_name": "Occupational Therapy",
+        "therapy_description": "Rehabilitation focused on activities of daily living, hand function, adaptive equipment, and workplace ergonomics",
+        "therapy_type": "rehabilitation",
+        "duration": "8-16 weeks",
+        "contraindications": "none significant",
+        "graph_priority": 7,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Rheumatoid Arthritis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.175
+      },
+      {
+        "therapy_id": "th_balance",
+        "therapy_name": "Balance & Proprioception Training",
+        "therapy_description": "Exercises on unstable surfaces and with perturbation to restore proprioceptive awareness, prevent re-injury, and improve neuromuscular control",
+        "therapy_type": "exercise",
+        "duration": "6-12 weeks",
+        "contraindications": "acute vertigo, severe balance disorders",
+        "graph_priority": 6,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Peripheral Neuropathy"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.15
+      }
+    ],
+    "medications": [
+      {
+        "medication_id": "med_gabapentin",
+        "medication_name": "Gabapentin",
+        "medication_description": "Anticonvulsant used for neuropathic pain, nerve damage pain, post-herpetic neuralgia, and diabetic neuropathy",
+        "dosage": "300-3600mg/day",
+        "form": "oral capsule",
+        "frequency": "three times daily",
+        "contraindications": "renal impairment (dose adjustment)",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Peripheral Neuropathy",
+          "Spinal Disc Herniation",
+          "Diabetic Neuropathy"
+        ],
+        "relevance_score": 0.074,
+        "keyword_overlap": 0.2308,
+        "combined_score": 0.3275
+      },
+      {
+        "medication_id": "med_ibuprofen",
+        "medication_name": "Ibuprofen",
+        "medication_description": "Non-steroidal anti-inflammatory drug for pain, inflammation, swelling, and fever reduction",
+        "dosage": "200-800mg",
+        "form": "oral tablet",
+        "frequency": "every 6-8 hours",
+        "contraindications": "GI ulcers, renal impairment, aspirin allergy",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Spinal Disc Herniation",
+          "Cellulitis",
+          "Carpal Tunnel Syndrome",
+          "Rheumatoid Arthritis",
+          "Tendinitis",
+          "Plantar Fasciitis",
+          "Meniscus Tear",
+          "Gout"
+        ],
+        "relevance_score": 0.0657,
+        "keyword_overlap": 0.2308,
+        "combined_score": 0.2988
+      },
+      {
+        "medication_id": "med_pregabalin",
+        "medication_name": "Pregabalin",
+        "medication_description": "Anticonvulsant for neuropathic pain, fibromyalgia, and generalized anxiety with nerve pain component",
+        "dosage": "75-300mg",
+        "form": "oral capsule",
+        "frequency": "twice daily",
+        "contraindications": "renal impairment, angioedema history",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Peripheral Neuropathy",
+          "Diabetic Neuropathy"
+        ],
+        "relevance_score": 0.0565,
+        "keyword_overlap": 0.1538,
+        "combined_score": 0.2716
+      },
+      {
+        "medication_id": "med_diclofenac",
+        "medication_name": "Diclofenac",
+        "medication_description": "Potent NSAID available in oral and topical forms for acute musculoskeletal pain, inflammation, and post-surgical swelling",
+        "dosage": "50-75mg oral / 1% gel topical",
+        "form": "tablet / topical gel",
+        "frequency": "2-3 times daily",
+        "contraindications": "GI ulcers, hepatic impairment",
+        "graph_priority": 7,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Tendinitis"
+        ],
+        "relevance_score": 0.0466,
+        "keyword_overlap": 0.2308,
+        "combined_score": 0.2652
+      },
+      {
+        "medication_id": "med_cortisone_inj",
+        "medication_name": "Cortisone Injection",
+        "medication_description": "Local corticosteroid injection directly into joints or soft tissues for targeted inflammation and pain relief",
+        "dosage": "25-50mg per injection",
+        "form": "intra-articular injection",
+        "frequency": "every 3-6 months max",
+        "contraindications": "joint infection, bleeding disorders",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Carpal Tunnel Syndrome",
+          "Plantar Fasciitis",
+          "Meniscus Tear"
+        ],
+        "relevance_score": 0.0273,
+        "keyword_overlap": 0.1538,
+        "combined_score": 0.2584
+      },
+      {
+        "medication_id": "med_methotrexate",
+        "medication_name": "Methotrexate",
+        "medication_description": "Disease-modifying antirheumatic drug (DMARD) for rheumatoid arthritis, psoriatic arthritis, and autoimmune conditions",
+        "dosage": "7.5-25mg",
+        "form": "oral / injection",
+        "frequency": "once weekly",
+        "contraindications": "pregnancy, liver disease, immunodeficiency, renal impairment",
+        "graph_priority": 10,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Rheumatoid Arthritis"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.25
+      },
+      {
+        "medication_id": "med_heparin",
+        "medication_name": "Heparin",
+        "medication_description": "Rapid-acting anticoagulant for prevention and treatment of deep vein thrombosis, pulmonary embolism, and clot formation",
+        "dosage": "5000-10000 units",
+        "form": "IV / subcutaneous injection",
+        "frequency": "continuous IV or every 8-12 hours SC",
+        "contraindications": "active bleeding, HIT, severe thrombocytopenia",
+        "graph_priority": 10,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.25
+      },
+      {
+        "medication_id": "med_cyclobenzaprine",
+        "medication_name": "Cyclobenzaprine",
+        "medication_description": "Skeletal muscle relaxant for acute muscle spasm, strain-related pain, and musculoskeletal spasticity",
+        "dosage": "5-10mg",
+        "form": "oral tablet",
+        "frequency": "three times daily",
+        "contraindications": "MAO inhibitors, cardiac arrhythmias, hyperthyroidism",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Spinal Disc Herniation"
+        ],
+        "relevance_score": 0.0554,
+        "keyword_overlap": 0.1538,
+        "combined_score": 0.2461
+      },
+      {
+        "medication_id": "med_mesalamine",
+        "medication_name": "Mesalamine",
+        "medication_description": "5-ASA anti-inflammatory for ulcerative colitis and inflammatory bowel disease maintenance",
+        "dosage": "800mg-1.2g",
+        "form": "oral tablet / rectal",
+        "frequency": "2-3 times daily",
+        "contraindications": "salicylate allergy, renal impairment",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Inflammatory Bowel Disease"
+        ],
+        "relevance_score": 0.016,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2322
+      },
+      {
+        "medication_id": "med_colchicine",
+        "medication_name": "Colchicine",
+        "medication_description": "Anti-inflammatory agent specifically for acute gout flares and gout prophylaxis by inhibiting neutrophil migration",
+        "dosage": "0.5-1mg",
+        "form": "oral tablet",
+        "frequency": "twice daily during flare",
+        "contraindications": "severe renal/hepatic impairment, blood dyscrasias",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Gout"
+        ],
+        "relevance_score": 0.008,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2286
+      },
+      {
+        "medication_id": "med_cephalexin",
+        "medication_name": "Cephalexin",
+        "medication_description": "First-generation cephalosporin for skin infections, cellulitis, bone infections, and UTIs",
+        "dosage": "250-500mg",
+        "form": "oral capsule",
+        "frequency": "four times daily",
+        "contraindications": "cephalosporin allergy",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Cellulitis"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.225
+      },
+      {
+        "medication_id": "med_enoxaparin",
+        "medication_name": "Enoxaparin",
+        "medication_description": "Low molecular weight heparin for DVT prophylaxis, treatment of acute coronary syndrome, and bridge anticoagulation",
+        "dosage": "40mg prophylaxis / 1mg/kg treatment",
+        "form": "subcutaneous injection",
+        "frequency": "once or twice daily",
+        "contraindications": "active bleeding, HIT, severe renal impairment",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.225
+      },
+      {
+        "medication_id": "med_prednisone",
+        "medication_name": "Prednisone",
+        "medication_description": "Oral corticosteroid for severe inflammation, autoimmune conditions, allergic reactions, and flare management",
+        "dosage": "5-60mg",
+        "form": "oral tablet",
+        "frequency": "once daily (with taper)",
+        "contraindications": "systemic fungal infections, live vaccines",
+        "graph_priority": 7,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Rheumatoid Arthritis",
+          "Inflammatory Bowel Disease",
+          "Gout"
+        ],
+        "relevance_score": 0.0523,
+        "keyword_overlap": 0.0769,
+        "combined_score": 0.2216
+      },
+      {
+        "medication_id": "med_hydroxychloroquine",
+        "medication_name": "Hydroxychloroquine",
+        "medication_description": "DMARD for rheumatoid arthritis and systemic lupus with anti-inflammatory and immunomodulatory effects",
+        "dosage": "200-400mg",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "retinal disease, G6PD deficiency",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Rheumatoid Arthritis"
+        ],
+        "relevance_score": 0.0096,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2043
+      },
+      {
+        "medication_id": "med_clindamycin",
+        "medication_name": "Clindamycin",
+        "medication_description": "Lincosamide antibiotic for serious skin, bone, and soft tissue infections, especially in penicillin-allergic patients",
+        "dosage": "150-450mg",
+        "form": "oral capsule",
+        "frequency": "every 6-8 hours",
+        "contraindications": "C. difficile history",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Cellulitis"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2
+      },
+      {
+        "medication_id": "med_warfarin",
+        "medication_name": "Warfarin",
+        "medication_description": "Oral anticoagulant for long-term prevention of blood clots, stroke prevention in atrial fibrillation, and DVT/PE treatment",
+        "dosage": "2-10mg (INR-guided)",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "pregnancy, active bleeding, recent surgery",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2
+      },
+      {
+        "medication_id": "med_rivaroxaban",
+        "medication_name": "Rivaroxaban",
+        "medication_description": "Direct oral anticoagulant (DOAC) Factor Xa inhibitor for DVT/PE treatment and stroke prevention without INR monitoring",
+        "dosage": "10-20mg",
+        "form": "oral tablet",
+        "frequency": "once or twice daily",
+        "contraindications": "active bleeding, severe hepatic disease",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2
+      },
+      {
+        "medication_id": "med_allopurinol",
+        "medication_name": "Allopurinol",
+        "medication_description": "Xanthine oxidase inhibitor to lower uric acid levels for chronic gout management and prevention of urate crystal deposition",
+        "dosage": "100-300mg",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "acute gout flare (initiation), severe renal impairment",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Gout"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2
+      },
+      {
+        "medication_id": "med_mupirocin",
+        "medication_name": "Mupirocin",
+        "medication_description": "Topical antibiotic for superficial skin infections, impetigo, and wound infection prevention",
+        "dosage": "2% ointment",
+        "form": "topical ointment",
+        "frequency": "three times daily for 10 days",
+        "contraindications": "large open wounds (polyethylene glycol absorption)",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Diabetic Foot Ulcer"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.175
+      },
+      {
+        "medication_id": "med_amoxiclav",
+        "medication_name": "Amoxicillin-Clavulanate",
+        "medication_description": "Enhanced penicillin with beta-lactamase inhibitor for pneumonia, sinusitis, and complicated skin infections",
+        "dosage": "625-1000mg",
+        "form": "oral tablet",
+        "frequency": "twice or three times daily",
+        "contraindications": "penicillin allergy, hepatic impairment",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Diabetic Foot Ulcer"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.175
+      },
+      {
+        "medication_id": "med_methylpred",
+        "medication_name": "Methylprednisolone",
+        "medication_description": "Potent corticosteroid for acute inflammatory conditions, spinal cord injury, severe allergic reactions, and joint injections",
+        "dosage": "4-48mg oral / 40-120mg injection",
+        "form": "oral / injection",
+        "frequency": "varies by indication",
+        "contraindications": "systemic infections, GI perforation",
+        "graph_priority": 6,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Spinal Disc Herniation"
+        ],
+        "relevance_score": 0.0368,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.1666
+      },
+      {
+        "medication_id": "med_paracetamol",
+        "medication_name": "Paracetamol (Acetaminophen)",
+        "medication_description": "First-line analgesic and antipyretic for mild to moderate pain and fever reduction",
+        "dosage": "500-1000mg",
+        "form": "oral tablet",
+        "frequency": "every 4-6 hours (max 4g/day)",
+        "contraindications": "severe hepatic impairment",
+        "graph_priority": 5,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Peripheral Neuropathy"
+        ],
+        "relevance_score": 0.0323,
+        "keyword_overlap": 0.0769,
+        "combined_score": 0.1626
+      },
+      {
+        "medication_id": "med_furosemide",
+        "medication_name": "Furosemide",
+        "medication_description": "Loop diuretic for edema reduction in heart failure, renal disease, and hepatic cirrhosis",
+        "dosage": "20-80mg",
+        "form": "oral / IV",
+        "frequency": "once or twice daily",
+        "contraindications": "anuria, severe electrolyte depletion",
+        "graph_priority": 5,
+        "evidence_level": "C",
+        "matching_diseases": [
+          "Lymphedema"
+        ],
+        "relevance_score": 0.0162,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.1323
+      }
+    ],
+    "drug_interactions": [
+      {
+        "drug_a": "Methotrexate",
+        "drug_b": "Ibuprofen",
+        "severity": "high",
+        "interaction_note": "Increased methotrexate toxicity"
+      }
+    ],
+    "matched_diseases": [
+      "Peripheral Neuropathy",
+      "Tendinitis",
+      "Rheumatoid Arthritis",
+      "Lymphedema",
+      "Diabetic Neuropathy",
+      "Deep Vein Thrombosis",
+      "Plantar Fasciitis",
+      "Diabetic Foot Ulcer",
+      "Inflammatory Bowel Disease",
+      "Carpal Tunnel Syndrome",
+      "Gout",
+      "Cellulitis",
+      "Meniscus Tear",
+      "Spinal Disc Herniation"
+    ],
+    "stats": {
+      "therapies_count": 17,
+      "medications_count": 23,
+      "interactions_count": 1,
+      "graph_mode": "Embedded Graph Engine (Local Standby)"
+    }
+  },
+  "sample_diabetic_ulcer": {
+    "ocr": {
+      "raw_text": "CLINICAL INDICATION: 61-year-old patient with poorly managed Type 2 Diabetes (HbA1c 9.4%) presenting with chronic non-healing plantar lesion.\n\nPHYSICAL EXAMINATION & WOUND ASSESSMENT:\n- Inspection: Grade 2 neuropathic ulcer on the plantar surface of the first metatarsal head measuring 2.4 cm x 1.8 cm.\n- Tissue Characteristics: Hyperkeratotic margins with granulating wound bed. Mild perilesional erythema and localized warmth.\n- Neurological: Absent protective sensation bilaterally via 10g Semmes-Weinstein monofilament test, consistent with advanced peripheral neuropathy.\n- Vascular: Palpable dorsalis pedis pulse; non-critical limb ischemia.\n\nIMPRESSION: Chronic diabetic neuropathic foot ulcer with underlying peripheral nerve damage. Requires debridement, offloading therapy, and glycemic optimization.",
+      "confidence": 100.0,
+      "word_count": 102,
+      "lines": [
+        "CLINICAL INDICATION: 61-year-old patient with poorly managed Type 2 Diabetes (HbA1c 9.4%) presenting with chronic non-healing plantar lesion.",
+        "PHYSICAL EXAMINATION & WOUND ASSESSMENT:",
+        "- Inspection: Grade 2 neuropathic ulcer on the plantar surface of the first metatarsal head measuring 2.4 cm x 1.8 cm.",
+        "- Tissue Characteristics: Hyperkeratotic margins with granulating wound bed. Mild perilesional erythema and localized warmth.",
+        "- Neurological: Absent protective sensation bilaterally via 10g Semmes-Weinstein monofilament test, consistent with advanced peripheral neuropathy.",
+        "- Vascular: Palpable dorsalis pedis pulse; non-critical limb ischemia.",
+        "IMPRESSION: Chronic diabetic neuropathic foot ulcer with underlying peripheral nerve damage. Requires debridement, offloading therapy, and glycemic optimization."
+      ],
+      "engine": "direct_input",
+      "status": "success"
+    },
+    "summary": {
+      "entities": {
+        "body_areas": [
+          "blood_vessel",
+          "foot",
+          "head",
+          "nerve"
+        ],
+        "conditions": [
+          "diabetes_complication",
+          "necrosis",
+          "neuropathy",
+          "ulcer"
+        ],
+        "symptoms": [
+          "redness",
+          "skin_changes",
+          "warmth"
+        ],
+        "severity": [
+          "chronic",
+          "mild",
+          "moderate",
+          "severe"
+        ],
+        "imaging_findings": [],
+        "lab_markers": [
+          "metabolic"
+        ],
+        "measurements": [
+          {
+            "value": 2.4,
+            "unit": "cm"
+          },
+          {
+            "value": 1.8,
+            "unit": "cm"
+          }
+        ],
+        "entities_raw": [
+          [
+            "diabetes",
+            "condition:diabetes_complication"
+          ],
+          [
+            "hba1c",
+            "lab_marker:metabolic"
+          ],
+          [
+            "chronic",
+            "severity:chronic"
+          ],
+          [
+            "plantar",
+            "body_area:foot"
+          ],
+          [
+            "lesion",
+            "symptom:skin_changes"
+          ],
+          [
+            "wound",
+            "symptom:skin_changes"
+          ],
+          [
+            "grade 2",
+            "severity:moderate"
+          ],
+          [
+            "ulcer",
+            "condition:ulcer"
+          ],
+          [
+            "plantar",
+            "body_area:foot"
+          ],
+          [
+            "metatarsal",
+            "body_area:foot"
+          ],
+          [
+            "head",
+            "body_area:head"
+          ],
+          [
+            "wound",
+            "symptom:skin_changes"
+          ],
+          [
+            "mild",
+            "severity:mild"
+          ],
+          [
+            "erythema",
+            "symptom:redness"
+          ],
+          [
+            "warmth",
+            "symptom:warmth"
+          ],
+          [
+            "neurological",
+            "body_area:nerve"
+          ],
+          [
+            "advanced",
+            "severity:severe"
+          ],
+          [
+            "neuropathy",
+            "condition:diabetes_complication"
+          ],
+          [
+            "vascular",
+            "body_area:blood_vessel"
+          ],
+          [
+            "critical",
+            "severity:severe"
+          ],
+          [
+            "ischemia",
+            "condition:necrosis"
+          ],
+          [
+            "chronic",
+            "severity:chronic"
+          ],
+          [
+            "diabetic",
+            "condition:diabetes_complication"
+          ],
+          [
+            "foot",
+            "body_area:foot"
+          ],
+          [
+            "ulcer",
+            "condition:ulcer"
+          ],
+          [
+            "peripheral nerve",
+            "body_area:nerve"
+          ],
+          [
+            "nerve",
+            "body_area:nerve"
+          ],
+          [
+            "nerve damage",
+            "condition:neuropathy"
+          ]
+        ]
+      },
+      "summary_sentences": [
+        {
+          "sentence": "IMPRESSION: Chronic diabetic neuropathic foot ulcer with underlying peripheral nerve damage.",
+          "score": 0.7864,
+          "keyword_hits": 7
+        },
+        {
+          "sentence": "Mild perilesional erythema and localized warmth.",
+          "score": 0.65,
+          "keyword_hits": 3
+        },
+        {
+          "sentence": "CLINICAL INDICATION: 61-year-old patient with poorly managed Type 2 Diabetes (HbA1c 9.4%) presenting with chronic non-healing plantar lesion.",
+          "score": 0.4278,
+          "keyword_hits": 5
+        },
+        {
+          "sentence": "- Neurological: Absent protective sensation bilaterally via 10g Semmes-Weinstein monofilament test, consistent with advanced peripheral neuropathy.\n- Vascular: Palpable dorsalis pedis pulse; non-critical limb ischemia.",
+          "score": 0.39,
+          "keyword_hits": 6
+        },
+        {
+          "sentence": "PHYSICAL EXAMINATION & WOUND ASSESSMENT:\n- Inspection: Grade 2 neuropathic ulcer on the plantar surface of the first metatarsal head measuring 2.4 cm x 1.8 cm.\n- Tissue Characteristics:",
+          "score": 0.3569,
+          "keyword_hits": 6
+        },
+        {
+          "sentence": "Hyperkeratotic margins with granulating wound bed.",
+          "score": 0.1667,
+          "keyword_hits": 1
+        },
+        {
+          "sentence": "Requires debridement, offloading therapy, and glycemic optimization.",
+          "score": 0.0,
+          "keyword_hits": 0
+        }
+      ],
+      "clinical_profile": {
+        "affected_areas": [
+          "blood_vessel",
+          "foot",
+          "head",
+          "nerve"
+        ],
+        "diagnosed_conditions": [
+          "diabetes_complication",
+          "necrosis",
+          "neuropathy",
+          "ulcer"
+        ],
+        "reported_symptoms": [
+          "redness",
+          "skin_changes",
+          "warmth"
+        ],
+        "severity_level": "severe",
+        "imaging_notes": [],
+        "lab_observations": [
+          "metabolic"
+        ],
+        "measurements": [
+          {
+            "value": 2.4,
+            "unit": "cm"
+          },
+          {
+            "value": 1.8,
+            "unit": "cm"
+          }
+        ]
+      },
+      "search_keywords": [
+        "diabetes_complication",
+        "necrosis",
+        "neuropathy",
+        "ulcer",
+        "redness",
+        "skin_changes",
+        "warmth",
+        "blood_vessel",
+        "foot",
+        "head",
+        "nerve"
+      ]
+    },
+    "therapies": [
+      {
+        "therapy_id": "th_wound_care",
+        "therapy_name": "Wound Care Management",
+        "therapy_description": "Systematic wound assessment, debridement, dressing changes, infection control, and promotion of tissue granulation and epithelialization",
+        "therapy_type": "wound",
+        "duration": "until healed",
+        "contraindications": "none significant",
+        "graph_priority": 10,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Diabetic Foot Ulcer"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0225,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2601
+      },
+      {
+        "therapy_id": "th_tens",
+        "therapy_name": "TENS Therapy",
+        "therapy_description": "Transcutaneous Electrical Nerve Stimulation using low-voltage electrical currents to block pain signals and stimulate endorphin release",
+        "therapy_type": "electrotherapy",
+        "duration": "ongoing sessions",
+        "contraindications": "pacemaker, pregnancy (abdominal), epilepsy",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Peripheral Neuropathy",
+          "Diabetic Neuropathy"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0276,
+        "keyword_overlap": 0.0909,
+        "combined_score": 0.2147
+      },
+      {
+        "therapy_id": "th_physio",
+        "therapy_name": "Physical Therapy",
+        "therapy_description": "Exercise-based rehabilitation to restore movement, strength, and function through guided physical exercises, stretching, and progressive resistance training",
+        "therapy_type": "physical",
+        "duration": "6-12 weeks",
+        "contraindications": "acute fractures, severe cardiac conditions",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Peripheral Neuropathy",
+          "Diabetic Neuropathy"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2
+      },
+      {
+        "therapy_id": "th_balance",
+        "therapy_name": "Balance & Proprioception Training",
+        "therapy_description": "Exercises on unstable surfaces and with perturbation to restore proprioceptive awareness, prevent re-injury, and improve neuromuscular control",
+        "therapy_type": "exercise",
+        "duration": "6-12 weeks",
+        "contraindications": "acute vertigo, severe balance disorders",
+        "graph_priority": 6,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Peripheral Neuropathy"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.15
+      }
+    ],
+    "medications": [
+      {
+        "medication_id": "med_gabapentin",
+        "medication_name": "Gabapentin",
+        "medication_description": "Anticonvulsant used for neuropathic pain, nerve damage pain, post-herpetic neuralgia, and diabetic neuropathy",
+        "dosage": "300-3600mg/day",
+        "form": "oral capsule",
+        "frequency": "three times daily",
+        "contraindications": "renal impairment (dose adjustment)",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Peripheral Neuropathy",
+          "Diabetic Neuropathy"
+        ],
+        "relevance_score": 0.1092,
+        "keyword_overlap": 0.1818,
+        "combined_score": 0.3287
+      },
+      {
+        "medication_id": "med_omeprazole",
+        "medication_name": "Omeprazole",
+        "medication_description": "Proton pump inhibitor for peptic ulcers, GERD, and GI protection during NSAID therapy",
+        "dosage": "20-40mg",
+        "form": "oral capsule",
+        "frequency": "once daily before breakfast",
+        "contraindications": "none significant (long-term: monitor magnesium)",
+        "graph_priority": 10,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Peptic Ulcer Disease"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0909,
+        "combined_score": 0.2773
+      },
+      {
+        "medication_id": "med_mesalamine",
+        "medication_name": "Mesalamine",
+        "medication_description": "5-ASA anti-inflammatory for ulcerative colitis and inflammatory bowel disease maintenance",
+        "dosage": "800mg-1.2g",
+        "form": "oral tablet / rectal",
+        "frequency": "2-3 times daily",
+        "contraindications": "salicylate allergy, renal impairment",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Inflammatory Bowel Disease"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0909,
+        "combined_score": 0.2523
+      },
+      {
+        "medication_id": "med_pregabalin",
+        "medication_name": "Pregabalin",
+        "medication_description": "Anticonvulsant for neuropathic pain, fibromyalgia, and generalized anxiety with nerve pain component",
+        "dosage": "75-300mg",
+        "form": "oral capsule",
+        "frequency": "twice daily",
+        "contraindications": "renal impairment, angioedema history",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Peripheral Neuropathy",
+          "Diabetic Neuropathy"
+        ],
+        "relevance_score": 0.0331,
+        "keyword_overlap": 0.0909,
+        "combined_score": 0.2422
+      },
+      {
+        "medication_id": "med_amoxicillin",
+        "medication_name": "Amoxicillin",
+        "medication_description": "Broad-spectrum penicillin antibiotic for bacterial infections including skin, respiratory, urinary, and bone infections",
+        "dosage": "250-500mg",
+        "form": "oral capsule",
+        "frequency": "three times daily for 7-14 days",
+        "contraindications": "penicillin allergy",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Peptic Ulcer Disease"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2
+      },
+      {
+        "medication_id": "med_mupirocin",
+        "medication_name": "Mupirocin",
+        "medication_description": "Topical antibiotic for superficial skin infections, impetigo, and wound infection prevention",
+        "dosage": "2% ointment",
+        "form": "topical ointment",
+        "frequency": "three times daily for 10 days",
+        "contraindications": "large open wounds (polyethylene glycol absorption)",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Diabetic Foot Ulcer"
+        ],
+        "relevance_score": 0.0307,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.1888
+      },
+      {
+        "medication_id": "med_prednisone",
+        "medication_name": "Prednisone",
+        "medication_description": "Oral corticosteroid for severe inflammation, autoimmune conditions, allergic reactions, and flare management",
+        "dosage": "5-60mg",
+        "form": "oral tablet",
+        "frequency": "once daily (with taper)",
+        "contraindications": "systemic fungal infections, live vaccines",
+        "graph_priority": 7,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Inflammatory Bowel Disease"
+        ],
+        "relevance_score": 0.0277,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.1875
+      },
+      {
+        "medication_id": "med_amoxiclav",
+        "medication_name": "Amoxicillin-Clavulanate",
+        "medication_description": "Enhanced penicillin with beta-lactamase inhibitor for pneumonia, sinusitis, and complicated skin infections",
+        "dosage": "625-1000mg",
+        "form": "oral tablet",
+        "frequency": "twice or three times daily",
+        "contraindications": "penicillin allergy, hepatic impairment",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Diabetic Foot Ulcer"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.175
+      },
+      {
+        "medication_id": "med_paracetamol",
+        "medication_name": "Paracetamol (Acetaminophen)",
+        "medication_description": "First-line analgesic and antipyretic for mild to moderate pain and fever reduction",
+        "dosage": "500-1000mg",
+        "form": "oral tablet",
+        "frequency": "every 4-6 hours (max 4g/day)",
+        "contraindications": "severe hepatic impairment",
+        "graph_priority": 5,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Peripheral Neuropathy"
+        ],
+        "relevance_score": 0.0188,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.1335
+      }
+    ],
+    "drug_interactions": [],
+    "matched_diseases": [
+      "Peripheral Neuropathy",
+      "Diabetic Neuropathy",
+      "Inflammatory Bowel Disease",
+      "Diabetic Foot Ulcer",
+      "Peptic Ulcer Disease"
+    ],
+    "stats": {
+      "therapies_count": 4,
+      "medications_count": 9,
+      "interactions_count": 0,
+      "graph_mode": "Embedded Graph Engine (Local Standby)"
+    }
+  },
+  "sample_arthritis_joint": {
+    "ocr": {
+      "raw_text": "CLINICAL INDICATION: 39-year-old female with persistent bilateral morning joint stiffness lasting over 90 minutes, hand swelling, and fatigue.\n\nULTRASOUND & RADIOGRAPHIC FINDINGS (WRISTS & MCP JOINTS):\n- Synovium: Marked active power Doppler synovitis with hypoechoic synovial hypertrophy in 2nd and 3rd MCP joints bilaterally.\n- Erosions: Marginal cortical bone erosions noted at the radial aspect of the right second metacarpal head.\n- Joint Space: Mild uniform joint space narrowing in radiocarpal joints.\n- Laboratory Markers: Rheumatoid factor (RF) 142 IU/ml (high positive), anti-CCP antibody >200 U/ml, elevated CRP 28 mg/L.\n\nIMPRESSION: Active seropositive rheumatoid arthritis with progressive erosive disease, marked synovial swelling, and symmetric inflammatory arthropathy.",
+      "confidence": 100.0,
+      "word_count": 106,
+      "lines": [
+        "CLINICAL INDICATION: 39-year-old female with persistent bilateral morning joint stiffness lasting over 90 minutes, hand swelling, and fatigue.",
+        "ULTRASOUND & RADIOGRAPHIC FINDINGS (WRISTS & MCP JOINTS):",
+        "- Synovium: Marked active power Doppler synovitis with hypoechoic synovial hypertrophy in 2nd and 3rd MCP joints bilaterally.",
+        "- Erosions: Marginal cortical bone erosions noted at the radial aspect of the right second metacarpal head.",
+        "- Joint Space: Mild uniform joint space narrowing in radiocarpal joints.",
+        "- Laboratory Markers: Rheumatoid factor (RF) 142 IU/ml (high positive), anti-CCP antibody >200 U/ml, elevated CRP 28 mg/L.",
+        "IMPRESSION: Active seropositive rheumatoid arthritis with progressive erosive disease, marked synovial swelling, and symmetric inflammatory arthropathy."
+      ],
+      "engine": "direct_input",
+      "status": "success"
+    },
+    "summary": {
+      "entities": {
+        "body_areas": [
+          "bone",
+          "forearm",
+          "hand",
+          "head",
+          "joint",
+          "wrist"
+        ],
+        "conditions": [
+          "arthritis",
+          "inflammation",
+          "stenosis",
+          "swelling"
+        ],
+        "symptoms": [
+          "stiffness",
+          "weakness"
+        ],
+        "severity": [
+          "chronic",
+          "mild"
+        ],
+        "imaging_findings": [
+          "ultrasound_findings",
+          "x_ray_findings"
+        ],
+        "lab_markers": [
+          "inflammatory_markers"
+        ],
+        "measurements": [
+          {
+            "value": 28.0,
+            "unit": "mg"
+          }
+        ],
+        "entities_raw": [
+          [
+            "persistent",
+            "severity:chronic"
+          ],
+          [
+            "joint",
+            "body_area:joint"
+          ],
+          [
+            "stiffness",
+            "symptom:stiffness"
+          ],
+          [
+            "hand",
+            "body_area:hand"
+          ],
+          [
+            "swelling",
+            "condition:swelling"
+          ],
+          [
+            "fatigue",
+            "symptom:weakness"
+          ],
+          [
+            "ultrasound",
+            "imaging:ultrasound_findings"
+          ],
+          [
+            "doppler",
+            "imaging:ultrasound_findings"
+          ],
+          [
+            "synovitis",
+            "condition:inflammation"
+          ],
+          [
+            "hypoechoic",
+            "imaging:ultrasound_findings"
+          ],
+          [
+            "synovial",
+            "body_area:joint"
+          ],
+          [
+            "cortical bone",
+            "body_area:bone"
+          ],
+          [
+            "bone",
+            "body_area:bone"
+          ],
+          [
+            "radial",
+            "body_area:forearm"
+          ],
+          [
+            "metacarpal",
+            "body_area:hand"
+          ],
+          [
+            "head",
+            "body_area:head"
+          ],
+          [
+            "joint",
+            "body_area:joint"
+          ],
+          [
+            "mild",
+            "severity:mild"
+          ],
+          [
+            "joint",
+            "body_area:joint"
+          ],
+          [
+            "joint space narrowing",
+            "imaging:x_ray_findings"
+          ],
+          [
+            "narrowing",
+            "condition:stenosis"
+          ],
+          [
+            "radiocarpal",
+            "body_area:wrist"
+          ],
+          [
+            "rheumatoid",
+            "condition:arthritis"
+          ],
+          [
+            "crp",
+            "lab_marker:inflammatory_markers"
+          ],
+          [
+            "rheumatoid",
+            "condition:arthritis"
+          ],
+          [
+            "arthritis",
+            "condition:arthritis"
+          ],
+          [
+            "progressive",
+            "severity:chronic"
+          ],
+          [
+            "synovial",
+            "body_area:joint"
+          ],
+          [
+            "swelling",
+            "condition:swelling"
+          ],
+          [
+            "inflammatory",
+            "condition:inflammation"
+          ]
+        ]
+      },
+      "summary_sentences": [
+        {
+          "sentence": "- Joint Space: Mild uniform joint space narrowing in radiocarpal joints.\n- Laboratory Markers: Rheumatoid factor (RF) 142 IU/ml (high positive), anti-CCP antibody >200 U/ml, elevated CRP 28 mg/L.\n\nIMPRESSION: Active seropositive rheumatoid arthritis with progressive erosive disease, marked synovial swelling, and symmetric inflammatory arthropathy.",
+          "score": 0.5667,
+          "keyword_hits": 12
+        },
+        {
+          "sentence": "CLINICAL INDICATION: 39-year-old female with persistent bilateral morning joint stiffness lasting over 90 minutes, hand swelling, and fatigue.",
+          "score": 0.4833,
+          "keyword_hits": 6
+        },
+        {
+          "sentence": "Marked active power Doppler synovitis with hypoechoic synovial hypertrophy in 2nd and 3rd MCP joints bilaterally.\n- Erosions: Marginal cortical bone erosions noted at the radial aspect of the right second metacarpal head.",
+          "score": 0.2727,
+          "keyword_hits": 9
+        },
+        {
+          "sentence": "ULTRASOUND & RADIOGRAPHIC FINDINGS (WRISTS & MCP JOINTS):\n- Synovium:",
+          "score": 0.1,
+          "keyword_hits": 1
+        }
+      ],
+      "clinical_profile": {
+        "affected_areas": [
+          "bone",
+          "forearm",
+          "hand",
+          "head",
+          "joint",
+          "wrist"
+        ],
+        "diagnosed_conditions": [
+          "arthritis",
+          "inflammation",
+          "stenosis",
+          "swelling"
+        ],
+        "reported_symptoms": [
+          "stiffness",
+          "weakness"
+        ],
+        "severity_level": "chronic",
+        "imaging_notes": [
+          "ultrasound_findings",
+          "x_ray_findings"
+        ],
+        "lab_observations": [
+          "inflammatory_markers"
+        ],
+        "measurements": [
+          {
+            "value": 28.0,
+            "unit": "mg"
+          }
+        ]
+      },
+      "search_keywords": [
+        "arthritis",
+        "inflammation",
+        "stenosis",
+        "swelling",
+        "stiffness",
+        "weakness",
+        "bone",
+        "forearm",
+        "hand",
+        "head",
+        "joint",
+        "wrist"
+      ]
+    },
+    "therapies": [
+      {
+        "therapy_id": "th_lymphatic",
+        "therapy_name": "Manual Lymphatic Drainage",
+        "therapy_description": "Gentle massage technique to stimulate lymphatic flow, reduce lymphedema, and decrease post-surgical swelling",
+        "therapy_type": "manual",
+        "duration": "ongoing as needed",
+        "contraindications": "active infection, DVT, cardiac failure",
+        "graph_priority": 10,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Lymphedema"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0245,
+        "keyword_overlap": 0.0833,
+        "combined_score": 0.286
+      },
+      {
+        "therapy_id": "th_cryo",
+        "therapy_name": "Cryotherapy",
+        "therapy_description": "Cold application therapy to reduce swelling, inflammation, pain, and muscle spasm through ice packs, cold compression, or whole-body cryotherapy",
+        "therapy_type": "physical",
+        "duration": "acute: 48-72 hours",
+        "contraindications": "Raynaud disease, cold sensitivity, peripheral vascular disease",
+        "graph_priority": 8,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Gout",
+          "Tendinitis",
+          "Meniscus Tear"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0375,
+        "keyword_overlap": 0.1667,
+        "combined_score": 0.2669
+      },
+      {
+        "therapy_id": "th_anticoag",
+        "therapy_name": "Anticoagulation Therapy",
+        "therapy_description": "Blood thinning therapy to prevent and treat blood clots through heparin, warfarin, or direct oral anticoagulants",
+        "therapy_type": "pharmacological",
+        "duration": "3-12 months",
+        "contraindications": "active bleeding, bleeding disorders",
+        "graph_priority": 10,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.25
+      },
+      {
+        "therapy_id": "th_physio",
+        "therapy_name": "Physical Therapy",
+        "therapy_description": "Exercise-based rehabilitation to restore movement, strength, and function through guided physical exercises, stretching, and progressive resistance training",
+        "therapy_type": "physical",
+        "duration": "6-12 weeks",
+        "contraindications": "acute fractures, severe cardiac conditions",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Rheumatoid Arthritis",
+          "Osteoarthritis",
+          "Tendinitis",
+          "Plantar Fasciitis",
+          "Meniscus Tear"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0114,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2301
+      },
+      {
+        "therapy_id": "th_strength",
+        "therapy_name": "Strengthening Exercises",
+        "therapy_description": "Progressive resistance training to rebuild muscle strength, improve stability, and support injured joints through isometric, isotonic, and isokinetic protocols",
+        "therapy_type": "exercise",
+        "duration": "8-16 weeks",
+        "contraindications": "acute injury phase, uncontrolled hypertension",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Osteoarthritis",
+          "Meniscus Tear"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.011,
+        "keyword_overlap": 0.0833,
+        "combined_score": 0.2299
+      },
+      {
+        "therapy_id": "th_compression",
+        "therapy_name": "Compression Therapy",
+        "therapy_description": "Application of graduated compression stockings or bandages to reduce edema, prevent blood clots, and improve venous return",
+        "therapy_type": "mechanical",
+        "duration": "ongoing",
+        "contraindications": "peripheral artery disease, skin infection",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Lymphedema",
+          "Deep Vein Thrombosis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.225
+      },
+      {
+        "therapy_id": "th_heat",
+        "therapy_name": "Heat Therapy",
+        "therapy_description": "Application of heat via hot packs, infrared lamps, or paraffin baths to increase blood flow, relax muscles, reduce stiffness, and relieve chronic pain",
+        "therapy_type": "physical",
+        "duration": "ongoing as needed",
+        "contraindications": "acute inflammation, hemorrhage, impaired sensation",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Osteoarthritis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0387,
+        "keyword_overlap": 0.0833,
+        "combined_score": 0.2174
+      },
+      {
+        "therapy_id": "th_hydro",
+        "therapy_name": "Hydrotherapy",
+        "therapy_description": "Water-based therapy using buoyancy and resistance for joint mobilization, pain relief, and muscle strengthening in warm water pools",
+        "therapy_type": "physical",
+        "duration": "4-8 weeks",
+        "contraindications": "open wounds, urinary infections, severe cardiac disease",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Rheumatoid Arthritis",
+          "Osteoarthritis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0353,
+        "keyword_overlap": 0.0833,
+        "combined_score": 0.2159
+      },
+      {
+        "therapy_id": "th_occupational",
+        "therapy_name": "Occupational Therapy",
+        "therapy_description": "Rehabilitation focused on activities of daily living, hand function, adaptive equipment, and workplace ergonomics",
+        "therapy_type": "rehabilitation",
+        "duration": "8-16 weeks",
+        "contraindications": "none significant",
+        "graph_priority": 7,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Rheumatoid Arthritis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0266,
+        "keyword_overlap": 0.0833,
+        "combined_score": 0.212
+      },
+      {
+        "therapy_id": "th_elevation",
+        "therapy_name": "Elevation Therapy",
+        "therapy_description": "Elevating the affected limb above heart level to reduce swelling through gravity-assisted venous and lymphatic drainage",
+        "therapy_type": "positional",
+        "duration": "acute: 48-72 hours",
+        "contraindications": "none significant",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Cellulitis",
+          "Lymphedema",
+          "Gout",
+          "Deep Vein Thrombosis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0243,
+        "keyword_overlap": 0.0833,
+        "combined_score": 0.2109
+      },
+      {
+        "therapy_id": "th_shockwave",
+        "therapy_name": "Extracorporeal Shockwave Therapy",
+        "therapy_description": "High-energy acoustic waves directed at chronic tendinopathy to stimulate neovascularization and tissue remodeling",
+        "therapy_type": "mechanical",
+        "duration": "3-6 sessions",
+        "contraindications": "over nerves, blood vessels, lung tissue, growth plates",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Tendinitis",
+          "Plantar Fasciitis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0216,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2097
+      },
+      {
+        "therapy_id": "th_ultrasound",
+        "therapy_name": "Therapeutic Ultrasound",
+        "therapy_description": "Deep tissue heating using sound waves to promote tissue healing, reduce scar tissue, increase blood flow, and decrease inflammation",
+        "therapy_type": "electrotherapy",
+        "duration": "4-6 weeks",
+        "contraindications": "over malignancy, growth plates, eyes, pregnant uterus",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Tendinitis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0149,
+        "keyword_overlap": 0.0833,
+        "combined_score": 0.2067
+      },
+      {
+        "therapy_id": "th_splint",
+        "therapy_name": "Splinting / Immobilization",
+        "therapy_description": "External fixation using splints, braces, or casts to protect injured structures, maintain alignment, and allow healing",
+        "therapy_type": "mechanical",
+        "duration": "2-8 weeks",
+        "contraindications": "compartment syndrome risk",
+        "graph_priority": 7,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Plantar Fasciitis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.175
+      },
+      {
+        "therapy_id": "th_acupuncture",
+        "therapy_name": "Acupuncture",
+        "therapy_description": "Insertion of fine needles at specific points to modulate pain pathways, reduce inflammation, and promote natural healing",
+        "therapy_type": "complementary",
+        "duration": "6-12 sessions",
+        "contraindications": "bleeding disorders, anticoagulant therapy",
+        "graph_priority": 5,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Osteoarthritis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0166,
+        "keyword_overlap": 0.0833,
+        "combined_score": 0.1575
+      },
+      {
+        "therapy_id": "th_wound_care",
+        "therapy_name": "Wound Care Management",
+        "therapy_description": "Systematic wound assessment, debridement, dressing changes, infection control, and promotion of tissue granulation and epithelialization",
+        "therapy_type": "wound",
+        "duration": "until healed",
+        "contraindications": "none significant",
+        "graph_priority": 6,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Cellulitis"
+        ],
+        "target_areas": [],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.15
+      }
+    ],
+    "medications": [
+      {
+        "medication_id": "med_methotrexate",
+        "medication_name": "Methotrexate",
+        "medication_description": "Disease-modifying antirheumatic drug (DMARD) for rheumatoid arthritis, psoriatic arthritis, and autoimmune conditions",
+        "dosage": "7.5-25mg",
+        "form": "oral / injection",
+        "frequency": "once weekly",
+        "contraindications": "pregnancy, liver disease, immunodeficiency, renal impairment",
+        "graph_priority": 10,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Rheumatoid Arthritis"
+        ],
+        "relevance_score": 0.0727,
+        "keyword_overlap": 0.0833,
+        "combined_score": 0.3077
+      },
+      {
+        "medication_id": "med_ibuprofen",
+        "medication_name": "Ibuprofen",
+        "medication_description": "Non-steroidal anti-inflammatory drug for pain, inflammation, swelling, and fever reduction",
+        "dosage": "200-800mg",
+        "form": "oral tablet",
+        "frequency": "every 6-8 hours",
+        "contraindications": "GI ulcers, renal impairment, aspirin allergy",
+        "graph_priority": 8,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Rheumatoid Arthritis",
+          "Cellulitis",
+          "Osteoarthritis",
+          "Gout",
+          "Tendinitis",
+          "Plantar Fasciitis",
+          "Meniscus Tear"
+        ],
+        "relevance_score": 0.0659,
+        "keyword_overlap": 0.1667,
+        "combined_score": 0.2797
+      },
+      {
+        "medication_id": "med_cephalexin",
+        "medication_name": "Cephalexin",
+        "medication_description": "First-generation cephalosporin for skin infections, cellulitis, bone infections, and UTIs",
+        "dosage": "250-500mg",
+        "form": "oral capsule",
+        "frequency": "four times daily",
+        "contraindications": "cephalosporin allergy",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Cellulitis"
+        ],
+        "relevance_score": 0.0322,
+        "keyword_overlap": 0.0833,
+        "combined_score": 0.2645
+      },
+      {
+        "medication_id": "med_hydroxychloroquine",
+        "medication_name": "Hydroxychloroquine",
+        "medication_description": "DMARD for rheumatoid arthritis and systemic lupus with anti-inflammatory and immunomodulatory effects",
+        "dosage": "200-400mg",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "retinal disease, G6PD deficiency",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Rheumatoid Arthritis"
+        ],
+        "relevance_score": 0.0758,
+        "keyword_overlap": 0.0833,
+        "combined_score": 0.2591
+      },
+      {
+        "medication_id": "med_heparin",
+        "medication_name": "Heparin",
+        "medication_description": "Rapid-acting anticoagulant for prevention and treatment of deep vein thrombosis, pulmonary embolism, and clot formation",
+        "dosage": "5000-10000 units",
+        "form": "IV / subcutaneous injection",
+        "frequency": "continuous IV or every 8-12 hours SC",
+        "contraindications": "active bleeding, HIT, severe thrombocytopenia",
+        "graph_priority": 10,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.25
+      },
+      {
+        "medication_id": "med_diclofenac",
+        "medication_name": "Diclofenac",
+        "medication_description": "Potent NSAID available in oral and topical forms for acute musculoskeletal pain, inflammation, and post-surgical swelling",
+        "dosage": "50-75mg oral / 1% gel topical",
+        "form": "tablet / topical gel",
+        "frequency": "2-3 times daily",
+        "contraindications": "GI ulcers, hepatic impairment",
+        "graph_priority": 7,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Tendinitis"
+        ],
+        "relevance_score": 0.0449,
+        "keyword_overlap": 0.1667,
+        "combined_score": 0.2452
+      },
+      {
+        "medication_id": "med_clindamycin",
+        "medication_name": "Clindamycin",
+        "medication_description": "Lincosamide antibiotic for serious skin, bone, and soft tissue infections, especially in penicillin-allergic patients",
+        "dosage": "150-450mg",
+        "form": "oral capsule",
+        "frequency": "every 6-8 hours",
+        "contraindications": "C. difficile history",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Cellulitis"
+        ],
+        "relevance_score": 0.0277,
+        "keyword_overlap": 0.0833,
+        "combined_score": 0.2375
+      },
+      {
+        "medication_id": "med_mesalamine",
+        "medication_name": "Mesalamine",
+        "medication_description": "5-ASA anti-inflammatory for ulcerative colitis and inflammatory bowel disease maintenance",
+        "dosage": "800mg-1.2g",
+        "form": "oral tablet / rectal",
+        "frequency": "2-3 times daily",
+        "contraindications": "salicylate allergy, renal impairment",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Inflammatory Bowel Disease"
+        ],
+        "relevance_score": 0.0183,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2332
+      },
+      {
+        "medication_id": "med_colchicine",
+        "medication_name": "Colchicine",
+        "medication_description": "Anti-inflammatory agent specifically for acute gout flares and gout prophylaxis by inhibiting neutrophil migration",
+        "dosage": "0.5-1mg",
+        "form": "oral tablet",
+        "frequency": "twice daily during flare",
+        "contraindications": "severe renal/hepatic impairment, blood dyscrasias",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Gout"
+        ],
+        "relevance_score": 0.0091,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2291
+      },
+      {
+        "medication_id": "med_enoxaparin",
+        "medication_name": "Enoxaparin",
+        "medication_description": "Low molecular weight heparin for DVT prophylaxis, treatment of acute coronary syndrome, and bridge anticoagulation",
+        "dosage": "40mg prophylaxis / 1mg/kg treatment",
+        "form": "subcutaneous injection",
+        "frequency": "once or twice daily",
+        "contraindications": "active bleeding, HIT, severe renal impairment",
+        "graph_priority": 9,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.225
+      },
+      {
+        "medication_id": "med_celecoxib",
+        "medication_name": "Celecoxib",
+        "medication_description": "COX-2 selective NSAID with reduced GI side effects for osteoarthritis, rheumatoid arthritis, and acute pain",
+        "dosage": "100-200mg",
+        "form": "oral capsule",
+        "frequency": "once or twice daily",
+        "contraindications": "sulfonamide allergy, cardiovascular disease",
+        "graph_priority": 7,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Osteoarthritis"
+        ],
+        "relevance_score": 0.0553,
+        "keyword_overlap": 0.0833,
+        "combined_score": 0.2249
+      },
+      {
+        "medication_id": "med_allopurinol",
+        "medication_name": "Allopurinol",
+        "medication_description": "Xanthine oxidase inhibitor to lower uric acid levels for chronic gout management and prevention of urate crystal deposition",
+        "dosage": "100-300mg",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "acute gout flare (initiation), severe renal impairment",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Gout"
+        ],
+        "relevance_score": 0.0242,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2109
+      },
+      {
+        "medication_id": "med_paracetamol",
+        "medication_name": "Paracetamol (Acetaminophen)",
+        "medication_description": "First-line analgesic and antipyretic for mild to moderate pain and fever reduction",
+        "dosage": "500-1000mg",
+        "form": "oral tablet",
+        "frequency": "every 4-6 hours (max 4g/day)",
+        "contraindications": "severe hepatic impairment",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Osteoarthritis"
+        ],
+        "relevance_score": 0.0198,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2089
+      },
+      {
+        "medication_id": "med_prednisone",
+        "medication_name": "Prednisone",
+        "medication_description": "Oral corticosteroid for severe inflammation, autoimmune conditions, allergic reactions, and flare management",
+        "dosage": "5-60mg",
+        "form": "oral tablet",
+        "frequency": "once daily (with taper)",
+        "contraindications": "systemic fungal infections, live vaccines",
+        "graph_priority": 7,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Rheumatoid Arthritis",
+          "Gout",
+          "Inflammatory Bowel Disease"
+        ],
+        "relevance_score": 0.0174,
+        "keyword_overlap": 0.0833,
+        "combined_score": 0.2078
+      },
+      {
+        "medication_id": "med_cortisone_inj",
+        "medication_name": "Cortisone Injection",
+        "medication_description": "Local corticosteroid injection directly into joints or soft tissues for targeted inflammation and pain relief",
+        "dosage": "25-50mg per injection",
+        "form": "intra-articular injection",
+        "frequency": "every 3-6 months max",
+        "contraindications": "joint infection, bleeding disorders",
+        "graph_priority": 6,
+        "evidence_level": "B",
+        "matching_diseases": [
+          "Osteoarthritis",
+          "Plantar Fasciitis",
+          "Meniscus Tear"
+        ],
+        "relevance_score": 0.0161,
+        "keyword_overlap": 0.1667,
+        "combined_score": 0.2073
+      },
+      {
+        "medication_id": "med_warfarin",
+        "medication_name": "Warfarin",
+        "medication_description": "Oral anticoagulant for long-term prevention of blood clots, stroke prevention in atrial fibrillation, and DVT/PE treatment",
+        "dosage": "2-10mg (INR-guided)",
+        "form": "oral tablet",
+        "frequency": "once daily",
+        "contraindications": "pregnancy, active bleeding, recent surgery",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2
+      },
+      {
+        "medication_id": "med_rivaroxaban",
+        "medication_name": "Rivaroxaban",
+        "medication_description": "Direct oral anticoagulant (DOAC) Factor Xa inhibitor for DVT/PE treatment and stroke prevention without INR monitoring",
+        "dosage": "10-20mg",
+        "form": "oral tablet",
+        "frequency": "once or twice daily",
+        "contraindications": "active bleeding, severe hepatic disease",
+        "graph_priority": 8,
+        "evidence_level": "A",
+        "matching_diseases": [
+          "Deep Vein Thrombosis"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.2
+      },
+      {
+        "medication_id": "med_furosemide",
+        "medication_name": "Furosemide",
+        "medication_description": "Loop diuretic for edema reduction in heart failure, renal disease, and hepatic cirrhosis",
+        "dosage": "20-80mg",
+        "form": "oral / IV",
+        "frequency": "once or twice daily",
+        "contraindications": "anuria, severe electrolyte depletion",
+        "graph_priority": 5,
+        "evidence_level": "C",
+        "matching_diseases": [
+          "Lymphedema"
+        ],
+        "relevance_score": 0.0,
+        "keyword_overlap": 0.0,
+        "combined_score": 0.125
+      }
+    ],
+    "drug_interactions": [
+      {
+        "drug_a": "Methotrexate",
+        "drug_b": "Ibuprofen",
+        "severity": "high",
+        "interaction_note": "Increased methotrexate toxicity"
+      }
+    ],
+    "matched_diseases": [
+      "Rheumatoid Arthritis",
+      "Lymphedema",
+      "Deep Vein Thrombosis",
+      "Plantar Fasciitis",
+      "Inflammatory Bowel Disease",
+      "Gout",
+      "Cellulitis",
+      "Meniscus Tear",
+      "Osteoarthritis",
+      "Tendinitis"
+    ],
+    "stats": {
+      "therapies_count": 15,
+      "medications_count": 18,
+      "interactions_count": 1,
+      "graph_mode": "Embedded Graph Engine (Local Standby)"
+    }
+  }
+}

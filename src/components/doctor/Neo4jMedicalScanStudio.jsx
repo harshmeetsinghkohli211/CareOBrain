@@ -1,3 +1,4 @@
+import { getDoctorCdsUrl } from "../../utils/doctorCdsRoute";
 import React, { useState, useEffect, useRef } from "react";
 import {
   Brain,
@@ -305,7 +306,7 @@ export const Neo4jMedicalScanStudio = ({
 
           {/* External Redirect Button */}
           <a
-            href="/doctor-cds"
+            href={getDoctorCdsUrl()}
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 bg-[#9DF3C4] hover:bg-[#86EFAC] text-slate-900 rounded-2xl font-black text-xs transition shadow-sm flex items-center gap-1.5 cursor-pointer"

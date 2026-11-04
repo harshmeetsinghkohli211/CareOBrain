@@ -1,3 +1,4 @@
+import { getDoctorCdsUrl } from "../../utils/doctorCdsRoute";
 import React from "react";
 import { Play, Stethoscope, ArrowRight, Brain } from "lucide-react";
 
@@ -57,7 +58,7 @@ export const HomeStatsCTA = ({ t, onSelectRole }) => {
             <button
               className="btn btn--outline-white btn--xl cursor-pointer w-full sm:w-auto justify-center active:scale-95 transition"
               onClick={() => {
-                window.open("/doctor-cds", "_blank");
+                window.open(getDoctorCdsUrl(), "_blank");
               }}
             >
               <Stethoscope className="w-5 h-5 text-white" />
@@ -80,7 +81,7 @@ export const HomeStatsCTA = ({ t, onSelectRole }) => {
             <a href="#hero" className="hover:text-white transition">Home</a>
             <a href="#categories" className="hover:text-white transition">{t?.nav?.categories || "Brain Disease Modules"}</a>
             <a href="#ai-engine" className="hover:text-white transition">{t?.nav?.ai || "Neuroplasticity AI"}</a>
-            <a href="/doctor-cds" target="_blank" rel="noreferrer" className="text-[#9DF3C4] hover:underline">Doctor CDS (Neo4j)</a>
+            <a href={getDoctorCdsUrl()} target="_blank" rel="noreferrer" className="text-[#9DF3C4] hover:underline">Doctor CDS (Neo4j)</a>
             <a href="#caregiver" className="hover:text-white transition">{t?.nav?.caregiver || "Caregiver Insights"}</a>
             <a href="#faq" className="hover:text-white transition">FAQ</a>
           </div>

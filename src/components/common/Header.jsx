@@ -31,6 +31,7 @@ import {
   Settings
 } from "lucide-react";
 import { NotificationDropdown } from "./NotificationDropdown";
+import { getDoctorCdsUrl } from "../../utils/doctorCdsRoute";
 
 export const Header = ({
   currentRole = "home",
@@ -246,7 +247,7 @@ export const Header = ({
               <button
                 id="header-nav-doctor-cds"
                 onClick={() => {
-                  window.open("/doctor-cds", "_blank");
+                  window.open(getDoctorCdsUrl(), "_blank");
                 }}
                 title="Open Doctor Clinical Decision Support (Neo4j MedGraph Portal)"
                 className="relative flex items-center gap-1.5 px-2.5 py-1.5 lg:py-2 rounded-xl transition cursor-pointer whitespace-nowrap text-[11px] md:text-xs lg:text-sm font-extrabold bg-gradient-to-r from-[#0D7377]/10 to-[#9DF3C4]/35 hover:from-[#0D7377]/20 hover:to-[#9DF3C4]/50 text-[#0D7377] border border-[#0D7377]/30 hover:border-[#0D7377] shadow-xs group ml-1"
@@ -674,7 +675,7 @@ export const Header = ({
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
-                    window.open("/doctor-cds", "_blank");
+                    window.open(getDoctorCdsUrl(), "_blank");
                   }}
                   className="w-full text-left px-3.5 py-2.5 rounded-xl font-bold text-sm flex items-center justify-between text-[#0D7377] bg-gradient-to-r from-[#0D7377]/10 to-[#9DF3C4]/25 border border-[#0D7377]/25 hover:border-[#0D7377]"
                 >

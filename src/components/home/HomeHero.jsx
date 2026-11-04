@@ -1,3 +1,4 @@
+import { getDoctorCdsUrl } from "../../utils/doctorCdsRoute";
 import React from "react";
 import {
   Brain,
@@ -74,7 +75,7 @@ export const HomeHero = ({ onSelectRole, onOpenMemoryTest, t }) => {
               type="button"
               id="home-doctor-cds-btn"
               onClick={() => {
-                window.open("/doctor-cds", "_blank");
+                window.open(getDoctorCdsUrl(), "_blank");
               }}
               className="bg-gradient-to-r from-[#0D7377] to-teal-700 hover:from-teal-800 hover:to-[#0D7377] text-white px-2.5 sm:px-3 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1 shrink-0 transition cursor-pointer shadow-xs active:scale-95 whitespace-nowrap"
             >
@@ -167,7 +168,7 @@ export const HomeHero = ({ onSelectRole, onOpenMemoryTest, t }) => {
 
               <button
                 onClick={() => {
-                  window.open("/doctor-cds", "_blank");
+                  window.open(getDoctorCdsUrl(), "_blank");
                 }}
                 className="w-full sm:w-auto justify-center px-5 py-3.5 rounded-xl bg-teal-50 hover:bg-teal-100 border border-teal-300 text-[#0D7377] font-bold text-sm sm:text-base flex items-center gap-2.5 transition shadow-xs cursor-pointer active:scale-95"
               >

@@ -1,3 +1,4 @@
+import { getDoctorCdsUrl } from "../../utils/doctorCdsRoute";
 import React, { useState, useEffect } from "react";
 import { sessionHistoryRecords } from "../../data/initialData";
 import {
@@ -889,7 +890,7 @@ export const DoctorDashboard = ({
                 <ArrowRight className="w-4 h-4" />
               </button>
               <a
-                href="/doctor-cds"
+                href={getDoctorCdsUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-3 py-2.5 bg-white/15 hover:bg-white/25 text-white font-bold text-xs rounded-2xl transition border border-white/20 flex items-center gap-1.5"
