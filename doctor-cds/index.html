@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MedGraph Intelligence — Local Medical Report OCR, Extractive Summarization, Neo4j Graph Reasoning, and TF-IDF Vector-Ranked Therapies and Medications.">
+  <title>CareOBrain — Doctor Clinical Decision Support (Neo4j MedGraph)</title>
+  
+  <!-- Modern Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="light-theme">
+  <!-- Background Glow & Grid Orbs -->
+  <div class="ambient-glow orb-1"></div>
+  <div class="ambient-glow orb-2"></div>
+  <div class="grid-overlay"></div>
+
+  <!-- Main Smrithi Sathi Responsive Navbar (100vw, overflow-protected) -->
+  <header class="smriti-navbar" id="smritiMainNavbar">
+    <div class="smriti-navbar-inner">
+      
+      <!-- Left Cluster: Logo & Navigation Links -->
+      <div class="nav-left-cluster">
+        <!-- Logo & Brand Identity -->
+        <a href="../" class="smriti-brand-logo" title="Go to Smrithi Sathi Home">
+          <div class="brand-brain-svg-wrap">
+            <svg viewBox="85 85 330 280" class="brand-svg-icon" fill="none" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+              <defs>
+                <linearGradient id="brandLeftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#001438" />
+                  <stop offset="50%" stop-color="#001F54" />
+                  <stop offset="100%" stop-color="#003580" />
+                </linearGradient>
+                <linearGradient id="brandRightGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0072B5" />
+                  <stop offset="50%" stop-color="#0091D5" />
+                  <stop offset="100%" stop-color="#00B8EB" />
+                </linearGradient>
+                <filter id="brandBrainShadow" x="-10%" y="-10%" width="120%" height="120%">
+                  <feDropShadow dx="0" dy="2.5" stdDeviation="3.5" flood-color="#001438" flood-opacity="0.22" />
+                </filter>
+              </defs>
+              <g filter="url(#brandBrainShadow)">
+                <g fill="url(#brandLeftGrad)">
+                  <path d="M 235 95 C 215 92, 195 98, 180 115 C 155 110, 130 130, 125 155 C 105 165, 95 195, 105 220 C 92 238, 95 270, 110 290 C 105 315, 125 345, 155 355 C 185 365, 215 350, 235 330 L 235 285 L 190 285 L 190 215 L 235 215 Z" />
+                  <path d="M 160 170 C 185 170, 205 145, 215 125" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" />
+                  <circle cx="160" cy="170" r="7" fill="#FFFFFF" />
+                  <path d="M 135 230 C 160 230, 185 210, 195 200" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" />
+                  <circle cx="135" cy="230" r="7" fill="#FFFFFF" />
+                  <path d="M 145 295 C 170 295, 195 310, 215 320" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" />
+                  <circle cx="145" cy="295" r="7" fill="#FFFFFF" />
+                  <circle cx="120" cy="180" r="5.5" fill="#FFFFFF" />
+                  <circle cx="115" cy="260" r="5.5" fill="#FFFFFF" />
+                  <circle cx="180" cy="340" r="5.5" fill="#FFFFFF" />
+                  <path d="M 125 310 C 135 325, 150 330, 160 330" stroke="#94A3B8" stroke-width="5.5" stroke-linecap="round" opacity="0.75" />
+                </g>
+                <g fill="url(#brandRightGrad)">
+                  <path d="M 265 95 C 285 92, 305 98, 320 115 C 345 110, 370 130, 375 155 C 395 165, 405 195, 395 220 C 408 238, 405 270, 390 290 C 395 315, 375 345, 345 355 C 315 365, 285 350, 265 330 L 265 285 L 310 285 L 310 215 L 265 215 Z" />
+                  <path d="M 340 170 C 315 170, 295 145, 285 125" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" />
+                  <circle cx="340" cy="170" r="7" fill="#FFFFFF" />
+                  <path d="M 365 230 C 340 230, 315 210, 305 200" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" />
+                  <circle cx="365" cy="230" r="7" fill="#FFFFFF" />
+                  <path d="M 355 295 C 330 295, 305 310, 285 320" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" />
+                  <circle cx="355" cy="295" r="7" fill="#FFFFFF" />
+                  <circle cx="380" cy="180" r="5.5" fill="#FFFFFF" />
+                  <circle cx="385" cy="260" r="5.5" fill="#FFFFFF" />
+                  <circle cx="320" cy="340" r="5.5" fill="#FFFFFF" />
+                  <path d="M 375 310 C 365 325, 350 330, 340 330" stroke="#CBD5E1" stroke-width="5.5" stroke-linecap="round" opacity="0.75" />
+                </g>
+                <g fill="#FFFFFF">
+                  <rect x="233" y="170" width="34" height="160" rx="17" />
+                  <rect x="170" y="233" width="160" height="34" rx="17" />
+                </g>
+              </g>
+            </svg>
+          </div>
+          <div class="smriti-brand-titles">
+            <span class="smriti-brand-name">CareOBrain</span>
+            <span class="smriti-brand-sub">Dr. Debabrata Roy, MD &bull; Clinical CDS (Neo4j)</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Items (Hidden on smaller screens and moved to Three Dots) -->
+        <nav class="smriti-nav-links" id="smritiNavLinks">
+          <a href="../" class="nav-item-btn" title="Home Portal">
+            <i data-lucide="home"></i>
+            <span>Home</span>
+          </a>
+          <a href="../?role=patient" class="nav-item-btn" title="Patient View">
+            <i data-lucide="user"></i>
+            <span>Patient</span>
+          </a>
+          <a href="../?role=family" class="nav-item-btn" title="Caregiver View">
+            <i data-lucide="users"></i>
+            <span>Caregiver</span>
+          </a>
+          <a href="../?role=doctor" class="nav-item-btn" title="Doctor Dashboard">
+            <i data-lucide="stethoscope"></i>
+            <span>Doctor</span>
+          </a>
+          <a href="./" class="nav-item-btn active" title="Doctor Clinical Decision Support">
+            <i data-lucide="stethoscope"></i>
+            <span>Doctor CDS</span>
+            <span class="pill-badge-neo">NEO4J</span>
+          </a>
+          <a href="../?openReminders=true" class="nav-item-btn" title="View Patient Reminders & Schedule">
+            <div class="icon-relative">
+              <i data-lucide="bell"></i>
+              <span class="bell-badge" id="navRemindersBadge">3</span>
+            </div>
+            <span>Reminders</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Right Cluster: Actions, Status & Overflow Menu -->
+      <div class="nav-right-cluster">
+        
+        <!-- Cart: Prescribed Care Plan Button (Pulses like Add to Cart) -->
+        <button id="btnHeaderCart" class="btn-care-plan-cart" title="View Prescribed Care Plan Cart (Therapies & Medications)">
+          <i data-lucide="shopping-bag" class="cart-icon"></i>
+          <span class="cart-label">Care Plan:</span>
+          <span class="cart-count-badge" id="headerCartCountBadge">0 Prescribed</span>
+        </button>
+
+        <!-- Doctor / Patient Chat -->
+        <a href="../?openChat=true" class="btn-header-secondary hide-on-tablet" title="Patient Teleconsultation Chat">
+          <i data-lucide="message-square"></i>
+          <span>Patient Chat</span>
+          <span class="online-indicator-dot"></span>
+        </a>
+
+        <!-- Video Call -->
+        <a href="../?openVideo=true" class="btn-header-video hide-on-laptop" title="Start Clinical Video Consultation">
+          <i data-lucide="video"></i>
+          <span>Video Call</span>
+        </a>
+
+        <!-- Graph Status & Seed Controls (Compact) -->
+        <div class="smriti-engine-pills hide-on-mobile">
+          <div class="status-pill-mini" id="neo4jStatusPill" title="Neo4j Knowledge Graph Status">
+            <span class="status-indicator-dot online"></span>
+            <span class="pill-val" id="neo4jModeText">Neo4j</span>
+          </div>
+          <button id="btnSeedDatabase" class="btn-seed-mini" title="Seed / Sync Neo4j Knowledge Graph">
+            <i data-lucide="database"></i>
+            <span>Seed</span>
+          </button>
+        </div>
+
+        <!-- Language Pill -->
+        <div class="lang-pill-wrap hide-on-mobile">
+          <button class="btn-header-secondary" id="btnLangHeader">
+            <i data-lucide="globe"></i>
+            <span>EN</span>
+            <i data-lucide="chevron-down" class="chevron-mini"></i>
+          </button>
+        </div>
+
+        <!-- Three Dots Overflow Button (Always present to catch items outside 100vw) -->
+        <div class="overflow-menu-container">
+          <button id="btnThreeDotsOverflow" class="btn-three-dots" aria-label="More navigation and care plan options" title="More Options & Menu">
+            <i data-lucide="more-vertical" id="threeDotsIcon"></i>
+          </button>
+
+          <!-- Overflow Popover Menu Dropdown -->
+          <div class="three-dots-popover hidden" id="threeDotsPopover">
+            <div class="popover-header">
+              <span class="popover-title">Clinical Actions & More</span>
+              <button id="btnClosePopover" class="btn-close-popover" aria-label="Close menu">
+                <i data-lucide="x"></i>
+              </button>
+            </div>
+
+            <!-- Doctor Profile Badge -->
+            <div class="popover-doctor-badge">
+              <div class="doc-avatar">DR</div>
+              <div class="doc-info">
+                <span class="doc-name">Dr. Debabrata Roy, MD</span>
+                <span class="doc-session">Neurology & Cognitive CDS &bull; Active</span>
+              </div>
+            </div>
+
+            <!-- Cart Quick Snapshot in Popover -->
+            <div class="popover-cart-box" id="popoverCartBox">
+              <div class="cart-box-left">
+                <i data-lucide="clipboard-check" class="cart-box-icon"></i>
+                <div>
+                  <div class="cart-box-title">Care Plan Cart</div>
+                  <div class="cart-box-sub" id="popoverCartSub">0 Items Prescribed</div>
+                </div>
+              </div>
+              <button class="btn-view-cart-mini" id="btnOpenCartFromPopover">View Cart</button>
+            </div>
+
+            <!-- Responsive Navigation Links (Shown when collapsed from navbar) -->
+            <div class="popover-nav-section">
+              <div class="popover-section-label">Portal Navigation</div>
+              <a href="../" class="popover-nav-item">
+                <i data-lucide="home"></i>
+                <span>Home Portal</span>
+              </a>
+              <a href="../?role=patient" class="popover-nav-item">
+                <i data-lucide="user"></i>
+                <span>Patient Dashboard (Lakshmi Devi)</span>
+              </a>
+              <a href="../?role=family" class="popover-nav-item">
+                <i data-lucide="users"></i>
+                <span>Caregiver Dashboard</span>
+              </a>
+              <a href="../?role=doctor" class="popover-nav-item">
+                <i data-lucide="stethoscope"></i>
+                <span>Doctor Telemetry Dashboard</span>
+              </a>
+              <a href="../?openReminders=true" class="popover-nav-item">
+                <i data-lucide="bell"></i>
+                <span>Patient Reminders & Schedule</span>
+              </a>
+            </div>
+
+            <!-- Quick Communication & Actions -->
+            <div class="popover-actions-section">
+              <div class="popover-section-label">Telehealth & Quick Actions</div>
+              <a href="../?openChat=true" class="popover-action-item">
+                <i data-lucide="message-square" class="text-teal"></i>
+                <span>Patient Live Chat</span>
+              </a>
+              <a href="../?openVideo=true" class="popover-action-item">
+                <i data-lucide="video" class="text-emerald"></i>
+                <span>Video Consultation</span>
+              </a>
+              <button id="btnSeedFromPopover" class="popover-action-item">
+                <i data-lucide="database" class="text-blue"></i>
+                <span>Seed / Resync Neo4j Graph</span>
+              </button>
+            </div>
+
+            <!-- Footer Return Button -->
+            <div class="popover-footer">
+              <a href="../" class="btn-popover-return">
+                <i data-lucide="arrow-left"></i>
+                <span>Return to Smrithi Sathi</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Workspace Layout -->
+  <main class="app-main">
+    <div class="main-container">
+
+      <!-- Left Column: Report Ingestion & Controls -->
+      <section class="ingestion-section">
+        <div class="panel-card glassmorphism">
+          <div class="card-header">
+            <div class="header-with-icon">
+              <i data-lucide="file-scan" class="section-icon"></i>
+              <div>
+                <h2>Clinical Report Intake</h2>
+                <p class="section-subtext">Upload scan images or select pre-compiled clinical cases</p>
+              </div>
+            </div>
+            
+            <div class="tabs-nav" role="tablist">
+              <button class="tab-btn active" id="tabUpload" data-tab="uploadView">
+                <i data-lucide="image"></i> Image Scan
+              </button>
+              <button class="tab-btn" id="tabText" data-tab="textView">
+                <i data-lucide="file-text"></i> Text Report
+              </button>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <!-- Tab 1: Image Upload -->
+            <div class="tab-pane active" id="uploadView">
+              <div class="dropzone" id="reportDropzone">
+                <input type="file" id="reportFileInput" accept="image/*,.pdf" class="file-input-hidden">
+                <div class="dropzone-content" id="dropzoneEmpty">
+                  <div class="upload-icon-circle">
+                    <i data-lucide="cloud-upload" class="upload-icon"></i>
+                  </div>
+                  <h3>Drop Medical Scan or Click to Browse</h3>
+                  <p class="dropzone-hint">Supports MRI, CT, X-Ray, Ultrasound, or Pathology Scans (PNG, JPG, WebP)</p>
+                  <span class="local-privacy-badge">
+                    <i data-lucide="shield-check"></i> 100% On-Device Processing &bull; Zero Cloud Upload
+                  </span>
+                </div>
+
+                <!-- Preview Area -->
+                <div class="dropzone-preview hidden" id="dropzonePreview">
+                  <img id="imagePreviewTarget" src="" alt="Medical Scan Preview" class="preview-img">
+                  <div class="preview-overlay">
+                    <span id="previewFilename" class="preview-fname">report.png</span>
+                    <button id="btnRemoveFile" class="btn-icon-danger" title="Remove File">
+                      <i data-lucide="x"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 2: Text / Note Input -->
+            <div class="tab-pane" id="textView">
+              <div class="text-input-wrapper">
+                <textarea 
+                  id="directClinicalText" 
+                  class="clinical-textarea" 
+                  rows="7" 
+                  placeholder="Paste clinical findings, radiology impressions, damaged area descriptions, or lab observations..."
+                ></textarea>
+                <div class="textarea-footer">
+                  <span id="charCountLabel" class="counter-text">0 characters</span>
+                  <button id="btnClearText" class="btn-text-sm">Clear</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sample Case Quick Pickers -->
+            <div class="quick-cases-panel">
+              <div class="quick-cases-header">
+                <span class="label-heading"><i data-lucide="sparkles"></i> One-Click Clinical Cases</span>
+                <span class="sub-label">Instant Diagnostic Scenarios</span>
+              </div>
+              <div class="case-chips-grid" id="caseChipsContainer">
+                <!-- Dynamically populated sample chips -->
+              </div>
+            </div>
+
+            <!-- Action Button -->
+            <div class="action-row">
+              <button id="btnRunPipeline" class="btn-primary-glow">
+                <i data-lucide="brain-circuit"></i>
+                <span id="btnRunText">Analyze Report & Rank Therapies</span>
+                <span class="btn-spinner hidden" id="btnSpinner"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4-Stage Architectural Pipeline Visualizer -->
+        <div class="panel-card glassmorphism pipeline-status-card">
+          <div class="card-header-compact">
+            <h3><i data-lucide="workflow"></i> Pipeline Execution Stages</h3>
+            <span class="stage-tag" id="currentPipelineStageTag">Standby</span>
+          </div>
+          <div class="stages-stepper">
+            <div class="step-item" id="stepOCR">
+              <div class="step-circle"><i data-lucide="scan-text"></i></div>
+              <div class="step-details">
+                <span class="step-title">Stage 1: Local OCR</span>
+                <span class="step-desc">Tesseract text extraction</span>
+              </div>
+              <span class="step-state-badge">Waiting</span>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step-item" id="stepNLP">
+              <div class="step-circle"><i data-lucide="file-search"></i></div>
+              <div class="step-details">
+                <span class="step-title">Stage 2: Medical NLP</span>
+                <span class="step-desc">Keywords, Damage & Swelling</span>
+              </div>
+              <span class="step-state-badge">Waiting</span>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step-item" id="stepGraph">
+              <div class="step-circle"><i data-lucide="network"></i></div>
+              <div class="step-details">
+                <span class="step-title">Stage 3: Neo4j Traversal</span>
+                <span class="step-desc">Cypher matching & relations</span>
+              </div>
+              <span class="step-state-badge">Waiting</span>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step-item" id="stepTokenizer">
+              <div class="step-circle"><i data-lucide="arrow-down-narrow-wide"></i></div>
+              <div class="step-details">
+                <span class="step-title">Stage 4: Vector Ranking</span>
+                <span class="step-desc">TF-IDF High &rarr; Low Sort</span>
+              </div>
+              <span class="step-state-badge">Waiting</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Ranked Results & Clinical Intelligence -->
+      <section class="results-section">
+
+        <!-- Safety Alert Banner (Drug Interactions) -->
+        <div class="drug-safety-banner hidden" id="drugSafetyAlert">
+          <div class="alert-icon-box">
+            <i data-lucide="alert-triangle"></i>
+          </div>
+          <div class="alert-content">
+            <h4>Clinical Contraindication & Drug Interaction Warning</h4>
+            <div id="interactionList" class="interaction-items"></div>
+          </div>
+        </div>
+
+        <!-- Clinical Findings & Profile Card -->
+        <div class="panel-card glassmorphism results-card" id="clinicalProfileCard">
+          <div class="card-header">
+            <div class="header-with-icon">
+              <i data-lucide="stethoscope" class="section-icon text-cyan"></i>
+              <div>
+                <h2>Clinical Extraction Profile</h2>
+                <p class="section-subtext">Automated summary of damaged regions, edema, symptoms, and measurements</p>
+              </div>
+            </div>
+            <div class="metric-tags" id="profileMetrics">
+              <span class="metric-chip" id="severityChip">Severity: --</span>
+              <span class="metric-chip" id="wordCountChip">Words: 0</span>
+              <span class="metric-chip" id="ocrConfidenceChip">Confidence: --</span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <!-- Keyword Badges Grouped by Category -->
+            <div class="entity-clusters-grid">
+              <div class="cluster-block">
+                <div class="cluster-title"><i data-lucide="crosshair"></i> Damaged / Affected Areas</div>
+                <div class="cluster-chips" id="damagedAreasChips">
+                  <span class="empty-placeholder">Awaiting analysis</span>
+                </div>
+              </div>
+
+              <div class="cluster-block">
+                <div class="cluster-title"><i data-lucide="droplet"></i> Swelling & Inflammation</div>
+                <div class="cluster-chips" id="swellingChips">
+                  <span class="empty-placeholder">Awaiting analysis</span>
+                </div>
+              </div>
+
+              <div class="cluster-block">
+                <div class="cluster-title"><i data-lucide="heart-pulse"></i> Clinical Symptoms & Signs</div>
+                <div class="cluster-chips" id="symptomsChips">
+                  <span class="empty-placeholder">Awaiting analysis</span>
+                </div>
+              </div>
+
+              <div class="cluster-block">
+                <div class="cluster-title"><i data-lucide="dna"></i> Matched Graph Pathologies</div>
+                <div class="cluster-chips" id="pathologiesChips">
+                  <span class="empty-placeholder">Awaiting analysis</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Extractive Summary Sentences -->
+            <div class="extractive-summary-box">
+              <div class="box-subtitle">
+                <i data-lucide="align-left"></i> Dense Extractive Clinical Summary
+              </div>
+              <ul class="summary-sentences-list" id="summarySentencesList">
+                <li class="summary-item-placeholder">Run diagnosis to extract key clinical statements...</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Custom Prescription Creator (Doctor Activity/Therapy/Medication/Note) -->
+        <div class="custom-rx-panel panel-card glassmorphism">
+          <div class="custom-rx-header" id="btnToggleCustomRx">
+            <div class="custom-rx-header-left">
+              <div class="custom-rx-icon-wrap">
+                <i data-lucide="plus-circle" class="custom-rx-icon"></i>
+              </div>
+              <div>
+                <h4>Prescribe Custom Activity, Therapy, or Clinical Note</h4>
+                <p>Add personalized exercises, dosing schedules, or instructions directly to the patient's care plan cart</p>
+              </div>
+            </div>
+            <button class="btn-toggle-custom-rx" type="button" aria-label="Toggle custom prescription form">
+              <span class="toggle-text">Quick Add</span>
+              <i data-lucide="chevron-down" id="customRxChevron"></i>
+            </button>
+          </div>
+          <form id="formCustomRx" class="custom-rx-form hidden">
+            <div class="form-row">
+              <div class="form-group flex-2">
+                <label for="customRxTitle">Item Name / Title *</label>
+                <input type="text" id="customRxTitle" placeholder="e.g. Morning Joint Warm-up or Donepezil 5mg" required>
+              </div>
+              <div class="form-group flex-1">
+                <label for="customRxType">Prescription Category</label>
+                <select id="customRxType">
+                  <option value="therapy">Physical Therapy</option>
+                  <option value="activity">Cognitive / Routine Activity</option>
+                  <option value="medication">Medication & Dosage</option>
+                  <option value="note">Clinical Advice / Doctor Note</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group flex-1">
+                <label for="customRxDuration">Duration / Dosage / Frequency</label>
+                <input type="text" id="customRxDuration" placeholder="e.g. 15 mins daily or 5mg once at bedtime">
+              </div>
+              <div class="form-group flex-1">
+                <label for="customRxTarget">Target Area / Clinical Focus</label>
+                <input type="text" id="customRxTarget" placeholder="e.g. Cognitive recall, Upper limb mobility">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="customRxNotes">Doctor's Custom Clinical Description & Instructions for Patient *</label>
+              <textarea id="customRxNotes" rows="2" placeholder="e.g. Sit upright in a comfortable chair. Repeat 3 sets with gentle deep breathing. Stay hydrated." required></textarea>
+            </div>
+            <div class="custom-rx-actions">
+              <button type="submit" class="btn-add-custom-rx">
+                <i data-lucide="shopping-bag"></i>
+                <span>Add to Care Plan Cart & Send to Patient Dashboard</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Dual Results Tabs: Therapies vs Medications -->
+        <div class="results-deck">
+          <div class="deck-controls">
+            <div class="deck-tabs">
+              <button class="deck-tab active" id="tabTherapies" data-target="therapiesDeck">
+                <i data-lucide="heart-handshake"></i>
+                <span>Ranked Therapies</span>
+                <span class="count-badge" id="therapiesCount">0</span>
+              </button>
+              <button class="deck-tab" id="tabMedications" data-target="medicationsDeck">
+                <i data-lucide="pill"></i>
+                <span>Ranked Medications & Dosages</span>
+                <span class="count-badge" id="medicationsCount">0</span>
+              </button>
+              <button class="deck-tab" id="tabGraphInspector" data-target="graphInspectorDeck">
+                <i data-lucide="share-2"></i>
+                <span>Graph Topology</span>
+              </button>
+            </div>
+
+            <div class="sort-indicator">
+              <i data-lucide="arrow-down-wide-narrow"></i>
+              <span>Sorting: High &rarr; Low Relevance</span>
+            </div>
+          </div>
+
+          <!-- Therapies Deck -->
+          <div class="deck-panel active" id="therapiesDeck">
+            <!-- Doctor Prescription Guidance Banner -->
+            <div class="rx-guidance-banner">
+              <div class="rx-guidance-icon"><i data-lucide="check-square"></i></div>
+              <div class="rx-guidance-text">
+                <strong>Doctor Prescription Controls (Smrithi Sathi Sync)</strong>
+                <p>Click the checkbox on any therapy or activity to recommend it. Prescribed therapies sync directly to the patient's portal in Smrithi Sathi so they can play or perform them.</p>
+              </div>
+              <a href="../" class="btn-goto-patient" title="View Patient Portal">
+                <span>View Patient Portal</span>
+                <i data-lucide="external-link"></i>
+              </a>
+            </div>
+
+            <div class="cards-stream" id="therapiesStream">
+              <div class="empty-state-card">
+                <i data-lucide="clipboard-list" class="empty-state-icon"></i>
+                <h3>No Therapies Generated Yet</h3>
+                <p>Upload a medical scan or pick a sample scenario to generate ranked therapy recommendations.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Medications Deck -->
+          <div class="deck-panel" id="medicationsDeck">
+            <div class="cards-stream" id="medicationsStream">
+              <div class="empty-state-card">
+                <i data-lucide="pill" class="empty-state-icon"></i>
+                <h3>No Medications Prescribed Yet</h3>
+                <p>Prescriptions with clinical dosages and frequencies will be ordered from highest to lowest relevance.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Graph Topology Deck -->
+          <div class="deck-panel" id="graphInspectorDeck">
+            <div class="graph-inspector-card">
+              <div class="graph-info-bar">
+                <div class="graph-legend">
+                  <span class="legend-item"><span class="legend-dot disease-dot"></span> Disease</span>
+                  <span class="legend-item"><span class="legend-dot therapy-dot"></span> Therapy</span>
+                  <span class="legend-item"><span class="legend-dot medication-dot"></span> Medication</span>
+                  <span class="legend-item"><span class="legend-dot area-dot"></span> Body Area</span>
+                  <span class="legend-item"><span class="legend-dot symptom-dot"></span> Symptom</span>
+                </div>
+                <div class="graph-metrics" id="graphStatsDisplay">
+                  40+ Diseases &bull; 30+ Therapies &bull; 50+ Meds &bull; Bolt Protocol
+                </div>
+              </div>
+
+              <div class="graph-nodes-viewer" id="graphNodesViewer">
+                <div class="graph-empty-preview">
+                  <i data-lucide="git-fork" class="graph-preview-icon"></i>
+                  <h4>Active Graph Relationships</h4>
+                  <p>Analyzed pathways from patient report to treatment vertices appear here.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- Prescription Care Plan Slide-Out Drawer ("Cart") -->
+  <div class="cart-drawer-backdrop hidden" id="cartDrawerBackdrop">
+    <div class="cart-drawer" id="cartDrawer">
+      <div class="cart-drawer-header">
+        <div class="cart-drawer-title-group">
+          <div class="cart-icon-circle">
+            <i data-lucide="shopping-bag" class="cart-header-icon"></i>
+          </div>
+          <div>
+            <h3>Patient Care Plan Cart</h3>
+            <p>Therapies, Activities & Medications prescribed for patient</p>
+          </div>
+        </div>
+        <button id="btnCloseCartDrawer" class="btn-close-drawer" aria-label="Close care plan cart">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <div class="cart-drawer-body" id="cartDrawerItemsList">
+        <!-- Rendered dynamically by app.js -->
+        <div class="cart-empty-state">
+          <i data-lucide="shopping-bag" class="cart-empty-icon"></i>
+          <h4>Care Plan Cart is Empty</h4>
+          <p>Prescribe therapies or medications from the ranked lists to add them to the patient's care plan.</p>
+        </div>
+      </div>
+
+      <div class="cart-drawer-footer">
+        <div class="cart-drawer-summary">
+          <span id="cartDrawerSummaryText">0 Items Prescribed</span>
+          <button id="btnClearCart" class="btn-clear-cart" title="Clear all prescribed items">
+            <i data-lucide="trash-2"></i> Clear Cart
+          </button>
+        </div>
+        <a href="../?role=patient" class="btn-launch-patient-sync" target="_blank">
+          <i data-lucide="check-circle-2"></i>
+          <span>View in Patient Portal</span>
+          <i data-lucide="external-link"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="./therapy_games.js"></script>
+  <script src="./app.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
